@@ -8,7 +8,7 @@ function Home() {
             <div className="home__data">
                 <h1 className="home__title">Hola,<br />Yo soy<span className="home__title-color"> Gonzalo </span></h1>
                 <p>Desarrollador Front End</p>
-                <Button variant='primary'>Contacto</Button>
+                <Button variant='primary' href="#contact">Contacto</Button>
             </div>
 
             <div className="home__social">

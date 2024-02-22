@@ -1,5 +1,11 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { FaHtml5, FaCss3Alt, FaReact, FaWordpressSimple, FaPython } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io5";
+import { SiMysql } from "react-icons/si";
+import { TbBrandCSharp } from "react-icons/tb";
+import { GiTeamIdea, GiThink } from "react-icons/gi";
+import { FcIdea } from "react-icons/fc";
 
 function Skills() {
     return (
@@ -18,7 +24,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bxl-html5 skills__icon'></i>
+                                                    <FaHtml5 className='skills__icon' />
                                                     <span className="skills__name">HTML5</span>
                                                 </div>
                                                 <div className="skills__bar skills__web">
@@ -32,7 +38,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bxl-css3 skills__icon'></i>
+                                                    <FaCss3Alt className='skills__icon' />
                                                     <span className="skills__name">CSS3</span>
                                                 </div>
                                                 <div className="skills__bar skills__web">
@@ -46,7 +52,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bxl-javascript skills__icon'></i>
+                                                    <IoLogoJavascript className='skills__icon' />    
                                                     <span className="skills__name">JavaScript</span>
                                                 </div>
                                                 <div className="skills__bar skills__js">
@@ -60,7 +66,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bxl-react skills__icon'></i>
+                                                    <FaReact className='skills__icon' />
                                                     <span className="skills__name">React</span>
                                                 </div>
                                                 <div className="skills__bar skills__react">
@@ -74,7 +80,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bx-data skills__icon'></i>
+                                                    <SiMysql className='skills__icon' />
                                                     <span className="skills__name">SQL</span>
                                                 </div>
                                                 <div className="skills__bar skills__sql">
@@ -88,7 +94,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bxs-copyright skills__icon'></i>
+                                                    <TbBrandCSharp className='skills__icon' />
                                                     <span className="skills__name">C#</span>
                                                 </div>
                                                 <div className="skills__bar skills__c">
@@ -102,7 +108,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bxl-wordpress skills__icon'></i>
+                                                    <FaWordpressSimple className='skills__icon' />
                                                     <span className="skills__name">WordPress</span>
                                                 </div>
                                                 <div className="skills__bar skills__wp">
@@ -116,7 +122,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bxl-python skills__icon'></i>
+                                                    <FaPython className='skills__icon' />
                                                     <span className="skills__name">Python</span>
                                                 </div>
                                                 <div className="skills__bar skills__py">
@@ -148,7 +154,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bx-group skills__icon'></i>
+                                                    <GiTeamIdea className='skills__icon' />
                                                     <span className="skills__name">Trabajo en equipo</span>
                                                 </div>
                                                 <div className="skills__bar skills__team">
@@ -162,7 +168,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bxs-magic-wand skills__icon'></i>
+                                                    <GiThink className='skills__icon' />
                                                     <span className="skills__name">Creatividad</span>
                                                 </div>
                                                 <div className="skills__bar skills__creativity">
@@ -176,7 +182,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <i className='bx bx-brain skills__icon'></i>
+                                                    <FcIdea className='skills__icon' />
                                                     <span className="skills__name">Resolver problemas</span>
                                                 </div>
                                                 <div className="skills__bar skills__solve">

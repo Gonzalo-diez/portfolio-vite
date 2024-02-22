@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { IoIosMail } from "react-icons/io";
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
 
 function Footer() {
     return (
@@ -10,7 +9,8 @@ function Footer() {
                 <p className="footer__title">Gonzalo</p>
                 <div className="footer__social">
                     <a href="https://www.linkedin.com/in/gonzalo-juan-diez-7188851a5/" className="footer__icon"><FaLinkedin /></a>
-                    <a href="https://www.instagram.com/gonzalodiezbuch/?hl=es-la" className="footer__icon"><IoIosMail /></a>
+                    <a href="https://www.instagram.com/gonzalodiezbuch/?hl=es-la" className="footer__icon"><FaInstagram /></a>
+                    <a href="https://github.com/Gonzalo-diez" className="footer__icon"><FaGithub /></a>
                 </div>
             </Container>
         </footer>
