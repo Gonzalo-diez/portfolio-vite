@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Toast } from 'react-bootstrap';
 
-function Contact() {
+function Contact({ language }) {
   const initialState = {
     name: '',
     email: '',
@@ -42,14 +42,14 @@ function Contact() {
   return (
     <section className="contact section" id="contact">
       <Container>
-        <h2 className="section-title">Contacto</h2>
+        <h2 className="section-title">{language === 'es' ? 'Contacto' : 'Contact'}</h2>
         <div className="contact__container bd-grid">
           <form className="contact__form" onSubmit={handleSubmit}>
             <input
               id="nombre"
               name="name"
               type="text"
-              placeholder="Nombre"
+              placeholder={language === 'es' ? 'Nombre' : 'Name'}
               className="contact__input"
               value={formData.name}
               onChange={handleChange}
@@ -59,7 +59,7 @@ function Contact() {
               id="email"
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder={language === 'es' ? 'Email' : 'Email'}
               className="contact__input"
               value={formData.email}
               onChange={handleChange}
@@ -70,19 +70,19 @@ function Contact() {
               id="msgContent"
               cols="0"
               rows="10"
-              placeholder="Mensaje"
+              placeholder={language === 'es' ? 'Mensaje' : 'Message'}
               className="contact__input"
               value={formData.msgContent}
               onChange={handleChange}
               required
             ></textarea>
-            <input type="submit" value="Enviar" className="contact__button button" />
+            <input type="submit" value={language === 'es' ? 'Enviar' : 'Send'} className="contact__button button" />
           </form>
           <Toast show={enviado} bg='success' onClose={() => setEnviado(false)} delay={4000} autohide>
             <Toast.Header closeButton={false}>
-              <strong className="mr-auto">¡Éxito!</strong>
+              <strong className="mr-auto">{language === 'es' ? '¡Éxito!' : 'Success!'}</strong>
             </Toast.Header>
-            <Toast.Body className="text-white">Mensaje enviado con éxito</Toast.Body>
+            <Toast.Body className="text-white">{language === 'es' ? 'Mensaje enviado con éxito' : 'Message sent successfully'}</Toast.Body>
           </Toast>
         </div>
       </Container>

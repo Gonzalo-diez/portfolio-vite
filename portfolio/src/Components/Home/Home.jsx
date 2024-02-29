@@ -2,14 +2,23 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
-function Home() {
+function Home({ language }) {
     return (
         <section className="home bd-grid" id="home">
-            <div className="home__data">
-                <h1 className="home__title">Hola,<br />Yo soy<span className="home__title-color"> Gonzalo </span></h1>
-                <p>Desarrollador Front End</p>
-                <Button variant='primary' href="#contact">Contacto</Button>
-            </div>
+            {language === 'es' && (
+                <div className="home__data">
+                    <h1 className="home__title">Hola,<br />Yo soy<span className="home__title-color"> Gonzalo </span></h1>
+                    <p>Desarrollador Front End</p>
+                    <Button variant='primary' href="#contact">Contacto</Button>
+                </div>
+            )}
+            {language === 'en' && (
+                <div className="home__data">
+                    <h1 className="home__title">Hello,<br />I'm<span className="home__title-color"> Gonzalo </span></h1>
+                    <p>Front End Developer</p>
+                    <Button variant='primary' href="#contact">Contact</Button>
+                </div>
+            )}
 
             <div className="home__social">
                 <a href="https://www.linkedin.com/in/gonzalo-juan-diez-7188851a5/" className="home__social-icon"><FaLinkedin /></a>

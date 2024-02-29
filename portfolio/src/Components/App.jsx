@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Home from './Home/Home';
 import About from './About/About';
 import Curriculum from './CV/Curriculum';
@@ -11,18 +12,23 @@ import "./CSS/style.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const [language, setLanguage] = useState('es');
+
+  const changeLanguage = (newLanguage) => {
+    setLanguage(newLanguage);
+  }
 
   return (
     <>
-      <Menu />
+      <Menu changeLanguage={changeLanguage} language={language} />
       <Layout>
-        <Home />
-        <About />
-        <Skills />
-        <Education />
-        <Work />
-        <Contact />
-        <Curriculum />
+        <Home language={language} />
+        <About language={language} />
+        <Skills language={language} />
+        <Education language={language} />
+        <Work language={language} />
+        <Contact language={language} />
+        <Curriculum language={language} />
       </Layout>
     </>
   )

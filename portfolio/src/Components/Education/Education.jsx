@@ -1,19 +1,19 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-function Education() {
+function Education({ language }) {
     return (
         <section className="education section" id="education">
             <Container>
-                <h2 className="section-title">Educación</h2>
-                <p className="education__text">Mis títulos conseguidos en CoderHouse</p>
+                <h2 className="section-title">{language === 'es' ? 'Educación' : 'Education'}</h2>
+                <p className="education__text">{language === 'es' ? 'Mis títulos conseguidos en CoderHouse' : 'My degrees obtained at CoderHouse'}</p>
                 <Row>
                     <Col md={4}>
                         <div className="education__container">
                             <div className="education">
                                 <a download="desarrollo" href="./img/desarrollo.png" className="education__img">
-                                    <img src="./img/desarrollo.png" alt="Desarrollo web" width="800" />
-                                    <h3 className="education__title">Desarrollo web</h3>
+                                    <img src="./img/desarrollo.png" alt={language === 'es' ? "Desarrollo web" : "Web Development"} width="800" />
+                                    <h3 className="education__title">{language === 'es' ? 'Desarrollo web' : 'Web Development'}</h3>
                                 </a>
                             </div>
                         </div>

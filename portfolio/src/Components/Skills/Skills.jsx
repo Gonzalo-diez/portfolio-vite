@@ -7,18 +7,18 @@ import { TbBrandCSharp } from "react-icons/tb";
 import { GiTeamIdea, GiThink } from "react-icons/gi";
 import { FcIdea } from "react-icons/fc";
 
-function Skills() {
+function Skills({ language }) {
     return (
         <section id="skills">
             <div className="skills section" id="hard-skills">
                 <Container>
-                    <h2 className="section-title">Habilidades Duras</h2>
+                    <h2 className="section-title">{language === 'es' ? 'Habilidades Duras' : 'Hard Skills'}</h2>
                     <Row className="skills__container bd-grid">
                         <Col>
                             <div>
-                                <h2 className="skills__subtitle">Habilidades duras</h2>
-                                <p className="skills__text">Me especializo en la maquetación de páginas con HTML, CSS y JavaScript, y en el desarrollo de web apps con React.</p>
-
+                                <h2 className="skills__subtitle">{language === 'es' ? 'Habilidades duras' : 'Hard Skills'}</h2>
+                                <p className="skills__text">{language === 'es' ? 'Me especializo en la maquetación de páginas con HTML, CSS y JavaScript, y en el desarrollo de web apps con React.' : 'I specialize in building web pages with HTML, CSS, and JavaScript, and in developing web apps with React.'}</p>
+                                
                                 <Container>
                                     <Row xs={1} md={2} lg={3} className="g-4">
                                         <Col md={4}>
@@ -52,7 +52,7 @@ function Skills() {
                                         <Col md={4}>
                                             <div className="skills__data">
                                                 <div className="skills__names">
-                                                    <IoLogoJavascript className='skills__icon' />    
+                                                    <IoLogoJavascript className='skills__icon' />
                                                     <span className="skills__name">JavaScript</span>
                                                 </div>
                                                 <div className="skills__bar skills__js">
@@ -155,7 +155,7 @@ function Skills() {
                                             <div className="skills__data">
                                                 <div className="skills__names">
                                                     <GiTeamIdea className='skills__icon' />
-                                                    <span className="skills__name">Trabajo en equipo</span>
+                                                    <span className="skills__name">{language === 'es' ? 'Trabajo en equipo' : 'Teamwork'}</span>
                                                 </div>
                                                 <div className="skills__bar skills__team">
 
@@ -169,7 +169,7 @@ function Skills() {
                                             <div className="skills__data">
                                                 <div className="skills__names">
                                                     <GiThink className='skills__icon' />
-                                                    <span className="skills__name">Creatividad</span>
+                                                    <span className="skills__name">{language === 'es' ? 'Creatividad' : 'Creativity'}</span>
                                                 </div>
                                                 <div className="skills__bar skills__creativity">
 
@@ -183,7 +183,7 @@ function Skills() {
                                             <div className="skills__data">
                                                 <div className="skills__names">
                                                     <FcIdea className='skills__icon' />
-                                                    <span className="skills__name">Resolver problemas</span>
+                                                    <span className="skills__name">{language === 'es' ? 'Resolver problemas' : 'Solve problems'}</span>
                                                 </div>
                                                 <div className="skills__bar skills__solve">
 
