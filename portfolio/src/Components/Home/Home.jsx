@@ -4,6 +4,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 function Home({ language }) {
     return (
+        
         <section className="home bd-grid" id="home">
             {language === 'es' && (
                 <div className="home__data">

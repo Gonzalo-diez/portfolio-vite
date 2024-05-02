@@ -1,83 +1,78 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { MdAddCircleOutline } from "react-icons/md";
+import { IoPencil } from 'react-icons/io5';
+import { FaTrash } from 'react-icons/fa';
+import { useAuth } from '../Context/authContext';
 
-function Education({ language }) {
+function Education({ language, token }) {
+    const [educations, setEducations] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchEducations = async () => {
+            try {
+                const res = await axios.get("http://localhost:8800/educations/");
+                setEducations(res.data);
+            } catch (err) {
+                console.error("Error al obtener productos:", err);
+            }
+        };
+        fetchEducations();
+    }, []);
+
+    const handleDeleteEducation = async (educationId) => {
+        try {
+            navigate(`/educations/protected/deleteEducation/${educationId}`);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleUpdateEducation = (educationId) => {
+        try {
+            navigate(`/educations/protected/updateEducation/${educationId}`);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    const handleAddEducation = () => {
+        navigate('/educations/protected/addEducation');
+    };
+
     return (
         <section className="education section" id="education">
             <Container>
                 <h2 className="section-title">{language === 'es' ? 'Educación' : 'Education'}</h2>
-                <p className="education__text">{language === 'es' ? 'Mis títulos conseguidos en CoderHouse' : 'My degrees obtained at CoderHouse'}</p>
+                <p className="education__text">{language === 'es' ? 'Mis títulos conseguidos' : 'My degrees obtained'}</p>
                 <Row>
-                    <Col md={4}>
-                        <div className="education__container">
-                            <div className="education">
-                                <a download="desarrollo" href="./img/desarrollo.png" className="education__img">
-                                    <img src="./img/desarrollo.png" alt={language === 'es' ? "Desarrollo web" : "Web Development"} width="800" />
-                                    <h3 className="education__title">{language === 'es' ? 'Desarrollo web' : 'Web Development'}</h3>
-                                </a>
-                            </div>
+                    {token && (
+                        <div>
+                            <Button onClick={handleAddEducation} variant='primary'><MdAddCircleOutline /></Button>
                         </div>
-                    </Col>
-                    <Col md={4}>
-                        <div className="education__container">
-                            <div className="education">
-                                <a download="js" href="./img/javascript.png" className="education__img">
-                                    <img src="./img/javascript.png" alt="JavaScript" width="800" />
-                                    <h3 className="education__title">JavaScript</h3>
-                                </a>
+                    )}
+                    {educations.map((education) => {
+                        <Col md={4} key={education._id}>
+                            <div className="education__container">
+                                <div className="education">
+                                    <a download={education.title} href={education.image} className="education__img">
+                                        <img src={education.image} alt={education.title} width="800" />
+                                        <h3 className="education__title">{education.title}</h3>
+                                    </a>
+                                </div>
+                                {token && (
+                                    <>
+                                        <Button onClick={() => handleUpdateEducation(education._id)} variant='info'><IoPencil /></Button>
+                                        <Button onClick={() => handleDeleteEducation(education._id)} variant='danger'><FaTrash /></Button>
+                                    </>
+                                )}
                             </div>
-                        </div>
-                    </Col>
-                    <Col md={4}>
-                        <div className="education__container">
-                            <div className="education">
-                                <a download="react" href="./img/react.png" className="education__img">
-                                    <img src="./img/react.png" alt="React" width="800" />
-                                    <h3 className="education__title">React</h3>
-                                </a>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col md={4}>
-                        <div className="education__container">
-                            <div className="education">
-                                <a download="sql" href="./img/sql.png" className="education__img">
-                                    <img src="./img/sql.png" alt="SQL" width="800" />
-                                    <h3 className="education__title">SQL</h3>
-                                </a>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col md={4}>
-                        <div className="education__container">
-                            <div className="education">
-                                <a download="csharp" href="./img/c-sharp.png" className="education__img">
-                                    <img src="./img/c-sharp.png" alt="C-sharp" width="800" />
-                                    <h3 className="education__title">C#</h3>
-                                </a>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col md={4}>
-                        <div className="education__container">
-                            <div className="education">
-                                <a download="wordpress" href="./img/wordpress.png" className="education__img">
-                                    <img src="./img/wordpress.png" alt="WordPress" width="800" />
-                                    <h3 className="education__title">WordPress</h3>
-                                </a>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col md={4}>
-                        <div className="education__container">
-                            <div className="education">
-                                <a download="python" href="./img/python.png" className="education__img">
-                                    <img src="./img/python.png" alt="Python" width="800" />
-                                    <h3 className="education__title">Python/Django</h3>
-                                </a>
-                            </div>
-                        </div>
-                    </Col>
+                        </Col>
+                    })}
                 </Row>
             </Container>
         </section>

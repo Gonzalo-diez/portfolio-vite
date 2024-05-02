@@ -206,7 +206,7 @@ img {
 }
 
 .skills__icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-right: var(--mb-2);
   color: var(--first-color);
 }
@@ -224,46 +224,6 @@ img {
   height: .25rem;
   border-radius: .5rem;
   z-index: var(--z-back);
-}
-
-.skills__web {
-  width: 90%;
-}
-
-.skills__js {
-  width: 80%;
-}
-
-.skills__react {
-  width: 75%;
-}
-
-.skills__sql {
-  width: 80%;
-}
-
-.skills__wp {
-  width: 80%;
-}
-
-.skills__py {
-  width: 70%;
-}
-
-.skills__c {
-  width: 40%;
-}
-
-.skills__team {
-  width: 80%;
-}
-
-.skills__creativity {
-  width: 85%;
-}
-
-.skills__solve {
-  width: 75%;
 }
 
 /*=== Educación ===*/
