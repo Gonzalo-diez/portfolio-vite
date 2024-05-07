@@ -10,7 +10,7 @@ function Curriculum({ language }) {
       try {
         const res = await axios.get("http://localhost:8800/resume/");
         console.log("Curriculum:", res.data);
-        setResume(res.data); // Establece el objeto de resume, no un array
+        setResume(res.data);
       } catch (err) {
         console.error("Error al obtener el curriculum:", err);
       }
@@ -24,8 +24,8 @@ function Curriculum({ language }) {
         <h2 className="section-title">{language === 'es' ? 'Curriculum Vitae' : 'Curriculum Vitae'}</h2>
         {resume && ( 
           <div className="cv__container bd-grid">
-            <a download="cv" href={language === 'es' ? `http://localhost:8800/resume/${resume.pdf_resume}` : `http://localhost:8800/resume/${resume.pdf_sub_resume}`} className="cv__img">
-              <img src={language === 'es' ? `http://localhost:8800/resume/${resume.resume}` : `http://localhost:8800/resume/${resume.sub_resume}`} alt={language === 'es' ? 'curriculum vitae' : 'curriculum vitae'} />
+            <a download="cv" href={language === 'es' ? `http://localhost:8800/resumeFiles/${resume.pdf_resume}` : `http://localhost:8800/resumeFiles/${resume.pdf_sub_resume}`} className="cv__img">
+              <img src={language === 'es' ? `http://localhost:8800/resumeFiles/${resume.resume}` : `http://localhost:8800/resumeFiles/${resume.sub_resume}`} alt='curriculum vitae' />
             </a>
           </div>
         )}

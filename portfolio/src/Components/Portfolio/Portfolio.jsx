@@ -11,7 +11,6 @@ import { useAuth } from '../Context/authContext';
 
 function Portfolio({ language, token, setUser }) {
     const { userId } = useAuth();
-    /*
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -31,8 +30,7 @@ function Portfolio({ language, token, setUser }) {
         };
 
         fetchUser();
-    }, [userId])
-    */
+    }, [userId]);
 
     console.log("Token:", token)
 

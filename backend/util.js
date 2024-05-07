@@ -13,7 +13,7 @@ export const JWT_SECRET = process.env.JWT_SECRET;
 export function configureWorkMulter() {
     const storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, path.join(__dirname, 'workImg'));
+            cb(null, path.join(__dirname, 'public/workImg'));
         },
         filename: function (req, file, cb) {
             cb(null, file.originalname);
@@ -26,7 +26,7 @@ export function configureWorkMulter() {
 export function configureEducationMulter() {
     const storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, path.join(__dirname, 'eduImg'));
+            cb(null, path.join(__dirname, 'public/eduImg'));
         },
         filename: function (req, file, cb) {
             cb(null, file.originalname);
@@ -39,7 +39,7 @@ export function configureEducationMulter() {
 export function configureResumeMulter() {
     const storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, path.join(__dirname, 'resumeFiles'));
+            cb(null, path.join(__dirname, 'public/resumeFiles'));
         },
         filename: function (req, file, cb) {
             cb(null, file.originalname);

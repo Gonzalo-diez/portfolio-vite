@@ -14,6 +14,8 @@ const protectWithJWT = passport.authenticate("jwt", {session: false});
 
 resumeRouter.get("/", resumeController.getResume);
 resumeRouter.get("/:id", resumeController.getResumeById);
+resumeRouter.post("/protected/addResume", protectWithJWT, resumeFiles, resumeController.createResume);
 resumeRouter.put("/protected/updateResume/:id", protectWithJWT, resumeFiles, resumeController.updateResume);
+resumeRouter.delete("/protected/deleteResume/:id", protectWithJWT, resumeController.deleteResume);
 
 export default resumeRouter;

@@ -58,7 +58,7 @@ function Works({ language, token }) {
             <Col md={4} key={work._id}>
               <div className="work__container">
                 <a href={work.link} className="work__img">
-                  <img src={work.image} width="800" alt={work.title} />
+                  <img src={`http://localhost:8800/workImg/${work.image}`} width="800" alt={work.title} />
                   <h3>{language === 'es' ? work.title : work.sub_title}</h3>
                 </a>
                 {token && (

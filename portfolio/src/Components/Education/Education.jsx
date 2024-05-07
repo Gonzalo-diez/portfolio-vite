@@ -59,7 +59,7 @@ function Education({ language, token }) {
                         <Col md={4} key={education._id}>
                             <div className="education__container">
                                 <div className="education">
-                                    <a download={education.title} href={education.image} className="education__img">
+                                    <a download={education.title} href={`http://localhost:8800/eduImg/${education.image}`} className="education__img">
                                         <img src={education.image} alt={education.title} width="800" />
                                         <h3 className="education__title">{education.title}</h3>
                                     </a>

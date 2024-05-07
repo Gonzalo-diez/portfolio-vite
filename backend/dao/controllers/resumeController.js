@@ -16,6 +16,42 @@ const resumeController = {
         }
     },
 
+    createResume: async (req, res) => {
+        const { userId } = req.body;
+
+        try {
+            const user = await User.findById(userId).exec();
+
+            if (!user) {
+                return res.status(404).json({ error: 'No esta logueado' });
+            }
+
+            const pdfResume = req.files['pdf_resume'][0];
+            const pdfSubResume = req.files['pdf_sub_resume'][0]; 
+            const resume = req.files['resume'][0]; 
+            const subResume = req.files['sub_resume'][0]; 
+
+            const newResume = new Resume({
+                pdfResume: pdfResume.filename,
+                pdfSubResume: pdfSubResume.filename,
+                resume: resume.filename,
+                subResume: subResume.filename,
+                user: userId,
+            });
+
+            await newResume.save();
+
+            res.json({
+                message: "Curriculum agregado!",
+                newResume,
+            });
+        }
+        catch (err) {
+            console.error("Error al guardar el curriculum:", err);
+            return res.status(500).json({ error: "Error en la base de datos", details: err.message });
+        }
+    },
+
     getResumeById: async (req, res) => {
         const resumeId = req.params.id;
 
@@ -79,8 +115,24 @@ const resumeController = {
             console.error("Error en la actualización del currículum:", err);
             return res.status(500).json({ error: "Error en la base de datos", details: err.message });
         }
-    }
+    },
 
+    deleteResume: async (req, res) => {
+        const resumeId = req.params.id;
+
+        try {
+            const deleteResume = await Resume.deleteOne({ _id: resumeId });
+
+            if (deleteResume.deletedCount === 0) {
+                return res.status(404).json({ error: "Curriculum no encontrado" });
+            }
+
+            return res.json("Curriculum eliminado!");
+        } catch (err) {
+            console.error('Error:', err);
+            return res.status(500).json({ error: "Error en la base de datos", details: err.message });
+        }
+    },
 }
 
 export default resumeController;

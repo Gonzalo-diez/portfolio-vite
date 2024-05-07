@@ -55,9 +55,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", router);
-app.use(express.static(path.join(__dirname, 'workImg')));
-app.use(express.static(path.join(__dirname, 'eduImg')));
-app.use(express.static(path.join(__dirname, 'resumeFiles')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 io.on("connection", socket => {
     console.log("Nuevo cliente conectado!!");
