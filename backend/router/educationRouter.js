@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "../config/passport-jwt-config.js";
 import { configureEducationMulter } from "../util.js";
-import educationController from "../dao/controllers/educationController.js";
+import educationController from "../controllers/education.controller.js";
 
 const educationImage = configureEducationMulter()
 const educationRouter = express.Router();

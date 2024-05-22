@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "../config/passport-jwt-config.js";
-import hardSkillsController from "../dao/controllers/hardSkillsController.js";
+import hardSkillsController from "../controllers/hardSkills.controller.js";
 
 const hardSkillsRouter = express.Router();
 const protectWithJWT = passport.authenticate("jwt", {session: false});

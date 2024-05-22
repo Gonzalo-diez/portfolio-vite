@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "../config/passport-jwt-config.js";
 import { configureWorkMulter } from "../util.js";
-import workController from "../dao/controllers/workController.js";
+import workController from "../controllers/work.controller.js";
 
 const workImage = configureWorkMulter();
 const workRouter = express.Router();

@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "../config/passport-jwt-config.js";
 import { configureResumeMulter } from "../util.js";
-import resumeController from "../dao/controllers/resumeController.js";
+import resumeController from "../controllers/resume.controller.js";
 
 const resumeFiles = configureResumeMulter().fields([
     { name: 'pdf_resume', maxCount: 1 },
