@@ -1,10 +1,10 @@
 import express from "express";
-import userRouter from "./router/userRouter.js";
-import hardSkillsRouter from "./router/hardSkillsRouter.js";
-import softSkillsRouter from "./router/softSkillsRouter.js";
-import workRouter from "./router/workRouter.js";
-import educationRouter from "./router/educationRouter.js";
-import resumeRouter from "./router/resumeRouter.js";
+import userRouter from "./router/user.router.js";
+import hardSkillsRouter from "./router/hardSkill.router.js";
+import softSkillsRouter from "./router/softSkills.router.js";
+import workRouter from "./router/work.router.js";
+import educationRouter from "./router/education.router.js";
+import resumeRouter from "./router/resume.router.js";
 
 const router = express.Router();
 

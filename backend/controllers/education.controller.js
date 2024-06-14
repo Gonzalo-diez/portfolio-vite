@@ -29,9 +29,10 @@ const educationController = {
 
     createEducation: async (req, res) => {
         const educationData = req.body;
+        const file = req.file;
 
         try {
-            const newEducation = await educationService.createEducation(educationData);
+            const newEducation = await educationService.createEducation(educationData, file);
 
             res.json({
                 message: "Educacion agregada!",
@@ -47,9 +48,10 @@ const educationController = {
     updateEducation: async (req, res) => {
         const educationId = req.params.id;
         const educationUpdateData = req.body;
+        const file = req.file;
 
         try {
-            const updatedEducation = await educationService.updateEducation(educationId, educationUpdateData);
+            const updatedEducation = await educationService.updateEducation(educationId, educationUpdateData, file);
 
             res.json({
                 message: "Educación actualizada!",

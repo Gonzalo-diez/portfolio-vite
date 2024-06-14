@@ -1,3 +1,4 @@
+import passport from "passport";
 import userRepository from "../repositories/user.repository.js";
 import auth from "../../config/passport-config.js";
 

@@ -29,9 +29,10 @@ const workController = {
 
     createWork: async(req, res) => {
         const workData = req.body;
+        const files = req.files;
 
         try {
-            const newWork = await workService.createWork(workData);
+            const newWork = await workService.createWork(workData, files);
 
             res.json({
                 message: "Trabajo agregado!",
@@ -47,9 +48,10 @@ const workController = {
     updateWork: async(req, res) => {
         const workId = req.params.id;
         const workUpdateData = req.body;
+        const files = req.files;
 
         try {
-            const updateWork = await workService.updateWork(workId, workUpdateData)
+            const updateWork = await workService.updateWork(workId, workUpdateData, files)
 
             res.json({
                 message: "Trabajo actualizado!",

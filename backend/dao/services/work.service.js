@@ -25,7 +25,7 @@ const workService = {
         }
     },
 
-    createWork: async(workData) => {
+    createWork: async(workData, files) => {
         const { title, sub_title, link, userId } = workData;
 
         try {
@@ -35,13 +35,13 @@ const workService = {
                 throw new Error("Usted no es el admin o no esta logueado");
             }
 
-            const imageName = req.file ? req.file.filename : null;
+            const imageName = files ? files.filename : null;
 
             if (!imageName) {
                 return res.status(400).json({ error: 'No se proporcionó una imagen válida' });
             }
 
-            const workDTO = new workDTO(title, sub_title, link, imageName, userId);
+            const workDTO = new WorkDTO(title, sub_title, link, imageName, userId);
 
             const newWork = await workRepository.createWork(workDTO);
 
@@ -52,7 +52,7 @@ const workService = {
         }
     },
 
-    updateWork: async(workId, workUpdateData) => {
+    updateWork: async(workId, workUpdateData, files) => {
         const { title, sub_title, link, userId } = workUpdateData;
 
         try {
@@ -72,7 +72,7 @@ const workService = {
                 throw new Error("Usted no es el admin");
             }
 
-            const imageName = req.file ? req.file.filename : null;
+            const imageName = files ? files.filename : null;
 
             const workDto = new WorkDTO(title, sub_title, link, imageName, userId)
 

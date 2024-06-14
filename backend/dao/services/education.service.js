@@ -25,7 +25,7 @@ const educationService = {
         }
     },
 
-    createEducation: async (educationData) => {
+    createEducation: async (educationData, file) => {
         const { title, sub_title, userId } = educationData;
 
         try {
@@ -35,7 +35,7 @@ const educationService = {
                 throw new Error("Usted no es el admin");
             }
 
-            const imageName = req.file ? req.file.filename : null;
+            const imageName = file ? file.filename : null;
 
             if (!imageName) {
                 throw new Error("No se proporciono un archivo o imagen valido");
@@ -52,7 +52,7 @@ const educationService = {
         }
     },
 
-    updateEducation: async (educationId, educationUpdateData) => {
+    updateEducation: async (educationId, educationUpdateData, file) => {
         const { title, sub_title, userId } = educationUpdateData;
 
         try {
@@ -72,7 +72,7 @@ const educationService = {
                 throw new Error("Usted no es el admin");
             }
 
-            const imageName = req.file ? req.file.filename : null;
+            const imageName = file ? file.filename : null;
 
             if (!imageName) {
                 throw new Error("No se proporciono un archivo o imagen valido");
