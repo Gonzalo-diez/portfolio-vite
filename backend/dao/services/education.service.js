@@ -26,7 +26,7 @@ const educationService = {
     },
 
     createEducation: async (educationData, file) => {
-        const { title, sub_title, userId } = educationData;
+        const { title, userId } = educationData;
 
         try {
             const user = await userRepository.findById(userId);
@@ -41,7 +41,7 @@ const educationService = {
                 throw new Error("No se proporciono un archivo o imagen valido");
             }
 
-            const educationDTO = new EducationDTO(title, sub_title, imageName, userId);
+            const educationDTO = new EducationDTO(title, imageName, userId);
 
             const newEducation = await educationRepository.createEducation(educationDTO);
 
@@ -53,7 +53,7 @@ const educationService = {
     },
 
     updateEducation: async (educationId, educationUpdateData, file) => {
-        const { title, sub_title, userId } = educationUpdateData;
+        const { title, userId } = educationUpdateData;
 
         try {
             const education = await educationRepository.getEducationById(educationId);
@@ -78,7 +78,7 @@ const educationService = {
                 throw new Error("No se proporciono un archivo o imagen valido");
             }
 
-            const educationDTO = new EducationDTO(title, sub_title, userId)
+            const educationDTO = new EducationDTO(title, userId)
 
             const updateEducation = await educationRepository.updateEducation(educationDTO, educationId);
 

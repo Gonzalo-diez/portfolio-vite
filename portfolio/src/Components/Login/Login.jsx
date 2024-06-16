@@ -24,6 +24,7 @@ const Login = ({ setIsAuthenticated, setUser }) => {
                 localStorage.setItem("jwtToken", token);
 
                 setAuthenticatedUserId(res.data.user._id);
+                console.log("UserId:", res.data.user._id);
                 setUser(res.data);
                 setIsAuthenticated(true);
                 navigate(`/`);

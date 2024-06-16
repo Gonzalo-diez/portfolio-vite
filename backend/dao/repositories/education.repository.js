@@ -32,8 +32,7 @@ const educationRepository = {
     createEducation: async (educationData) => {
         try {
             const newEducation = new Education(educationData);
-
-            newEducation.save();
+            await newEducation.save();
 
             return newEducation;
         }

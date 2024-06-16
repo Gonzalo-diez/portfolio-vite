@@ -25,6 +25,7 @@ function Menu({ changeLanguage, language, token }) {
             localStorage.removeItem('jwtToken');
             console.log('Token eliminado correctamente');
             navigate('/', { replace: true });
+            window.location.reload();
         } catch (err) {
             console.error('Error en cerrar sesión:', err);
         }

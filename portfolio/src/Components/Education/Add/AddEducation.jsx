@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useAuth } from "../../Context/authContext";
 
-function AddEducation({ token, user }) {
+function AddEducation({ token }) {
     const { userId } = useAuth;
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
@@ -13,7 +13,7 @@ function AddEducation({ token, user }) {
     const handleAddEducation = async () => {
         if (!token) {
             console.log("Debes estar autenticado para agregar el treabajo.");
-            navigate("/usuarios/login");
+            navigate("/user/login");
             return;
         }
 
@@ -22,6 +22,8 @@ function AddEducation({ token, user }) {
             formData.append("title", title);
             formData.append("image", image);
             formData.append("userId", userId);
+
+            console.log("Datos de subida:", formData);
 
             const response = await axios.post("http://localhost:8800/educations/protected/addEducation", formData, {
                 headers: {
