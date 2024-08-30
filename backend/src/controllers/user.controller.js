@@ -40,8 +40,6 @@ const userController = {
                 jwtToken: access_token,
                 userId: user._id.toString(),
             });
-
-            res.redirect("https://portfolio-gonzalo-diez-buchanan.netlify.app/");
         } catch (error) {
             res.status(500).json({ error: "Error interno del servidor" });
         }
