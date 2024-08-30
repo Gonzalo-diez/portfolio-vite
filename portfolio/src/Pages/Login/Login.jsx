@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Toast, Container, Row, Col } from 'react-bootstrap';
 
-const Login = ({ setIsAuthenticated, setUser }) => {
+const Login = () => {
     const [showErrorToast, setShowErrorToast] = useState(false);
 
     return (
