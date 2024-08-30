@@ -8,7 +8,6 @@ import {
     GITHUB_CALLBACK_URL,
     GITHUB_CLIENT_ID,
     GITHUB_CLIENT_SECRET,
-    BASE_GITHUB_CALLBACK_URL
 } from "../util.js";
 
 const initializePassport = () => {
@@ -18,7 +17,7 @@ const initializePassport = () => {
             {
                 clientID: process.env.GITHUB_CLIENT_ID || GITHUB_CLIENT_ID,
                 clientSecret: process.env.GITHUB_CLIENT_SECRET || GITHUB_CLIENT_SECRET,
-                callbackURL: process.env.BASE_GITHUB_CALLBACK_URL || BASE_GITHUB_CALLBACK_URL,
+                callbackURL: process.env.GITHUB_CALLBACK_URL || GITHUB_CALLBACK_URL,
             },
             async function (accessToken, refreshToken, profile, done) {
                 const allowedUsername = process.env.ALLOWED_USERNAME || ALLOWED_USERNAME;
