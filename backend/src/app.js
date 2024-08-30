@@ -9,7 +9,7 @@ import __dirname from "./util.js";
 import router from "./routes.js";
 import auth from "./config/auth.js";
 import passport from "./config/jwt.js";
-import { MONGO_URL, PORT } from "./util.js";
+import { MONGO_URL, PORT, NETLIFY_URL } from "./util.js";
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -36,7 +36,7 @@ db.once("open", () => {
 app.use(express.json());
 
 app.use(cors({
-    origin: "https://portfolio-vite.onrender.com/",
+    origin: NETLIFY_URL,
     credentials: true
 }));
 
