@@ -39,6 +39,7 @@ const userController = {
                 message: "Autenticación exitosa",
                 jwtToken: access_token,
                 userId: user._id.toString(),
+                redirectUrl: "https://portfolio-gonzalo-diez-buchanan.netlify.app/"
             });
         } catch (error) {
             res.status(500).json({ error: "Error interno del servidor" });
