@@ -35,7 +35,13 @@ const userController = {
             req.session.user = user;
             req.session.isAuthenticated = true;
 
-            res.redirect(`https://portfolio-gonzalo-diez-buchanan.netlify.app/login?jwtToken=${access_token}&userId=${user._id.toString()}`);
+            res.json({
+                message: "Autenticación exitosa",
+                jwtToken: access_token,
+                userId: user._id.toString(),
+            });
+
+            res.redirect("https://portfolio-gonzalo-diez-buchanan.netlify.app/");
         } catch (error) {
             res.status(500).json({ error: "Error interno del servidor" });
         }
@@ -43,6 +49,10 @@ const userController = {
 
     logout: async (req, res) => {
         try {
+            // Elimina el token de la cookie
+            res.clearCookie("jwtToken");
+            res.clearCookie("userId");
+
             // Elimina la sesión del usuario
             req.session.destroy((err) => {
                 if (err) {
