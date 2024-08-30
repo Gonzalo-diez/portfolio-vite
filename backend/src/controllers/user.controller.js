@@ -35,12 +35,7 @@ const userController = {
             req.session.user = user;
             req.session.isAuthenticated = true;
 
-            res.json({
-                message: "Autenticación exitosa",
-                jwtToken: access_token,
-                userId: user._id.toString(),
-                redirectUrl: "https://portfolio-gonzalo-diez-buchanan.netlify.app/"
-            });
+            res.redirect(`https://portfolio-vite.onrender.com/login?jwtToken=${access_token}&userId=${user._id.toString()}`);
         } catch (error) {
             res.status(500).json({ error: "Error interno del servidor" });
         }

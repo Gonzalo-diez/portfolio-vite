@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Toast, Container, Row, Col } from 'react-bootstrap';
 
 const Login = () => {
+    const navigate = useNavigate();
     const [showErrorToast, setShowErrorToast] = useState(false);
 
     useEffect(() => {
@@ -10,10 +12,14 @@ const Login = () => {
         const userId = params.get('userId');
 
         if (jwtToken && userId) {
+            // Guarda el token y el ID del usuario en el localStorage
             localStorage.setItem('jwtToken', jwtToken);
             localStorage.setItem('userId', userId);
 
-            window.location.href = "/";
+            navigate("/");
+        } else if (params.get('error')) {
+            // Muestra un mensaje de error si hay un parámetro de error
+            setShowErrorToast(true);
         }
     }, []);
 
@@ -35,8 +41,9 @@ const Login = () => {
                             text="white"
                         >
                             <Toast.Header>
-                                <strong className="mr-auto">Denegado</strong>
+                                <strong className="mr-auto">Error</strong>
                             </Toast.Header>
+                            <Toast.Body>La autenticación ha fallado. Por favor, intente nuevamente.</Toast.Body>
                         </Toast>
                     </div>
                 </Col>
