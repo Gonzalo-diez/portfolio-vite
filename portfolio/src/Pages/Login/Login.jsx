@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import Cookies from "js-cookie"
 import { Button, Toast, Container, Row, Col } from 'react-bootstrap';
 
 const Login = () => {
     const [showErrorToast, setShowErrorToast] = useState(false);
-
-    const cookies = Cookies.get();
-    console.log("cookies:", cookies);
 
     return (
         <Container className="mt-3">
@@ -15,12 +11,7 @@ const Login = () => {
                     <div className="form-container">
                         <h2 className="text-center">Iniciar sesión</h2>
                         <div className="d-flex justify-content-center">
-                            <Button
-                                className="btn btn-secondary mt-3"
-                                href="https://portfolio-vite.onrender.com/user/github"
-                            >
-                                Github
-                            </Button>
+                            <Button className="btn btn-secondary mt-3" href="https://portfolio-vite.onrender.com/user/github">Github</Button>
                         </div>
                         <Toast
                             show={showErrorToast}
@@ -31,9 +22,8 @@ const Login = () => {
                             text="white"
                         >
                             <Toast.Header>
-                                <strong className="mr-auto">Error</strong>
+                                <strong className="mr-auto">Denegado</strong>
                             </Toast.Header>
-                            <Toast.Body>La autenticación ha fallado. Por favor, intente nuevamente.</Toast.Body>
                         </Toast>
                     </div>
                 </Col>

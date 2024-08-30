@@ -7,7 +7,8 @@ import {
     ALLOWED_USERNAME,
     GITHUB_CALLBACK_URL,
     GITHUB_CLIENT_ID,
-    GITHUB_CLIENT_SECRET
+    GITHUB_CLIENT_SECRET,
+    BASE_GITHUB_CALLBACK_URL
 } from "../util.js";
 
 const initializePassport = () => {
@@ -17,7 +18,7 @@ const initializePassport = () => {
             {
                 clientID: process.env.GITHUB_CLIENT_ID || GITHUB_CLIENT_ID,
                 clientSecret: process.env.GITHUB_CLIENT_SECRET || GITHUB_CLIENT_SECRET,
-                callbackURL: process.env.GITHUB_CALLBACK_URL || GITHUB_CALLBACK_URL,
+                callbackURL: process.env.BASE_GITHUB_CALLBACK_URL || BASE_GITHUB_CALLBACK_URL,
             },
             async function (accessToken, refreshToken, profile, done) {
                 const allowedUsername = process.env.ALLOWED_USERNAME || ALLOWED_USERNAME;
@@ -36,7 +37,7 @@ const initializePassport = () => {
                     }
     
                     if (user) {
-                        return done(null, user);  // Pass the full user object
+                        return done(null, user);  
                     } else {
                         return done(null, false, { message: 'Acceso denegado.' });
                     }

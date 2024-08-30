@@ -18,6 +18,9 @@ export const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 export const GITHUB_ID = process.env.GITHUB_ID;
 export const NETLIFY_URL = process.env.NETLIFY_URL;
 export const SESSION_SECRET = process.env.SESSION_SECRET;
+export const BASE_MONGO = process.env.BASE_MONGO;
+export const BASE_URL = process.env.BASE_URL;
+export const BASE_GITHUB_CALLBACK_URL = process.env.BASE_GITHUB_CALLBACK_URL;
 
 export function configureWorkMulter() {
     const storage = multer.diskStorage({

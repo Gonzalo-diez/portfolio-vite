@@ -37,18 +37,8 @@ const userController = {
             req.session.isAuthenticated = true;
 
             // Configura cookies
-            res.cookie('jwtToken', access_token, {
-                httpOnly: true, // No accesible desde JavaScript
-                secure: process.env.NODE_ENV === 'production', // Solo enviar cookies sobre HTTPS en producción
-                sameSite: 'None', // Para permitir el envío de cookies en solicitudes cross-site
-                maxAge: 24 * 60 * 60 * 1000 // 24 horas
-            });
-            res.cookie('userId', user._id.toString(), {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
-                sameSite: 'None',
-                maxAge: 24 * 60 * 60 * 1000
-            });
+            res.cookie('jwtToken', access_token);
+            res.cookie('userId', user._id.toString());
 
             // Redirige al frontend
             res.redirect("https://portfolio-gonzalo-diez-buchanan.netlify.app/");
