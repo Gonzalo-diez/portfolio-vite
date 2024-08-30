@@ -9,7 +9,9 @@ import Works from "../../Sections/Works/Works";
 import useFetchUser from '../../Hooks/User/UseFetchUser';
 
 function Portfolio({ language, token, setUser, userId }) {
-    useFetchUser(userId, token, setUser);
+    if (userId && token) {
+        useFetchUser(userId, token, setUser);
+    }
 
     return (
         <>

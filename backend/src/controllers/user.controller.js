@@ -9,7 +9,7 @@ const userController = {
 
         try {
             const user = await userService.getUserById(userId);
-            return res.json({user, isAuthenticated, jwtToken });
+            return res.json({ user, isAuthenticated, jwtToken });
         } catch (err) {
             if (err.message === "Usuario no encontrado") {
                 return res.status(404).json({ error: err.message });
@@ -35,11 +35,9 @@ const userController = {
             req.session.user = user;
             req.session.isAuthenticated = true;
 
-            res.cookie('jwtToken', access_token, {
-                httpOnly: true,
-                sameSite: "none",
-            });
-            res.cookie('userId', user._id.toString());      
+            res.cookie('jwtToken', token, { httpOnly: true, secure: true });
+            res.cookie('userId', user._id.toString(), { httpOnly: true, secure: true });
+
 
             res.redirect("https://portfolio-gonzalo-diez-buchanan.netlify.app/");
         } catch (error) {
@@ -51,7 +49,8 @@ const userController = {
         try {
             // Elimina el token de la cookie
             res.clearCookie("jwtToken");
-    
+            res.clearCookie("userId");
+
             // Elimina la sesión del usuario
             req.session.destroy((err) => {
                 if (err) {
@@ -65,7 +64,7 @@ const userController = {
             }
             res.status(500).json({ error: "Error al cerrar sesión", details: err.message });
         }
-    }    
+    }
 };
 
 export default userController;
