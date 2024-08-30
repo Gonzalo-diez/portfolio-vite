@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Cookies from "js-cookie";
 import Layout from './Footer/Layout';
 import Menu from './Menu/Menu';
 import { Routes, Route } from 'react-router-dom';
@@ -20,8 +21,8 @@ import "./CSS/style.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const userId = localStorage.getItem('userId');
-  const token = localStorage.getItem('jwtToken');
+  const userId = Cookies.get('userId');
+  const token = Cookies.get('jwtToken');
 
   const [language, setLanguage] = useState('es');
   const [isAuthenticated, setIsAuthenticated] = useState(false);

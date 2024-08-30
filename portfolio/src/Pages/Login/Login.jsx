@@ -1,28 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import Cookies from "js-cookie"
 import { Button, Toast, Container, Row, Col } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const navigate = useNavigate();
-    const [showErrorToast, setShowErrorToast] = React.useState(false);
+    const [showErrorToast, setShowErrorToast] = useState(false);
 
-    useEffect(() => {
-        // Verifica si hay parámetros en la URL que indican autenticación
-        const params = new URLSearchParams(window.location.search);
-        const jwtToken = params.get('jwtToken');
-        const userId = params.get('userId');
-
-        console.log("userId:", userId);
-        console.log("Token:", jwtToken);
-
-        if (jwtToken && userId) {
-            // Guarda el token y el userId en localStorage
-            localStorage.setItem('jwtToken', jwtToken);
-            localStorage.setItem('userId', userId);
-
-            navigate("https://portfolio-gonzalo-diez-buchanan.netlify.app/")
-        }
-    }, []);
+    const cookies = Cookies.get();
+    console.log("cookies:", cookies);
 
     return (
         <Container className="mt-3">
