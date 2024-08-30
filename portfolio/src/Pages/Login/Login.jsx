@@ -6,18 +6,13 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            // Realiza una solicitud para iniciar el flujo de autenticación de GitHub
             const response = await fetch('https://portfolio-vite.onrender.com/user/github', {
                 method: 'GET',
-                credentials: 'include', // Incluye cookies en la solicitud
+                credentials: 'include',
             });
 
-            if (!response.ok) {
-                throw new Error('Error al iniciar sesión');
-            }
-
             // Redirige al usuario a la página de autenticación de GitHub
-            window.location.href = 'https://portfolio-vite.onrender.com/user/github'; // Cambia a la URL correcta si es necesario
+            window.location.href = 'https://portfolio-vite.onrender.com/user/github';
         } catch (error) {
             console.error('Error en el inicio de sesión:', error);
             setShowErrorToast(true);
