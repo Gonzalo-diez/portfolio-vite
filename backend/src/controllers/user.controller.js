@@ -30,14 +30,27 @@ const userController = {
         try {
             const { user, access_token } = await userService.handleGitHubCallback(req);
 
+            // Establece el token y el ID de usuario en la sesión
             req.session.token = access_token;
             req.session.userId = user._id;
             req.session.user = user;
             req.session.isAuthenticated = true;
 
-            res.cookie('jwtToken', access_token, { httpOnly: true, secure: true });
-            res.cookie('userId', user._id.toString(), { httpOnly: true, secure: true });
+            // Configura cookies
+            res.cookie('jwtToken', access_token, {
+                httpOnly: true, // No accesible desde JavaScript
+                secure: process.env.NODE_ENV === 'production', // Solo enviar cookies sobre HTTPS en producción
+                sameSite: 'None', // Para permitir el envío de cookies en solicitudes cross-site
+                maxAge: 24 * 60 * 60 * 1000 // 24 horas
+            });
+            res.cookie('userId', user._id.toString(), {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'None',
+                maxAge: 24 * 60 * 60 * 1000
+            });
 
+            // Redirige al frontend
             res.redirect("https://portfolio-gonzalo-diez-buchanan.netlify.app/");
         } catch (error) {
             res.status(500).json({ error: "Error interno del servidor" });

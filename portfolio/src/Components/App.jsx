@@ -24,6 +24,12 @@ function App() {
   const userId = Cookies.get('userId');
   const token = Cookies.get('jwtToken');
 
+  console.log("Token:", token);
+  console.log("UserId:", userId);
+
+  const cookies = Cookies.get();
+  console.log("Cookies:", cookies);
+
   const [language, setLanguage] = useState('es');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
