@@ -1,49 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Row, Container, Col, Button } from "react-bootstrap";
-import axios from "axios";
-import { MdAddCircleOutline } from "react-icons/md";
-import { FaTrash } from "react-icons/fa";
-import { IoPencil } from "react-icons/io5";
+import React from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { MdAddCircleOutline } from 'react-icons/md';
+import { FaTrash } from 'react-icons/fa';
+import { IoPencil } from 'react-icons/io5';
+import UseFetchSoftSkills from '../../../Hooks/Skills/Soft/UseFetchSoftSkills';
 
 function SoftSkills({ language, token }) {
-    const [softSkills, setSoftSkills] = useState([]);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchSoftSkills = async () => {
-            try {
-                const softRes = await axios.get("http://localhost:8800/softSkills/");
-                setSoftSkills(softRes.data);
-                console.log("Habilidades blandas:", softRes.data);
-            } catch (err) {
-                console.error("Error al obtener las habilidades blandas:", err);
-            }
-        };
-
-        fetchSoftSkills();
-    }, []);
-
-    const handleDeleteSoftSkill = async (softId) => {
-        try {
-            navigate(`/softSkills/protected/deleteSoftSkill/${softId}`);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    const handleUpdateSoftSkill = (softId) => {
-        try {
-            navigate(`/softSkills/protected/updateSoftSkill/${softId}`);
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
-
-    const handleAddSoftSkill = () => {
-        navigate('/softSkills/protected/addSoftSkill');
-    };
+    const { softSkills, handleDeleteSoftSkill, handleUpdateSoftSkill, handleAddSoftSkill } = UseFetchSoftSkills(token);
 
     return (
         <Container>
@@ -52,11 +15,18 @@ function SoftSkills({ language, token }) {
                 <Col>
                     <div>
                         <h2 className="skills__subtitle">{language === 'es' ? 'Habilidades Blandas' : 'Soft Skills'}</h2>
-                        <p className="skills__text">{language === 'es' ? 'Me gusta resolver problemas, trabajar en conjunto con demás pares y desarrollar los estilos de las páginas.' : 'I like to solve problems, work together with other peers and develop page styles.'}</p>
+                        <p className="skills__text">
+                            {language === 'es'
+                                ? 'Me gusta resolver problemas, trabajar en conjunto con demás pares y desarrollar los estilos de las páginas.'
+                                : 'I like to solve problems, work together with other peers and develop page styles.'
+                            }
+                        </p>
                         <Container>
                             {token && (
                                 <div>
-                                    <Button onClick={handleAddSoftSkill} variant='primary'><MdAddCircleOutline /></Button>
+                                    <Button onClick={handleAddSoftSkill} variant='primary'>
+                                        <MdAddCircleOutline />
+                                    </Button>
                                 </div>
                             )}
                             {softSkills.map((softSkill) => (
@@ -72,8 +42,12 @@ function SoftSkills({ language, token }) {
                                             </div>
                                             {token && (
                                                 <>
-                                                    <Button onClick={() => handleUpdateSoftSkill(softSkill._id)} variant='info'><IoPencil /></Button>
-                                                    <Button onClick={() => handleDeleteSoftSkill(softSkill._id)} variant='danger'><FaTrash /></Button>
+                                                    <Button onClick={() => handleUpdateSoftSkill(softSkill._id)} variant='info'>
+                                                        <IoPencil />
+                                                    </Button>
+                                                    <Button onClick={() => handleDeleteSoftSkill(softSkill._id)} variant='danger'>
+                                                        <FaTrash />
+                                                    </Button>
                                                 </>
                                             )}
                                         </div>
@@ -85,7 +59,7 @@ function SoftSkills({ language, token }) {
                 </Col>
             </Row>
         </Container>
-    )
+    );
 }
 
 export default SoftSkills;

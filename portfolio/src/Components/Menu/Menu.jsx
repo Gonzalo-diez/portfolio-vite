@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import axios from 'axios';
+import Cookies from "js-cookie";
 import { FaUserCircle } from "react-icons/fa";
 import { SlLogout } from "react-icons/sl";
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +23,8 @@ function Menu({ changeLanguage, language, token }) {
                 }
             });
     
-            localStorage.removeItem('jwtToken');
+            Cookies.remove('jwtToken');
+            Cookies.remove('userId');
             console.log('Token eliminado correctamente');
             navigate('/', { replace: true });
             window.location.reload();

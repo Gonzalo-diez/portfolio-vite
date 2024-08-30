@@ -1,50 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { IoPencil } from 'react-icons/io5';
 import { FaTrash } from 'react-icons/fa';
-
+import UseFetchHardSkills from '../../../Hooks/Skills/Hard/UseFetchHardSkills';
 
 function HardSkills({ language, token }) {
-    const [hardSkills, setHardSkills] = useState([]);
-    const navigate = useNavigate();
+    const { hardSkills, loading, error, handleDeleteHardSkill, handleUpdateHardSkill, handleAddHardSkill } = UseFetchHardSkills(token);
 
-    useEffect(() => {
-        const fetchHardSkills = async () => {
-            try {
-                const hardRes = await axios.get("http://localhost:8800/hardSkills/");
-                setHardSkills(hardRes.data);
-                console.log("Habilidades duras:", hardRes.data);
-            } catch (err) {
-                console.error("Error al obtener las habilidades duras:", err);
-            }
-        };
-
-        fetchHardSkills();
-    }, []);
-
-    const handleDeleteHardSkill = async (hardId) => {
-        try {
-            navigate(`/hardSkills/protected/deleteHardSkill/${hardId}`);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    const handleUpdateHardSkill = (hardId) => {
-        try {
-            navigate(`/hardSkills/protected/updateHardSkill/${hardId}`);
-        }
-        catch (err) {
-            console.log(err);
-        }
+    if (loading) {
+        return <p>Cargando...</p>;
     }
 
-    const handleAddHardSkill = () => {
-        navigate('/hardSkills/protected/addHardSkill');
-    };
+    if (error) {
+        return <p>{error}</p>;
+    }
 
     return (
         <Container>
@@ -53,7 +23,11 @@ function HardSkills({ language, token }) {
                 <Col>
                     <div>
                         <h2 className="skills__subtitle">{language === 'es' ? 'Habilidades duras' : 'Hard Skills'}</h2>
-                        <p className="skills__text">{language === 'es' ? 'Me especializo en la maquetación de páginas con HTML, CSS y JavaScript, y en el desarrollo de web apps con React.' : 'I specialize in building web pages with HTML, CSS, and JavaScript, and in developing web apps with React.'}</p>
+                        <p className="skills__text">
+                            {language === 'es'
+                                ? 'Me especializo en la maquetación de páginas con HTML, CSS y JavaScript, y en el desarrollo de web apps con React.'
+                                : 'I specialize in building web pages with HTML, CSS, and JavaScript, and in developing web apps with React.'}
+                        </p>
 
                         <Container>
                             {token && (
@@ -61,9 +35,9 @@ function HardSkills({ language, token }) {
                                     <Button onClick={handleAddHardSkill} variant='primary'><MdAddCircleOutline /></Button>
                                 </div>
                             )}
-                            {hardSkills.map((hardSkill) => (
-                                <Row xs={1} md={2} lg={3} className="g-4" key={hardSkill._id}>
-                                    <Col md={4}>
+                            <Row xs={1} md={2} lg={3} className="g-4">
+                                {hardSkills.map((hardSkill) => (
+                                    <Col key={hardSkill._id}>
                                         <div className="skills__data">
                                             <div className="skills__names">
                                                 <span className="skills__name">{hardSkill.title}</span>
@@ -80,14 +54,14 @@ function HardSkills({ language, token }) {
                                             )}
                                         </div>
                                     </Col>
-                                </Row>
-                            ))}
+                                ))}
+                            </Row>
                         </Container>
                     </div>
                 </Col>
             </Row>
         </Container>
-    )
+    );
 }
 
 export default HardSkills;
