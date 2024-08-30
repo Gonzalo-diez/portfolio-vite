@@ -36,7 +36,7 @@ db.once("open", () => {
 app.use(express.json());
 
 app.use(cors({
-    origin: "https://portfolio-gonzalo-diez-buchanan.netlify.app/",
+    origin: "https://portfolio-vite.onrender.com/",
     credentials: true
 }));
 
