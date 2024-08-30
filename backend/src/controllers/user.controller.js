@@ -38,7 +38,7 @@ const userController = {
             res.cookie('jwtToken', access_token);
             res.cookie('userId', user._id.toString());      
 
-            res.redirect("http://localhost:5173/");
+            res.redirect("/");
         } catch (error) {
             res.status(500).json({ error: "Error interno del servidor" });
         }
