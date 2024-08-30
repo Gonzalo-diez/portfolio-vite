@@ -38,7 +38,7 @@ const userController = {
             res.cookie('jwtToken', access_token);
             res.cookie('userId', user._id.toString());      
 
-            res.redirect("/");
+            res.redirect("https://portfolio-gonzalo-diez-buchanan.netlify.app//");
         } catch (error) {
             res.status(500).json({ error: "Error interno del servidor" });
         }
