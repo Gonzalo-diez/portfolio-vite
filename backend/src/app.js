@@ -5,23 +5,26 @@ import cors from "cors";
 import session from "express-session";
 import path from "path";
 import cookieParser from "cookie-parser";
+import MongoStore from "connect-mongo";
 import __dirname from "./util.js";
 import router from "./routes.js";
 import auth from "./config/auth.js";
 import passport from "./config/jwt.js";
-import { MONGO_URL, PORT, NETLIFY_URL } from "./util.js";
+import { MONGO_URL, PORT, NETLIFY_URL, SESSION_SECRET } from "./util.js";
 
 const app = express();
 const httpServer = http.createServer(app);
+
+const mongoStore = MongoStore.create({
+    mongoUrl: MONGO_URL,
+    collectionName: 'sessions'
+});
 
 app.use(cookieParser());
 
 auth.initializePassport();
 
-mongoose.connect(MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+mongoose.connect(MONGO_URL);
 
 const db = mongoose.connection;
 
@@ -43,9 +46,10 @@ app.use(cors({
 // Session middleware
 app.use(
     session({
-        secret: "your-secret-key",
+        secret: SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
+        store: mongoStore,
     })
 );
 
