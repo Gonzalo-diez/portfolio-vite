@@ -23,6 +23,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const token = Cookies.get('jwtToken');
   const userId = Cookies.get('userId');
+
+  console.log("Token:", token);
+  console.log("ID:", userId);
+  
   const [language, setLanguage] = useState('es');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);

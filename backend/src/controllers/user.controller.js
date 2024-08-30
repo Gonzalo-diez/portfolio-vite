@@ -35,7 +35,10 @@ const userController = {
             req.session.user = user;
             req.session.isAuthenticated = true;
 
-            res.cookie('jwtToken', access_token);
+            res.cookie('jwtToken', access_token, {
+                httpOnly: true,
+                sameSite: "none",
+            });
             res.cookie('userId', user._id.toString());      
 
             res.redirect("https://portfolio-gonzalo-diez-buchanan.netlify.app/");

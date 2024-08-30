@@ -5,8 +5,6 @@ function UseFetchUser(userId, token, setUser) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        console.log("Token:", token);
-        console.log("ID:", userId);
         const res = await axios.get(`https://portfolio-vite.onrender.com/user/protected/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
