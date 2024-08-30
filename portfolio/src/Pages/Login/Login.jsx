@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import { Button, Toast, Container, Row, Col } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const navigate = useNavigate();
-    const [showErrorToast, setShowErrorToast] = useState(false);
+    const [showErrorToast, setShowErrorToast] = React.useState(false);
 
     useEffect(() => {
+        // Verifica si hay parámetros en la URL que indican autenticación
         const params = new URLSearchParams(window.location.search);
         const jwtToken = params.get('jwtToken');
         const userId = params.get('userId');
 
+        console.log("userId:", userId);
+        console.log("Token:", jwtToken);
+
         if (jwtToken && userId) {
-            // Guarda el token y el ID del usuario en el localStorage
+            // Guarda el token y el userId en localStorage
             localStorage.setItem('jwtToken', jwtToken);
             localStorage.setItem('userId', userId);
 
-            navigate("/");
-        } else if (params.get('error')) {
-            // Muestra un mensaje de error si hay un parámetro de error
-            setShowErrorToast(true);
+            navigate("https://portfolio-gonzalo-diez-buchanan.netlify.app/")
         }
     }, []);
 
@@ -30,7 +31,12 @@ const Login = () => {
                     <div className="form-container">
                         <h2 className="text-center">Iniciar sesión</h2>
                         <div className="d-flex justify-content-center">
-                            <Button className="btn btn-secondary mt-3" href="https://portfolio-vite.onrender.com/user/github">Github</Button>
+                            <Button
+                                className="btn btn-secondary mt-3"
+                                href="https://portfolio-vite.onrender.com/user/github"
+                            >
+                                Github
+                            </Button>
                         </div>
                         <Toast
                             show={showErrorToast}
