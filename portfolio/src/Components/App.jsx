@@ -5,7 +5,6 @@ import Menu from './Menu/Menu';
 import { Routes, Route } from 'react-router-dom';
 import Portfolio from '../Pages/Portfolio/Portfolio';
 import Login from '../Pages/Login/Login';
-import GitHubCallback from '../Pages/Callback/GitHubCallback';
 import AddWork from '../Pages/Works/Add/AddWork';
 import UpdateWork from '../Pages/Works/Update/UpdateWork';
 import DeleteWork from '../Pages/Works/Delete/DeleteWork';
@@ -38,9 +37,8 @@ function App() {
       <Menu changeLanguage={changeLanguage} language={language} token={token} userId={userId} />
       <Layout>
         <Routes>
-          <Route path='/' element={<Portfolio language={language} token={token} setUser={setUser} userId={userId} />} />
+          <Route path='/' element={<Portfolio language={language} setUser={setUser} />} />
           <Route path='/user/login' element={<Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
-          <Route path='/user/githubcallback' element={<GitHubCallback />} />
           <Route path='/works/protected/addWork' element={<AddWork token={token} isAuthenticated={isAuthenticated} user={user} userId={userId} />} />
           <Route path='/works/protected/updateWork/:id' element={<UpdateWork token={token} userId={userId} />} />
           <Route path='/works/protected/deleteWork/:id' element={<DeleteWork token={token} userId={userId} />} />
