@@ -49,7 +49,7 @@ const userController = {
             });
 
             // Redirige al frontend
-            res.redirect("https://portfolio-gonzalo-diez-buchanan.netlify.app/");
+            res.redirect("https://portfolio-vite-1.onrender.com/");
         } catch (error) {
             res.status(500).json({ error: "Error interno del servidor" });
         }
