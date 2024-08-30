@@ -10,7 +10,7 @@ import __dirname from "./util.js";
 import router from "./routes.js";
 import auth from "./config/auth.js";
 import passport from "./config/jwt.js";
-import { PORT, SESSION_SECRET, MONGO_URL, NETLIFY_URL } from "./util.js";
+import { PORT, SESSION_SECRET, MONGO_URL } from "./util.js";
 
 const app = express();
 const httpServer = http.createServer(app);

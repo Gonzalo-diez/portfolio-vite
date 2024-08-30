@@ -36,19 +36,6 @@ const userController = {
             req.session.user = user;
             req.session.isAuthenticated = true;
 
-            // Configura cookies
-            res.cookie('jwtToken', access_token, {
-                httpOnly: true,
-                secure: true, 
-                sameSite: 'None'
-            });
-            res.cookie('userId', user._id.toString(), {
-                httpOnly: true,
-                secure: true, 
-                sameSite: 'None'
-            });
-
-            // Redirige al frontend
             res.redirect("https://portfolio-vite-1.onrender.com/");
         } catch (error) {
             res.status(500).json({ error: "Error interno del servidor" });
@@ -57,10 +44,6 @@ const userController = {
 
     logout: async (req, res) => {
         try {
-            // Elimina el token de la cookie
-            res.clearCookie("jwtToken");
-            res.clearCookie("userId");
-
             // Elimina la sesión del usuario
             req.session.destroy((err) => {
                 if (err) {
