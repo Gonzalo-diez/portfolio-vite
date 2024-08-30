@@ -20,14 +20,8 @@ import "./CSS/style.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  };
-
-  const token = getCookie('jwtToken');
-  const userId = getCookie('userId');
+  const userId = localStorage.getItem('userId');
+  const token = localStorage.getItem('jwtToken');
 
   const [language, setLanguage] = useState('es');
   const [isAuthenticated, setIsAuthenticated] = useState(false);

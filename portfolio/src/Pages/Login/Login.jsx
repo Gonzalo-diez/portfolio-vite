@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Toast, Container, Row, Col } from 'react-bootstrap';
 
 const Login = () => {
     const [showErrorToast, setShowErrorToast] = useState(false);
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const jwtToken = params.get('jwtToken');
+        const userId = params.get('userId');
+
+        if (jwtToken && userId) {
+            localStorage.setItem('jwtToken', jwtToken);
+            localStorage.setItem('userId', userId);
+
+            window.location.href = "/";
+        }
+    }, []);
 
     return (
         <Container className="mt-3">
