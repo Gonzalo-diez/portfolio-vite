@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Cookies from "js-cookie";
 import Layout from './Footer/Layout';
 import Menu from './Menu/Menu';
 import { Routes, Route } from 'react-router-dom';
@@ -21,12 +20,15 @@ import "./CSS/style.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const token = Cookies.get('jwtToken');
-  const userId = Cookies.get('userId');
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  };
 
-  console.log("Token:", token);
-  console.log("ID:", userId);
-  
+  const token = getCookie('jwtToken');
+  const userId = getCookie('userId');
+
   const [language, setLanguage] = useState('es');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
