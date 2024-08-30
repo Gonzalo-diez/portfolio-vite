@@ -17,7 +17,7 @@ function Menu({ changeLanguage, language, token }) {
                 return;
             }
     
-            await axios.post(`http://localhost:8800/user/protected/logout`, null, {
+            await axios.post(`https://portfolio-vite.onrender.com/user/protected/logout`, null, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

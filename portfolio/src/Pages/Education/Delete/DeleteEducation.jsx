@@ -28,7 +28,7 @@ function DeleteEducation({ token }) {
                         {education && (
                             <div>
                                 <p>Título: {education.title}</p>
-                                <img src={`http://localhost:8800/eduImg/${education.image}`} alt={education.title} width="800" />
+                                <img src={`https://portfolio-vite.onrender.com/eduImg/${education.image}`} alt={education.title} width="800" />
                                 <Button variant="danger" onClick={() => handleDelete(id)}>Eliminar</Button>
                             </div>
                         )}

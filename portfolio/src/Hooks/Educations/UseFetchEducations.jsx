@@ -7,7 +7,7 @@ function UseFetchEducations() {
   useEffect(() => {
     const fetchEducations = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/educations/");
+        const res = await axios.get("https://portfolio-vite.onrender.com/educations/");
         console.log("Educacion:", res.data);
         setEducations(res.data);
       } catch (err) {

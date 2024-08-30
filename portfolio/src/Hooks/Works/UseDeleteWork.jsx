@@ -11,7 +11,7 @@ function UseDeleteWork(id, token) {
     useEffect(() => {
         const fetchWork = async () => {
             try {
-                const workData = await axios.get(`http://localhost:8800/works/${id}`);
+                const workData = await axios.get(`https://portfolio-vite.onrender.com/works/${id}`);
                 setWork(workData.data);
             } catch (err) {
                 setError("Error al obtener los datos del trabajo");
@@ -32,7 +32,7 @@ function UseDeleteWork(id, token) {
         }
 
         try {
-            const response = await axios.delete(`http://localhost:8800/works/protected/deleteWork/${id}`, {
+            const response = await axios.delete(`https://portfolio-vite.onrender.com/works/protected/deleteWork/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

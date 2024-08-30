@@ -23,7 +23,7 @@ function UseAddEducation(token, userId) {
             formData.append("image", image);
             formData.append("userId", userId);
 
-            const response = await axios.post("http://localhost:8800/educations/protected/addEducation", formData, {
+            const response = await axios.post("https://portfolio-vite.onrender.com/educations/protected/addEducation", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,

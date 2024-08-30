@@ -22,7 +22,7 @@ function UseAddSoftSkill(token, userId) {
             formData.append("percentage", percentage);
             formData.append("userId", userId);
 
-            const response = await axios.post("http://localhost:8800/softSkills/protected/addSoftSkill", formData, {
+            const response = await axios.post("https://portfolio-vite.onrender.com/softSkills/protected/addSoftSkill", formData, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,

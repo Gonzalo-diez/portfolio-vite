@@ -11,7 +11,7 @@ const Login = ({ setIsAuthenticated, setUser }) => {
                     <div className="form-container">
                         <h2 className="text-center">Iniciar sesión</h2>
                         <div className="d-flex justify-content-center">
-                            <Button className="btn btn-secondary mt-3" href="http://localhost:8800/user/github">Github</Button>
+                            <Button className="btn btn-secondary mt-3" href="https://portfolio-vite.onrender.com/user/github">Github</Button>
                         </div>
                         <Toast
                             show={showErrorToast}

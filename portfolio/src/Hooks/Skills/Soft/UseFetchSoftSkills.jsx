@@ -9,7 +9,7 @@ function UseFetchSoftSkills(token) {
     useEffect(() => {
         const fetchSoftSkills = async () => {
             try {
-                const response = await axios.get("http://localhost:8800/softSkills/");
+                const response = await axios.get("https://portfolio-vite.onrender.com/softSkills/");
                 setSoftSkills(response.data);
             } catch (err) {
                 console.error("Error al obtener las habilidades blandas:", err);

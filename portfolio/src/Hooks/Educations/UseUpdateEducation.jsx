@@ -12,7 +12,7 @@ function UseUpdateEducation(token, userId) {
     const fetchEducation = async (id) => {
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:8800/educations/${id}`);
+            const response = await axios.get(`https://portfolio-vite.onrender.com/educations/${id}`);
             const education = response.data;
 
             if (!education) {
@@ -44,7 +44,7 @@ function UseUpdateEducation(token, userId) {
             formData.append("image", image);
             formData.append("userId", userId);
 
-            const response = await axios.put(`http://localhost:8800/educations/protected/updateEducation/${id}`, formData, {
+            const response = await axios.put(`https://portfolio-vite.onrender.com/educations/protected/updateEducation/${id}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",

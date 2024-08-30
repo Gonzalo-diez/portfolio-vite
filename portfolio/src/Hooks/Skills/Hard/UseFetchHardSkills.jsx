@@ -11,7 +11,7 @@ function UseFetchHardSkills(token) {
     useEffect(() => {
         const fetchHardSkills = async () => {
             try {
-                const hardRes = await axios.get("http://localhost:8800/hardSkills/");
+                const hardRes = await axios.get("https://portfolio-vite.onrender.com/hardSkills/");
                 setHardSkills(hardRes.data);
                 console.log("Habilidades duras:", hardRes.data);
             } catch (err) {

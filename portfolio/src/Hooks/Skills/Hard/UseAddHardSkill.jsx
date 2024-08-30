@@ -23,7 +23,7 @@ function UseAddHardSkill(token, userId) {
             formData.append("percentage", Number(percentage));
             formData.append("userId", userId);
 
-            const response = await axios.post("http://localhost:8800/hardSkills/protected/addHardSkill", formData, {
+            const response = await axios.post("https://portfolio-vite.onrender.com/hardSkills/protected/addHardSkill", formData, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,

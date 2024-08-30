@@ -14,7 +14,7 @@ function UseUpdateSoftSkill(token) {
     useEffect(() => {
         const fetchSoftSkill = async () => {
             try {
-                const response = await axios.get(`http://localhost:8800/softSkills/${id}`);
+                const response = await axios.get(`https://portfolio-vite.onrender.com/softSkills/${id}`);
                 const softSkill = response.data;
 
                 if (!softSkill) {
@@ -47,7 +47,7 @@ function UseUpdateSoftSkill(token) {
             formData.append("percentage", percentage);
             formData.append("userId", userId);
 
-            const response = await axios.put(`http://localhost:8800/softSkills/protected/updateSoftSkills/${id}`, formData, {
+            const response = await axios.put(`https://portfolio-vite.onrender.com/softSkills/protected/updateSoftSkills/${id}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",

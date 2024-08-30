@@ -11,7 +11,7 @@ function UseUpdateHardSkill(token, userId) {
 
     const fetchHardSkill = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:8800/hardSkills/${id}`);
+            const response = await axios.get(`https://portfolio-vite.onrender.com/hardSkills/${id}`);
             const hardSkill = response.data;
 
             if (!hardSkill) {
@@ -43,7 +43,7 @@ function UseUpdateHardSkill(token, userId) {
             formData.append("percentage", percentage);
             formData.append("userId", userId);
 
-            const response = await axios.put(`http://localhost:8800/hardSkills/protected/updateHardSkill/${id}`, formData, {
+            const response = await axios.put(`https://portfolio-vite.onrender.com/hardSkills/protected/updateHardSkill/${id}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",

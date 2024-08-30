@@ -7,8 +7,8 @@ function EducationItem({ education, language, token, onUpdate, onDelete }) {
   return (
     <div className="education__container">
       <div className="education">
-        <a download={education.title} href={`http://localhost:8800/eduImg/${education.image}`} className="education__img">
-          <img src={`http://localhost:8800/eduImg/${education.image}`} alt={education.title} width="800" />
+        <a download={education.title} href={`https://portfolio-vite.onrender.com/eduImg/${education.image}`} className="education__img">
+          <img src={`https://portfolio-vite.onrender.com/eduImg/${education.image}`} alt={education.title} width="800" />
           <h3 className="education__title">{education.title}</h3>
         </a>
       </div>

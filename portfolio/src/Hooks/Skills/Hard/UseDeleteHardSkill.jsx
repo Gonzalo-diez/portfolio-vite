@@ -10,7 +10,7 @@ function UseDeleteHardSkill(token) {
 
     const fetchHardSkill = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:8800/hardSkills/${id}`);
+            const response = await axios.get(`https://portfolio-vite.onrender.com/hardSkills/${id}`);
             setHardSkill(response.data);
         } catch (err) {
             setError("Error al obtener los datos de la habilidad dura.");
@@ -29,7 +29,7 @@ function UseDeleteHardSkill(token) {
 
         try {
             setLoading(true);
-            const response = await axios.delete(`http://localhost:8800/hardSkills/protected/deleteHardSkill/${id}`, {
+            const response = await axios.delete(`https://portfolio-vite.onrender.com/hardSkills/protected/deleteHardSkill/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

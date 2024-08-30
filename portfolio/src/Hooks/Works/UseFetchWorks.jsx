@@ -7,7 +7,7 @@ function UseFetchWorks() {
   useEffect(() => {
     const fetchWorks = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/works/");
+        const res = await axios.get("https://portfolio-vite.onrender.com/works/");
         console.log("Trabajos:", res.data);
         setWorks(res.data);
       } catch (err) {

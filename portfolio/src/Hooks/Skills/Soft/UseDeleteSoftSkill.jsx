@@ -9,7 +9,7 @@ function UseDeleteSoftSkill(token, id) {
     useEffect(() => {
         const fetchSoftSkill = async () => {
             try {
-                const response = await axios.get(`http://localhost:8800/softSkills/${id}`);
+                const response = await axios.get(`https://portfolio-vite.onrender.com/softSkills/${id}`);
                 setSoftSkill(response.data);
             } catch (err) {
                 console.error("Error al obtener los datos de la habilidad blanda:", err);
@@ -27,7 +27,7 @@ function UseDeleteSoftSkill(token, id) {
         }
 
         try {
-            const response = await axios.delete(`http://localhost:8800/softSkills/protected/deleteSoftSkill/${id}`, {
+            const response = await axios.delete(`https://portfolio-vite.onrender.com/softSkills/protected/deleteSoftSkill/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

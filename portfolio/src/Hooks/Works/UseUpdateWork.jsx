@@ -14,7 +14,7 @@ function UseUpdateWork(id, token, userId) {
     useEffect(() => {
         const fetchWork = async () => {
             try {
-                const response = await axios.get(`http://localhost:8800/works/${id}`);
+                const response = await axios.get(`https://portfolio-vite.onrender.com/works/${id}`);
                 const work = response.data;
 
                 if (!work) {
@@ -52,7 +52,7 @@ function UseUpdateWork(id, token, userId) {
             formData.append("image", image);
             formData.append("userId", userId);
 
-            const response = await axios.put(`http://localhost:8800/works/protected/updateWork/${id}`, formData, {
+            const response = await axios.put(`https://portfolio-vite.onrender.com/works/protected/updateWork/${id}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",

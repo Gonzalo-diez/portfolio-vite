@@ -11,7 +11,7 @@ function UseDeleteEducation(token) {
     const fetchEducation = async (id) => {
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:8800/educations/${id}`);
+            const response = await axios.get(`https://portfolio-vite.onrender.com/educations/${id}`);
             setEducation(response.data);
         } catch (err) {
             setError("Error al obtener los datos de la educación.");
@@ -30,7 +30,7 @@ function UseDeleteEducation(token) {
 
         try {
             setLoading(true);
-            const response = await axios.delete(`http://localhost:8800/educations/protected/deleteEducation/${id}`, {
+            const response = await axios.delete(`https://portfolio-vite.onrender.com/educations/protected/deleteEducation/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
