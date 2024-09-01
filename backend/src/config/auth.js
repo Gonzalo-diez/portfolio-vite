@@ -6,29 +6,25 @@ import User from "../dao/models/user.js";
 import { JWT_SECRET } from "../util.js";
 
 const initializePassport = () => {
-    passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'password' }, async (email, password, done) => {
+    passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
         try {
-            const user = await User.findOne({ email: "gonzalodiez97@gmail.com" }).exec();
+            const user = await User.findOne({ email });
 
-            console.log("Usuario:", user);
-    
-            // Verificar si el usuario existe
             if (!user) {
-                return done(null, false, { message: 'Usuario no encontrado' });
+                return done(null, false, { message: 'Credenciales incorrectas' });
             }
-    
-            // Verificar si la contraseña es correcta
+
             const validPassword = await bcrypt.compare(password, user.password);
-    
+
             if (!validPassword) {
-                return done(null, false, { message: 'Contraseña incorrecta' });
+                return done(null, false, { message: 'Credenciales incorrectas' });
             }
-    
+
             return done(null, user);
         } catch (error) {
             return done(error);
         }
-    }));    
+    }));   
 
     passport.serializeUser((user, done) => {
         if (!user._id) {
