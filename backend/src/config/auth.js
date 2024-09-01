@@ -18,16 +18,6 @@ const initializePassport = () => {
 
             let user = await User.findOne({ email });
 
-            // Si el usuario no se encuentra y las credenciales coinciden, crear uno nuevo
-            if (!user && email === allowedEmail && password === allowedPassword) {
-                user = new User({
-                    email: email,
-                    password: await bcrypt.hash(password, 10) // Hashear la contraseña
-                });
-
-                await user.save();
-            }
-
             // Verificar si el usuario existe
             if (!user) {
                 return done(null, false, { message: 'Usuario no encontrado' });
