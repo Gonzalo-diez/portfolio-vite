@@ -20,10 +20,10 @@ const userService = {
                     return reject(err);
                 }
                 if (!user) {
-                    return reject(new Error("Credenciales inválidas"));
+                    return reject(new Error(info.message || "Credenciales inválidas"));
                 }
 
-                // Generate JWT token after successful authentication
+                // Generar JWT token después de la autenticación exitosa
                 const access_token = generateAuthToken(user);
                 resolve({ user, access_token });
             })({ body: { email, password } }, {});

@@ -3,38 +3,30 @@ import { Strategy as LocalStrategy } from "passport-local";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "../dao/models/user.js";
-import { JWT_SECRET, ALLOWED_EMAIL, ALLOWED_PASSWORD } from "../util.js";
+import { JWT_SECRET } from "../util.js";
 
 const initializePassport = () => {
     passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
         try {
-            const allowedEmail = process.env.ALLOWED_EMAIL || ALLOWED_EMAIL;
-            const allowedPassword = process.env.ALLOWED_PASSWORD || ALLOWED_PASSWORD;
-
-            // Verificar si el correo es el permitido
-            if (email !== allowedEmail) {
-                return done(null, false, { message: 'Correo no permitido' });
-            }
-
-            let user = await User.findOne({ email });
-
+            const user = await User.findOne({ email });
+    
             // Verificar si el usuario existe
             if (!user) {
                 return done(null, false, { message: 'Usuario no encontrado' });
             }
-
+    
             // Verificar si la contraseña es correcta
             const validPassword = await bcrypt.compare(password, user.password);
-
+    
             if (!validPassword) {
                 return done(null, false, { message: 'Contraseña incorrecta' });
             }
-
+    
             return done(null, user);
         } catch (error) {
             return done(error);
         }
-    }));
+    }));    
 
     passport.serializeUser((user, done) => {
         if (!user._id) {
