@@ -9,6 +9,8 @@ const initializePassport = () => {
     passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'password' }, async (email, password, done) => {
         try {
             const user = await User.findOne({ email }).exec();
+
+            console.log("Usuario:", user);
     
             // Verificar si el usuario existe
             if (!user) {
