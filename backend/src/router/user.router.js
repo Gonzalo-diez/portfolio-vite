@@ -4,7 +4,6 @@ import { authToken } from "../config/auth.js";
 
 const userRouter = express.Router();
 
-userRouter.get("/", userController.getUsers);
 userRouter.post("/login", userController.login);
 userRouter.get("/protected/:id", authToken, userController.getUserId);
 userRouter.post("/protected/logout", authToken, userController.logout);
