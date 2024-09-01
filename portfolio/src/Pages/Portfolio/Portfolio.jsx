@@ -6,10 +6,10 @@ import Contact from '../../Sections/Contact/Contact';
 import Education from '../../Sections/Education/Education';
 import Skills from '../../Sections/Skills/Skills';
 import Works from "../../Sections/Works/Works";
-import useFetchUser from '../../Hooks/User/UseFetchUser';
+import UseFetchUser from '../../Hooks/User/UseFetchUser';
 
 function Portfolio({ language, setUser, userId, token }) {
-    useFetchUser(userId, token, setUser);
+    UseFetchUser(userId, token, setUser);
 
     return (
         <>
