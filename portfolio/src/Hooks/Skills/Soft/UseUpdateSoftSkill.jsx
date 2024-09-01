@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useAuth } from '../../../Components/Context/authContext';
+import { useNavigate } from 'react-router-dom';
 
-function UseUpdateSoftSkill(token) {
-    const { userId } = useAuth();
+function UseUpdateSoftSkill(token, userId) {
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [sub, setSub] = useState("");
@@ -32,7 +30,7 @@ function UseUpdateSoftSkill(token) {
         fetchSoftSkill();
     }, [id]);
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (id) => {
         if (!token) {
             console.log("Debes estar autenticado para editar el trabajo.");
             navigate("/");

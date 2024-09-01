@@ -23,7 +23,7 @@ function DeleteWork() {
                                 <p>Título: {work.title}</p>
                                 <p>Subtítulo: {work.sub_title}</p>
                                 <p>Link: {work.link}</p>
-                                <Button variant="danger" onClick={handleDelete}>Eliminar</Button>
+                                <Button variant="danger" onClick={() => handleDelete(id)}>Eliminar</Button>
                             </div>
                         )}
                     </div>

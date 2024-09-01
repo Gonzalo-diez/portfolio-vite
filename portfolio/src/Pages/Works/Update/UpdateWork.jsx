@@ -5,7 +5,7 @@ import UseUpdateWork from "../../../Hooks/Works/UseUpdateWork";
 
 function UpdateWork({ token, userId }) {
     const { id } = useParams();
-    const { title, setTitle, sub, setSub, link, setLink, image, setImage, loading, error, handleUpdate, fetchWork } = UseUpdateWork(id, token, userId);
+    const { title, setTitle, sub, setSub, link, setLink, image, setImage, loading, error, handleUpdate, fetchWork } = UseUpdateWork(token, userId);
 
     useEffect(() => {
         fetchWork(id);
@@ -64,7 +64,7 @@ function UpdateWork({ token, userId }) {
                                 onChange={handleSaveWorkImage}
                             />
                         </Form.Group>
-                        <Button variant="primary" onClick={handleUpdate}>
+                        <Button variant="primary" onClick={() => handleUpdate(id)}>
                             Actualizar Trabajo
                         </Button>
                     </Form>

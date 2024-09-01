@@ -6,7 +6,7 @@ import UseDeleteSoftSkill from '../../../../Hooks/Skills/Soft/UseDeleteSoftSkill
 function DeleteSoftSkill() {
     const token = localStorage.getItem("jwtToken");
     const { id } = useParams();
-    const { softSkill, handleDelete, fetchSoftSkill } = UseDeleteSoftSkill(token, id);
+    const { softSkill, handleDelete, fetchSoftSkill } = UseDeleteSoftSkill(token);
 
     useEffect(() => {
         fetchSoftSkill(id);
@@ -23,7 +23,7 @@ function DeleteSoftSkill() {
                                 <p>Título: {softSkill.title}</p>
                                 <p>Subtítulo: {softSkill.sub_title}</p>
                                 <p>Porcentaje: {softSkill.percentage}</p>
-                                <Button variant="danger" onClick={handleDelete}>Eliminar</Button>
+                                <Button variant="danger" onClick={() => handleDelete(id)}>Eliminar</Button>
                             </div>
                         )}
                     </div>

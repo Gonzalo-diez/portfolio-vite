@@ -1,9 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function UseDeleteWork(token, id) {
-    const { id } = useParams();
+function UseDeleteWork(token) {
     const [work, setWork] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -21,7 +20,7 @@ function UseDeleteWork(token, id) {
         }
     };
 
-    const handleDelete = async () => {
+    const handleDelete = async (id) => {
         if (!token) {
             console.log("Debes estar autenticado para eliminar el trabajo.");
             navigate("/");

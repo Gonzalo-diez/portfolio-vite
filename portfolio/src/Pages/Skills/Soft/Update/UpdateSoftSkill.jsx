@@ -40,7 +40,7 @@ function UpdateSoftSkill() {
                                 onChange={(e) => setPercentage(e.target.value)}
                             />
                         </Form.Group>
-                        <Button variant="primary" onClick={handleUpdate}>
+                        <Button variant="primary" onClick={() => handleUpdate(id)}>
                             Actualizar Habilidad
                         </Button>
                     </Form>

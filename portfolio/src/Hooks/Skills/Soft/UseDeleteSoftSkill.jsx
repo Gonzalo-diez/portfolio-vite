@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function UseDeleteSoftSkill(token, id) {
+function UseDeleteSoftSkill(token) {
     const [softSkill, setSoftSkill] = useState(null);
     const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ function UseDeleteSoftSkill(token, id) {
         }
     };
 
-    const handleDelete = async () => {
+    const handleDelete = async (id) => {
         if (!token) {
             console.log("Debes estar autenticado para eliminar la habilidad.");
             navigate("/");

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function UseUpdateWork(id, token, userId) {
+function UseUpdateWork(token, userId) {
     const [title, setTitle] = useState("");
     const [sub, setSub] = useState("");
     const [link, setLink] = useState("");
@@ -34,7 +34,7 @@ function UseUpdateWork(id, token, userId) {
     };
 
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (id) => {
         if (!token) {
             console.log("Debes estar autenticado para editar el trabajo.");
             navigate("/");

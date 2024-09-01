@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function UseDeleteHardSkill(token) {
+function UseDeleteHardSkill(token, id) {
     const [hardSkill, setHardSkill] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -20,7 +20,7 @@ function UseDeleteHardSkill(token) {
         }
     };
 
-    const handleDelete = async (id) => {
+    const handleDelete = async () => {
         if (!token) {
             console.log("Debes estar autenticado para eliminar la habilidad dura.");
             navigate("/");
