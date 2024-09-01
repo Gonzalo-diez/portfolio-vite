@@ -23,8 +23,8 @@ function Menu({ changeLanguage, language, token }) {
                 }
             });
     
-            Cookies.remove('jwtToken');
-            Cookies.remove('userId');
+            localStorage.removeItem('jwtToken');
+            localStorage.removeItem('userId');
             console.log('Token eliminado correctamente');
             navigate('/', { replace: true });
             window.location.reload();
