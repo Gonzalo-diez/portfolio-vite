@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function UseAddWork() {
+function UseAddWork(token, userId) {
   const [title, setTitle] = useState("");
   const [sub, setSub] = useState("");
   const [link, setLink] = useState("");
@@ -11,7 +11,7 @@ function UseAddWork() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleAddWork = async (token, userId) => {
+  const handleAddWork = async () => {
     if (!token) {
       console.log("Debes estar autenticado para agregar el trabajo.");
       navigate("/usuarios/login");

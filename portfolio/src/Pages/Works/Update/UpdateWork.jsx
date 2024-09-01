@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import UseUpdateWork from "../../../Hooks/Works/UseUpdateWork";
 
 function UpdateWork({ token, userId }) {
     const { id } = useParams();
-    const { title, setTitle, sub, setSub, link, setLink, image, setImage, loading, error, handleUpdate } = UseUpdateWork(id, token, userId);
+    const { title, setTitle, sub, setSub, link, setLink, image, setImage, loading, error, handleUpdate, fetchWork } = UseUpdateWork(id, token, userId);
+
+    useEffect(() => {
+        fetchWork(id);
+    }, [id, fetchWork]);
 
     const handleSaveWorkImage = (e) => {
         setImage(e.target.files[0]);

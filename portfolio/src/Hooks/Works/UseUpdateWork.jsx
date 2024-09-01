@@ -11,31 +11,28 @@ function UseUpdateWork(id, token, userId) {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchWork = async () => {
-            try {
-                const response = await axios.get(`https://portfolio-vite.onrender.com/works/${id}`);
-                const work = response.data;
+    const fetchWork = async (id) => {
+        try {
+            const response = await axios.get(`https://portfolio-vite.onrender.com/works/${id}`);
+            const work = response.data;
 
-                if (!work) {
-                    setError("Trabajo no encontrado");
-                    return;
-                }
-
-                setTitle(work.title);
-                setSub(work.sub);
-                setLink(work.link);
-                setImage(work.image);
-            } catch (err) {
-                setError("Error al obtener los datos del trabajo");
-                console.error("Error al obtener los datos del trabajo:", err);
-            } finally {
-                setLoading(false);
+            if (!work) {
+                setError("Trabajo no encontrado");
+                return;
             }
-        };
 
-        fetchWork();
-    }, [id]);
+            setTitle(work.title);
+            setSub(work.sub);
+            setLink(work.link);
+            setImage(work.image);
+        } catch (err) {
+            setError("Error al obtener los datos del trabajo");
+            console.error("Error al obtener los datos del trabajo:", err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
 
     const handleUpdate = async () => {
         if (!token) {
@@ -83,6 +80,7 @@ function UseUpdateWork(id, token, userId) {
         loading,
         error,
         handleUpdate,
+        fetchWork
     };
 }
 

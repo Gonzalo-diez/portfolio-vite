@@ -1,28 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function UseDeleteWork(id, token) {
+function UseDeleteWork(token, id) {
+    const { id } = useParams();
     const [work, setWork] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchWork = async () => {
-            try {
-                const workData = await axios.get(`https://portfolio-vite.onrender.com/works/${id}`);
-                setWork(workData.data);
-            } catch (err) {
-                setError("Error al obtener los datos del trabajo");
-                console.error("Error al obtener los datos del trabajo:", err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchWork();
-    }, [id]);
+    const fetchWork = async (id) => {
+        try {
+            const workData = await axios.get(`https://portfolio-vite.onrender.com/works/${id}`);
+            setWork(workData.data);
+        } catch (err) {
+            setError("Error al obtener los datos del trabajo");
+            console.error("Error al obtener los datos del trabajo:", err);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleDelete = async () => {
         if (!token) {
@@ -55,6 +52,7 @@ function UseDeleteWork(id, token) {
         loading,
         error,
         handleDelete,
+        fetchWork
     };
 }
 

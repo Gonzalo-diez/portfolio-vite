@@ -2,7 +2,9 @@ import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import UseAddSoftSkill from '../../../../Hooks/Skills/Soft/UseAddSoftSkill';
 
-function AddSoftSkill({ token, userId }) {
+function AddSoftSkill() {
+    const token = localStorage.getItem("jwtToken");
+    const userId = localStorage.getItem("userId");
     const { title, setTitle, sub, setSub, percentage, setPercentage, handleAddSoftSkill } = UseAddSoftSkill(token, userId);
 
     return (

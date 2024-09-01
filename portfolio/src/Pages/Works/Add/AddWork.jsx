@@ -2,7 +2,10 @@ import React from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import UseAddWork from '../../../Hooks/Works/UseAddWork';
 
-function AddWork({ token, userId }) {
+function AddWork() {
+  const token = localStorage.getItem("jwtToken");
+  const userId = localStorage.getItem("userId");
+
   const {
     title,
     setTitle,
@@ -14,7 +17,7 @@ function AddWork({ token, userId }) {
     handleAddWork,
     loading,
     error,
-  } = UseAddWork();
+  } = UseAddWork(token, userId);
 
   return (
     <Container>

@@ -7,7 +7,9 @@ import Education from '../../Sections/Education/Education';
 import Skills from '../../Sections/Skills/Skills';
 import Works from "../../Sections/Works/Works";
 
-function Portfolio({ language, token }) {
+function Portfolio({ language }) {
+    const token = localStorage.getItem("jwtToken");
+
     return (
         <>
             <Home language={language} token={token} />

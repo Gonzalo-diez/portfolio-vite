@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import UseDeleteHardSkill from "../../../../Hooks/Skills/Hard/UseDeleteHardSkill";
 
-function DeleteHardSkill({ token }) {
+function DeleteHardSkill() {
+    const token = localStorage.getItem("jwtToken");
     const { id } = useParams();
-    const { hardSkill, loading, error, fetchHardSkill, handleDelete } = UseDeleteHardSkill(token);
+    const { hardSkill, loading, error, fetchHardSkill, handleDelete } = UseDeleteHardSkill(token, id);
 
     useEffect(() => {
         fetchHardSkill(id);

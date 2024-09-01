@@ -2,7 +2,10 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import UseAddHardSkill from "../../../../Hooks/Skills/Hard/UseAddHardSkill";
 
-function AddHardSkill({ token, userId }) {
+function AddHardSkill() {
+    const token = localStorage.getItem("jwtToken");
+    const userId = localStorage.getItem("userId");
+
     const {
         title,
         setTitle,

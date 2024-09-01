@@ -6,7 +6,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { SlLogout } from "react-icons/sl";
 import { useNavigate } from 'react-router-dom';
 
-function Menu({ changeLanguage, language, token }) {
+function Menu({ changeLanguage, language, token, userId }) {
     const navigate = useNavigate();
 
     const handleLogOut = async () => {
@@ -39,7 +39,7 @@ function Menu({ changeLanguage, language, token }) {
                 <Navbar.Brand href="/">Gonzalo</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarSupportedContent" />
                 <Navbar.Collapse id="navbarSupportedContent">
-                    {token ? (
+                    {token && userId ? (
                         <Nav className="me-auto mb-2 mb-lg-0 nav-underline">
                             <Nav.Link href="/">{language === 'es' ? 'Inicio' : 'Home'}</Nav.Link>
                             <Nav.Link href="/#about">{language === 'es' ? 'Sobre' : 'About'}</Nav.Link>

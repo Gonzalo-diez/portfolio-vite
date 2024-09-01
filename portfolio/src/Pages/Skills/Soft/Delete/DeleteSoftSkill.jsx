@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import UseDeleteSoftSkill from '../../../../Hooks/Skills/Soft/UseDeleteSoftSkill';
 
-function DeleteSoftSkill({ token }) {
+function DeleteSoftSkill() {
+    const token = localStorage.getItem("jwtToken");
     const { id } = useParams();
-    const { softSkill, handleDelete } = UseDeleteSoftSkill(token, id);
+    const { softSkill, handleDelete, fetchSoftSkill } = UseDeleteSoftSkill(token, id);
+
+    useEffect(() => {
+        fetchSoftSkill(id);
+    }, [id, fetchSoftSkill])
 
     return (
         <Container>

@@ -1,19 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import UseDeleteWork from "../../../Hooks/Works/UseDeleteWork";
 
-function DeleteWork({ token }) {
+function DeleteWork() {
+    const token = localStorage.getItem("jwtToken");
     const { id } = useParams();
-    const { work, loading, error, handleDelete } = UseDeleteWork(id, token);
+    const { work, loading, error, handleDelete, fetchWork } = UseDeleteWork(token);
 
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
-
-    if (error) {
-        return <p>{error}</p>;
-    }
+    useEffect(() => {
+        fetchWork(id);
+    }, [id, fetchWork]);
 
     return (
         <Container>

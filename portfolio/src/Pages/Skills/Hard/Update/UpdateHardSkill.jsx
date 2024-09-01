@@ -3,7 +3,9 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import UseUpdateHardSkill from "../../../../Hooks/Skills/Hard/UseUpdateHardSkill";
 
-function UpdateHardSkill({ token, userId }) {
+function UpdateHardSkill() {
+    const token = localStorage.getItem("jwtToken");
+    const userId = localStorage.getItem("userId");
     const { id } = useParams();
     const { title, percentage, loading, error, setTitle, setPercentage, fetchHardSkill, handleUpdate } = UseUpdateHardSkill(token, userId);
 

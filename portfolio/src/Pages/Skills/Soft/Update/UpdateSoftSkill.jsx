@@ -2,8 +2,10 @@ import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import UseUpdateSoftSkill from '../../../../Hooks/Skills/Soft/UseUpdateSoftSkill';
 
-function UpdateSoftSkill({ token }) {
-    const { title, setTitle, sub, setSub, percentage, setPercentage, handleUpdate } = UseUpdateSoftSkill(token);
+function UpdateSoftSkill() {
+    const token = localStorage.getItem("jwtToken");
+    const userId = localStorage.getItem("userId");
+    const { title, setTitle, sub, setSub, percentage, setPercentage, handleUpdate } = UseUpdateSoftSkill(token, userId);
 
     return (
         <Container>

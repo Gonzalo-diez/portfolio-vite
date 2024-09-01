@@ -6,18 +6,14 @@ function UseDeleteSoftSkill(token, id) {
     const [softSkill, setSoftSkill] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchSoftSkill = async () => {
-            try {
-                const response = await axios.get(`https://portfolio-vite.onrender.com/softSkills/${id}`);
-                setSoftSkill(response.data);
-            } catch (err) {
-                console.error("Error al obtener los datos de la habilidad blanda:", err);
-            }
-        };
-
-        fetchSoftSkill();
-    }, [id]);
+    const fetchSoftSkill = async (id) => {
+        try {
+            const response = await axios.get(`https://portfolio-vite.onrender.com/softSkills/${id}`);
+            setSoftSkill(response.data);
+        } catch (err) {
+            console.error("Error al obtener los datos de la habilidad blanda:", err);
+        }
+    };
 
     const handleDelete = async () => {
         if (!token) {
@@ -45,7 +41,8 @@ function UseDeleteSoftSkill(token, id) {
 
     return {
         softSkill,
-        handleDelete
+        handleDelete,
+        fetchSoftSkill
     };
 }
 

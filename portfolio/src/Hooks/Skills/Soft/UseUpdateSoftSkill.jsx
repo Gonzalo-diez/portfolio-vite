@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../../Components/Context/authContext';
 
 function UseUpdateSoftSkill(token) {
-    const { id } = useParams();
     const { userId } = useAuth();
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
@@ -12,7 +11,7 @@ function UseUpdateSoftSkill(token) {
     const [percentage, setPercentage] = useState("");
 
     useEffect(() => {
-        const fetchSoftSkill = async () => {
+        const fetchSoftSkill = async (id) => {
             try {
                 const response = await axios.get(`https://portfolio-vite.onrender.com/softSkills/${id}`);
                 const softSkill = response.data;
@@ -23,7 +22,7 @@ function UseUpdateSoftSkill(token) {
                 }
 
                 setTitle(softSkill.title);
-                setSub(softSkill.sub_title); // Cambiado a `sub_title` para que coincida con el nombre en la API
+                setSub(softSkill.sub_title); 
                 setPercentage(softSkill.percentage);
             } catch (err) {
                 console.error("Error al obtener los datos del trabajo:", err);
