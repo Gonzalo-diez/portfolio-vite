@@ -16,12 +16,13 @@ const initializePassport = () => {
                 return done(null, false, { message: 'Correo no permitido' });
             }
 
-            const user = await User.findOne({ email });
+            let user = await User.findOne({ email });
 
-            if(!user && email === allowedEmail && password === allowedPassword) {
+            // Si el usuario no se encuentra y las credenciales coinciden, crear uno nuevo
+            if (!user && email === allowedEmail && password === allowedPassword) {
                 user = new User({
                     email: email,
-                    password: password
+                    password: await bcrypt.hash(password, 10) // Hashear la contraseña
                 });
 
                 await user.save();
@@ -33,7 +34,7 @@ const initializePassport = () => {
             }
 
             // Verificar si la contraseña es correcta
-            const validPassword = await bcrypt.compare(password, allowedPassword);
+            const validPassword = await bcrypt.compare(password, user.password);
 
             if (!validPassword) {
                 return done(null, false, { message: 'Contraseña incorrecta' });
