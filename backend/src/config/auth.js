@@ -11,13 +11,13 @@ const initializePassport = () => {
             const user = await User.findOne({ email });
 
             if (!user) {
-                return done(null, false, { message: 'Credenciales incorrectas' });
+                return done(null, false, { message: 'Usuario incorrecto' });
             }
 
             const validPassword = await bcrypt.compare(password, user.password);
 
             if (!validPassword) {
-                return done(null, false, { message: 'Credenciales incorrectas' });
+                return done(null, false, { message: 'Contraseña incorrecta' });
             }
 
             return done(null, user);
