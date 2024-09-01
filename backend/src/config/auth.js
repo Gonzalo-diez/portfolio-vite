@@ -3,7 +3,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "../dao/models/user.js";
-import { JWT_SECRET } from "../util.js";
+import { JWT_SECRET, ALLOWED_EMAIL, ALLOWED_PASSWORD } from "../util.js";
 
 const initializePassport = () => {
     passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
