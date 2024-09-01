@@ -23,6 +23,10 @@ const userService = {
                     return reject(new Error("Credenciales inválidas"));
                 }
 
+                if (password !== user.password) {
+                    return reject(new Error("Contraseña incorrecta"));
+                }
+
                 // Generate JWT token after successful authentication
                 const access_token = generateAuthToken(user);
                 resolve({ user, access_token });

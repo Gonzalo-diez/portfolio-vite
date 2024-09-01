@@ -1,41 +1,34 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
 import User from "../dao/models/user.js";
 import { JWT_SECRET, ALLOWED_EMAIL, ALLOWED_PASSWORD } from "../util.js";
 
 const initializePassport = () => {
     passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
         try {
-            const allowedEmail = process.env.ALLOWED_EMAIL || ALLOWED_EMAIL;
-            const allowedPassword = process.env.ALLOWED_PASSWORD || ALLOWED_PASSWORD;
-
-            // Verificar si el correo es el permitido
-            if (email !== allowedEmail) {
+            // Check if the provided email is allowed
+            if (email !== ALLOWED_EMAIL) {
                 return done(null, false, { message: 'Correo no permitido' });
             }
 
-            const user = await User.findOne({ email });
+            let user = await User.findOne({ email });
 
-            if(!user && user.email === allowedEmail && user.password === allowedPassword) {
+            // If user is not found, create and save a new user if the email and password match
+            if (!user && email === ALLOWED_EMAIL && password === ALLOWED_PASSWORD) {
                 user = new User({
-                    email: user.email,
-                    password: user.password
+                    email: email,
+                    password: password
                 });
 
                 await user.save();
             }
 
-            // Verificar si el usuario existe
             if (!user) {
                 return done(null, false, { message: 'Usuario no encontrado' });
             }
 
-            // Verificar si la contraseña es correcta
-            const validPassword = await bcrypt.compare(password, allowedPassword);
-
-            if (!validPassword) {
+            if (password !== user.password) {
                 return done(null, false, { message: 'Contraseña incorrecta' });
             }
 
