@@ -1,6 +1,15 @@
 import userService from "../services/user.service.js";
 
 const userController = {
+    getUsers: async (req, res) => {
+        const users = userService.getUsers();
+
+        res.json({
+            message: "Exito",
+            users: users
+        });
+    },
+
     getUserId: async (req, res) => {
         const userId = req.params.id;
         const isAuthenticated = req.session;

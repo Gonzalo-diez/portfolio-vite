@@ -3,6 +3,12 @@ import { generateAuthToken } from "../config/auth.js";
 import passport from "passport";
 
 const userService = {
+    getUsers: async () => {
+        const users = await userRepository.findUsers();
+
+        return users;
+    },
+
     getUserById: async (userId) => {
         const user = await userRepository.findById(userId);
 
