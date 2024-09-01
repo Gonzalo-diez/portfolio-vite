@@ -1,5 +1,4 @@
 import userService from "../services/user.service.js";
-import passport from "passport";
 
 const userController = {
     getUserId: async (req, res) => {
@@ -44,10 +43,6 @@ const userController = {
 
     logout: async (req, res) => {
         try {
-            // Elimina el token de la cookie
-            res.clearCookie("jwtToken");
-            res.clearCookie("userId");
-
             // Elimina la sesión del usuario
             req.session.destroy((err) => {
                 if (err) {

@@ -1,33 +1,34 @@
 import userRepository from "../repositories/user.repository.js";
 import { generateAuthToken } from "../config/auth.js";
+import passport from "passport";
 
 const userService = {
     getUserById: async (userId) => {
         const user = await userRepository.findById(userId);
 
         if (!user) {
-            throw new Error("Usted no es el autor");
+            throw new Error("Usuario no encontrado");
         }
 
         return user;
     },
 
-    handleGitHubCallback: async (req) => {
-        const user = req.user;
+    login: async (email, password) => {
+        return new Promise((resolve, reject) => {
+            passport.authenticate("local", async (err, user, info) => {
+                if (err) {
+                    return reject(err);
+                }
+                if (!user) {
+                    return reject(new Error("Credenciales inválidas"));
+                }
 
-        console.log("Usuario:", user);
-
-        try {
-            console.log(`Manejo de devolución de GitHub callback para user: ${user.email}`);
-            const access_token = generateAuthToken(user);
-            console.log(`Generated access_token: ${access_token}`);
-            console.log(`Devolución de GitHub callback manejada exitosamente para el user: ${user.email}`);
-            return { user, access_token };
-        } catch (error) {
-            console.log(`Error en GitHub callback del user: ${user.email} - ${error.message}`);
-            throw new Error("Error interno del servidor");
-        }
+                // Generate JWT token after successful authentication
+                const access_token = generateAuthToken(user);
+                resolve({ user, access_token });
+            })({ body: { email, password } }, {});
+        });
     }
-}
+};
 
 export default userService;
