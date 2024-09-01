@@ -6,11 +6,8 @@ import Contact from '../../Sections/Contact/Contact';
 import Education from '../../Sections/Education/Education';
 import Skills from '../../Sections/Skills/Skills';
 import Works from "../../Sections/Works/Works";
-import UseFetchUser from '../../Hooks/User/UseFetchUser';
 
-function Portfolio({ language, setUser, userId, token }) {
-    UseFetchUser(userId, token, setUser);
-
+function Portfolio({ language, token }) {
     return (
         <>
             <Home language={language} token={token} />
