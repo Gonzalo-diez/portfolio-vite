@@ -3,12 +3,12 @@ import { Strategy as LocalStrategy } from "passport-local";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "../dao/models/user.js";
-import { JWT_SECRET } from "../util.js";
+import { ALLOWED_EMAIL, JWT_SECRET } from "../util.js";
 
 const initializePassport = () => {
     passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'password' }, async (email, password, done) => {
         try {
-            const user = await User.findOne({ email }).exec();
+            const user = await User.findOne({ email: ALLOWED_EMAIL }).exec();
 
             console.log("Usuario:", user);
     
