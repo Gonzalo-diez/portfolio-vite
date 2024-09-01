@@ -18,40 +18,27 @@ const userController = {
         }
     },
 
-    getGitHub: (req, res, next) => {
-        passport.authenticate("github", { scope: ["user:email"] })(req, res, next);
-    },
+    login: async (req, res, next) => {
+        const { email, password } = req.body;
 
-    gitHubCallback: (req, res, next) => {
-        passport.authenticate("github", { failureRedirect: "/" })(req, res, next);
-    },
-
-    handleGitHubCallback: async (req, res) => {
         try {
-            const { user, access_token } = await userService.handleGitHubCallback(req);
+            const { user, access_token } = await userService.login(email, password);
 
-            // Establece el token y el ID de usuario en la sesión
+            // Establece la sesión del usuario
             req.session.token = access_token;
             req.session.userId = user._id;
             req.session.user = user;
             req.session.isAuthenticated = true;
+            req.session.userRole = user.role;
 
-            // Configura cookies
-            res.cookie('jwtToken', access_token, {
-                httpOnly: true,
-                secure: true, 
-                sameSite: 'None'
+            res.json({
+                message: "Acceso autorizado",
+                token: access_token,
+                userId: user.id
             });
-            res.cookie('userId', user._id.toString(), {
-                httpOnly: true,
-                secure: true, 
-                sameSite: 'None'
-            });
-
-            // Redirige al frontend
-            res.redirect("https://portfolio-vite-1.onrender.com/");
         } catch (error) {
-            res.status(500).json({ error: "Error interno del servidor" });
+            console.error("Error al iniciar sesión:", error);
+            return res.status(500).json({ error: "Error interno del servidor" });
         }
     },
 

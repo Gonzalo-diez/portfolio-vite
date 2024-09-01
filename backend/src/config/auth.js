@@ -1,51 +1,40 @@
 import passport from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
 import jwt from "jsonwebtoken";
-import GitHubStrategy from "passport-github2";
+import bcrypt from "bcrypt";
 import User from "../dao/models/user.js";
-import {
-    JWT_SECRET,
-    ALLOWED_USERNAME,
-    GITHUB_CALLBACK_URL,
-    GITHUB_CLIENT_ID,
-    GITHUB_CLIENT_SECRET,
-} from "../util.js";
+import { JWT_SECRET } from "../util.js";
 
 const initializePassport = () => {
-    passport.use(
-        "github",
-        new GitHubStrategy(
-            {
-                clientID: process.env.GITHUB_CLIENT_ID || GITHUB_CLIENT_ID,
-                clientSecret: process.env.GITHUB_CLIENT_SECRET || GITHUB_CLIENT_SECRET,
-                callbackURL: process.env.GITHUB_CALLBACK_URL || GITHUB_CALLBACK_URL,
-            },
-            async function (accessToken, refreshToken, profile, done) {
-                const allowedUsername = process.env.ALLOWED_USERNAME || ALLOWED_USERNAME;
-                
-                try {
-                    let user = await User.findOne({ githubId: profile.id });
-    
-                    if (!user && profile.username === allowedUsername) {
-                        user = new User({
-                            username: profile.username,
-                            email: profile.emails[0].value,
-                            githubId: profile.id,
-                        });
-    
-                        await user.save();
-                    }
-    
-                    if (user) {
-                        return done(null, user);  
-                    } else {
-                        return done(null, false, { message: 'Acceso denegado.' });
-                    }
-                } catch (error) {
-                    return done(error);
-                }
+    passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+        try {
+            const allowedEmail = process.env.ALLOWED_EMAIL || ALLOWED_EMAIL;
+            const allowedPassword = process.env.ALLOWED_PASSWORD || ALLOWED_PASSWORD;
+
+            // Verificar si el correo es el permitido
+            if (email !== allowedEmail) {
+                return done(null, false, { message: 'Correo no permitido' });
             }
-        )
-    );    
+
+            const user = await User.findOne({ email });
+
+            // Verificar si el usuario existe
+            if (!user) {
+                return done(null, false, { message: 'Usuario no encontrado' });
+            }
+
+            // Verificar si la contraseña es correcta
+            const validPassword = await bcrypt.compare(password, allowedPassword);
+
+            if (!validPassword) {
+                return done(null, false, { message: 'Contraseña incorrecta' });
+            }
+
+            return done(null, user);
+        } catch (error) {
+            return done(error);
+        }
+    }));
 
     passport.serializeUser((user, done) => {
         if (!user._id) {
@@ -53,7 +42,6 @@ const initializePassport = () => {
         }
         done(null, user._id);
     });
-    
 
     passport.deserializeUser(async (id, done) => {
         try {
@@ -65,17 +53,17 @@ const initializePassport = () => {
         } catch (error) {
             done(error);
         }
-    });    
+    });
 };
 
 // Función para extraer cookies
 export const cookieExtractor = (req) => {
     let token = null;
-    
+
     if (req && req.cookies) {
         token = req.cookies["jwtToken"];
     }
-    
+
     return token;
 };
 

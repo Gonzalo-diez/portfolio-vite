@@ -1,5 +1,4 @@
 import React from 'react';
-import Cookies from "js-cookie";
 import Home from "../../Sections/Home/Home";
 import About from '../../Sections/About/About';
 import Curriculum from '../../Sections/CV/Curriculum';
@@ -9,9 +8,7 @@ import Skills from '../../Sections/Skills/Skills';
 import Works from "../../Sections/Works/Works";
 import useFetchUser from '../../Hooks/User/UseFetchUser';
 
-function Portfolio({ language, setUser }) {
-    const token = Cookies.get('jwtToken');
-    const userId = Cookies.get('userId');
+function Portfolio({ language, setUser, userId, token }) {
     useFetchUser(userId, token, setUser);
 
     return (

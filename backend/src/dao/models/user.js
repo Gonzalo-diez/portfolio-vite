@@ -1,17 +1,11 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    githubId: {
-        type: String,
-        required: true,
-        unique: true
-    },
     email: {
+        type: String
+    },
+    password: {
         type: String
     }
 });
