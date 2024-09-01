@@ -18,6 +18,15 @@ const initializePassport = () => {
 
             const user = await User.findOne({ email });
 
+            if(!user && user.email === allowedEmail && user.password === allowedPassword) {
+                user = new User({
+                    email: user.email,
+                    password: user.password
+                });
+
+                await user.save();
+            }
+
             // Verificar si el usuario existe
             if (!user) {
                 return done(null, false, { message: 'Usuario no encontrado' });
