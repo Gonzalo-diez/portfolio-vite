@@ -3,10 +3,13 @@ import { type } from "os";
 
 const userSchema = new mongoose.Schema({
     email: {
-        type: String
+        type: String,
+        required: true,
+        unique: true
     },
     password: {
-        type: String
+        type: String,
+        required: true
     }
 });
 
