@@ -16,7 +16,6 @@ import DeleteSoftSkill from '../Pages/Skills/Soft/Delete/DeleteSoftSkill';
 import AddEducation from '../Pages/Education/Add/AddEducation';
 import UpdateEducation from '../Pages/Education/Update/UpdateEducation';
 import DeleteEducation from '../Pages/Education/Delete/DeleteEducation';
-import UseFetchUser from '../Hooks/User/UseFetchUser';
 import "./CSS/style.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -31,8 +30,6 @@ function App() {
   const changeLanguage = (newLanguage) => {
     setLanguage(newLanguage);
   }
-
-  UseFetchUser(userId, token, setUser);
 
   return (
     <>
