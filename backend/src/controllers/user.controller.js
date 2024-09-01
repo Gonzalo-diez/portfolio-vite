@@ -27,8 +27,6 @@ const userController = {
             req.session.token = access_token;
             req.session.userId = user._id;
             req.session.user = user;
-            req.session.isAuthenticated = true;
-            req.session.userRole = user.role;
 
             res.json({
                 message: "Acceso autorizado",
