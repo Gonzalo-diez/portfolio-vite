@@ -16,8 +16,6 @@ const softSkillsRepository = {
     },
 
     getSoftSkillById: async(softSkillId) => {
-        const softId = req.params.id;
-
         try {
             const softSkill = await SoftSkills.findOne({ _id: softSkillId }).populate({
                 path: 'user',
