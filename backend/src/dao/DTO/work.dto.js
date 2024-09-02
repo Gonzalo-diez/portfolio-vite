@@ -1,7 +1,7 @@
 class WorkDTO {
-    constructor(title, subTitle, link, image, user) {
+    constructor(title, sub, link, image, user) {
         this.title = title;
-        this.subTitle = subTitle;
+        this.sub = sub;
         this.link = link;
         this.image = image;
         this.user = user;

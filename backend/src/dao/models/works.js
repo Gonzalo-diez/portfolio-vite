@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const workSchema = new mongoose.Schema({
     title: String,
-    sub_title: String,
+    sub: String,
     link: String,
     image: String,
     user: {

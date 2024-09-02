@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const softSkillsSchema = new mongoose.Schema({
     title: String,
-    sub_title: String,
+    sub: String,
     percentage: Number,
     user: {
         type: mongoose.Schema.Types.ObjectId,

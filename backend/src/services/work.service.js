@@ -26,7 +26,7 @@ const workService = {
     },
 
     createWork: async(workData, file) => {
-        const { title, sub_title, link, userId } = workData;
+        const { title, sub, link, userId } = workData;
 
         try {
             const user = await userRepository.findById(userId);
@@ -41,7 +41,7 @@ const workService = {
                 throw new Error('No se proporcionó una imagen válida');
             }
 
-            const workDTO = new WorkDTO(title, sub_title, link, imageName, userId);
+            const workDTO = new WorkDTO(title, sub, link, imageName, userId);
 
             const newWork = await workRepository.createWork(workDTO);
 
@@ -53,7 +53,7 @@ const workService = {
     },
 
     updateWork: async(workId, workUpdateData, files) => {
-        const { title, sub_title, link, userId } = workUpdateData;
+        const { title, sub, link, userId } = workUpdateData;
 
         try {
             const work = await workRepository.getWorkById(workId);
@@ -74,7 +74,7 @@ const workService = {
 
             const imageName = files ? files.filename : null;
 
-            const workDto = new WorkDTO(title, sub_title, link, imageName, userId)
+            const workDto = new WorkDTO(title, sub, link, imageName, userId)
 
             const updateWork = await workRepository.updateWork(workId, workDto)
 

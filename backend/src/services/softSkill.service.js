@@ -26,12 +26,12 @@ const softSkillsService = {
     },
 
     createSoftSkill: async(softSkillData) => {
-        const { title, sub_title, percentage, userId } = softSkillData;
+        const { title, sub, percentage, userId } = softSkillData;
 
         try {
             const user = await userRepository.findById(userId);
 
-            if (!title || !sub_title || isNaN(percentage)) {
+            if (!title || !sub || isNaN(percentage)) {
                 throw new Error("Falta completar campos");
             }
 
@@ -39,7 +39,7 @@ const softSkillsService = {
                 throw new Error("Usted no es admin");
             }
 
-            const softSkillDTO = new SoftSkillDTO(title, sub_title, percentage, userId);
+            const softSkillDTO = new SoftSkillDTO(title, sub, percentage, userId);
 
             const newSoftSkill = await softSkillsRepository.createSoftSkill(softSkillDTO);
 
@@ -51,7 +51,7 @@ const softSkillsService = {
     },
 
     updateSoftSkill: async(softSkillId, softSkillUpdateData) => {
-        const { title, sub_title, percentage, userId } = softSkillUpdateData;
+        const { title, sub, percentage, userId } = softSkillUpdateData;
 
         try {
             const softSkill = await softSkillsRepository.getSoftSkillById(softSkillId);
@@ -70,7 +70,7 @@ const softSkillsService = {
                 throw new Error("Usted no es el admin");
             }
 
-            const softSkillDTO = new SoftSkillDTO(title, sub_title, percentage, userId);
+            const softSkillDTO = new SoftSkillDTO(title, sub, percentage, userId);
 
             const updateSoftSkill = await softSkillsRepository.updateSoftSkill(softSkillId, softSkillDTO);
 
