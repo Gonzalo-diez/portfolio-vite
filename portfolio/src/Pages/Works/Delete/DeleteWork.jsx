@@ -21,7 +21,7 @@ function DeleteWork() {
                         {work && (
                             <div>
                                 <p>Título: {work.title}</p>
-                                <p>Subtítulo: {work.sub_title}</p>
+                                <p>Subtítulo: {work.sub}</p>
                                 <p>Link: {work.link}</p>
                                 <Button variant="danger" onClick={() => handleDelete(id)}>Eliminar</Button>
                             </div>
