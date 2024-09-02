@@ -18,7 +18,7 @@ function UseAddSoftSkill(token, userId) {
         try {
             const formData = new FormData();
             formData.append("title", title);
-            formData.append("sub_title", sub);
+            formData.append("sub", sub);
             formData.append("percentage", percentage);
             formData.append("userId", userId);
 
