@@ -14,6 +14,8 @@ function UseUpdateSoftSkill(token, userId, id) {
             const response = await axios.get(`https://portfolio-vite.onrender.com/softSkills/${id}`);
             const softSkill = response.data;
 
+            console.log("Soft data:", softSkill);
+
             if (!softSkill) {
                 console.error("Trabajo no encontrado");
                 return;
