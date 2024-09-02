@@ -3,7 +3,9 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import UseUpdateEducation from "../../../Hooks/Educations/UseUpdateEducation";
 
-function UpdateEducation({ token, userId }) {
+function UpdateEducation() {
+    const token = localStorage.getItem("jwtToken");
+    const userId = localStorage.getItem("userId");
     const { id } = useParams();
     const {
         title,

@@ -3,7 +3,8 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import UseDeleteEducation from "../../../Hooks/Educations/UseDeleteEducation";
 
-function DeleteEducation({ token }) {
+function DeleteEducation() {
+    const token = localStorage.getItem("jwtToken");
     const { id } = useParams();
     const { education, fetchEducation, handleDelete, loading, error } = UseDeleteEducation(token);
 
