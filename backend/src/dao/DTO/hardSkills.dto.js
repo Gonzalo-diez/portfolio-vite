@@ -1,8 +1,8 @@
 class HardSkillDTO {
-    constructor(title, percentage, userId) {
+    constructor(title, percentage, user) {
         this.title = title;
         this.percentage = percentage;
-        this.userId = userId;
+        this.user = user;
     }
 }
 

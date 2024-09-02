@@ -1,10 +1,10 @@
 class WorkDTO {
-    constructor(title, subTitle, link, image, userId) {
+    constructor(title, subTitle, link, image, user) {
         this.title = title;
         this.subTitle = subTitle;
         this.link = link;
         this.image = image;
-        this.userId = userId
+        this.user = user;
     }
 }
 

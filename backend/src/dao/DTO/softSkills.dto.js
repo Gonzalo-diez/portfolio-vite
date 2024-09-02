@@ -1,9 +1,9 @@
 class SoftSkillDTO {
-    constructor(title, subTitle, percentage, userId) {
+    constructor(title, subTitle, percentage, user) {
         this.title = title;
         this.subTitle = subTitle;
         this.percentage = percentage;
-        this.userId = userId;
+        this.user = user;
     }
 }
 

@@ -1,8 +1,8 @@
 class EducationDTO {
-    constructor(title, image, userId) {
+    constructor(title, image, user) {
         this.title = title;
         this.image = image;
-        this.userId = userId;
+        this.user = user;
     }
 }
 
