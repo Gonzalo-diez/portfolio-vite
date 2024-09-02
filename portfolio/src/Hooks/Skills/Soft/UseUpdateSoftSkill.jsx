@@ -8,28 +8,24 @@ function UseUpdateSoftSkill(token, userId, id) {
     const [sub, setSub] = useState("");
     const [percentage, setPercentage] = useState("");
 
-    useEffect(() => {
-        const fetchSoftSkill = async (id) => {
-            try {
-                const response = await axios.get(`https://portfolio-vite.onrender.com/softSkills/${id}`);
-                const softSkill = response.data;
 
-                console.log(`Datos: ${softSkill}`);
-                if (!softSkill) {
-                    console.error("Trabajo no encontrado");
-                    return;
-                }
+    const fetchSoftSkill = async (id) => {
+        try {
+            const response = await axios.get(`https://portfolio-vite.onrender.com/softSkills/${id}`);
+            const softSkill = response.data;
 
-                setTitle(softSkill.title);
-                setSub(softSkill.sub_title); 
-                setPercentage(softSkill.percentage);
-            } catch (err) {
-                console.error("Error al obtener los datos del trabajo:", err);
+            if (!softSkill) {
+                console.error("Trabajo no encontrado");
+                return;
             }
-        };
 
-        fetchSoftSkill();
-    }, [id]);
+            setTitle(softSkill.title);
+            setSub(softSkill.sub_title);
+            setPercentage(softSkill.percentage);
+        } catch (err) {
+            console.error("Error al obtener los datos del trabajo:", err);
+        }
+    };
 
     const handleUpdate = async (id) => {
         if (!token) {
@@ -69,6 +65,7 @@ function UseUpdateSoftSkill(token, userId, id) {
         setSub,
         percentage,
         setPercentage,
+        fetchSoftSkill,
         handleUpdate
     };
 }

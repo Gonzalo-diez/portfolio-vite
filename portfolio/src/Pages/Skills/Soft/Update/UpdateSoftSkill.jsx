@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import UseUpdateSoftSkill from '../../../../Hooks/Skills/Soft/UseUpdateSoftSkill';
@@ -7,7 +7,11 @@ function UpdateSoftSkill() {
     const token = localStorage.getItem("jwtToken");
     const userId = localStorage.getItem("userId");
     const { id } = useParams();
-    const { title, setTitle, sub, setSub, percentage, setPercentage, handleUpdate } = UseUpdateSoftSkill(token, userId, id);
+    const { title, setTitle, sub, setSub, percentage, setPercentage, handleUpdate, fetchSoftSkill } = UseUpdateSoftSkill(token, userId, id);
+
+    useEffect(() => {
+        fetchSoftSkill(id);
+    }, [id, fetchSoftSkill]);
 
     return (
         <Container>
