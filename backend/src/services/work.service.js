@@ -68,10 +68,6 @@ const workService = {
                 throw new Error("Usted no es el admin o no esta logueado");
             }
 
-            if (work.user.toString() !== userId) {
-                throw new Error("Usted no es el admin");
-            }
-
             const imageName = files ? files.filename : null;
 
             const workDto = new WorkDTO(title, sub, link, imageName, userId)

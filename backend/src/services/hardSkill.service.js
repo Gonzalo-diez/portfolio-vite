@@ -65,10 +65,6 @@ const hardSkillsService = {
                 throw new Error("Usted no es el admin o no esta logueado");
             }
 
-            if (hardSkill.user.toString() !== userId) {
-                throw new Error("Usted no es el admin");
-            }
-
             const hardSkillDTO = HardSkillDTO(title, percentage, userId)
 
             const updateHardSkill = await hardSkillsRepository.updateHardSkill(hardSkillId, hardSkillDTO);

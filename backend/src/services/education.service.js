@@ -68,10 +68,6 @@ const educationService = {
                 throw new Error("Usted no es el admin o no esta logueado");
             }
 
-            if (education.user.toString() !== userId) {
-                throw new Error("Usted no es el admin");
-            }
-
             const imageName = file ? file.filename : null;
 
             if (!imageName) {

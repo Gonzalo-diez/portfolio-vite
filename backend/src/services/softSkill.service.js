@@ -66,10 +66,6 @@ const softSkillsService = {
                 throw new Error("Usted no es el admin o no esta logueado");
             }
 
-            if (softSkill.user.toString() !== userId) {
-                throw new Error("Usted no es el admin");
-            }
-
             const softSkillDTO = new SoftSkillDTO(title, sub, percentage, userId);
 
             const updateSoftSkill = await softSkillsRepository.updateSoftSkill(softSkillId, softSkillDTO);
