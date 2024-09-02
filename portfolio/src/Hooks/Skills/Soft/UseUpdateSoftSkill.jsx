@@ -22,7 +22,7 @@ function UseUpdateSoftSkill(token, userId, id) {
             }
 
             setTitle(softSkill.title);
-            setSub(softSkill.sub_title);
+            setSub(softSkill.sub);
             setPercentage(softSkill.percentage);
         } catch (err) {
             console.error("Error al obtener los datos del trabajo:", err);
