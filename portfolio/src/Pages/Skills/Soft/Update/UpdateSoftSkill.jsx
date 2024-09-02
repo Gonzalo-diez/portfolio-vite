@@ -11,7 +11,7 @@ function UpdateSoftSkill() {
 
     useEffect(() => {
         fetchSoftSkill(id);
-    }, [id, fetchSoftSkill]);
+    }, [id]);
 
     return (
         <Container>
