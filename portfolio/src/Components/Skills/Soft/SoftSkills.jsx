@@ -34,7 +34,7 @@ function SoftSkills({ language, token }) {
                                     <Col md={4}>
                                         <div className="skills__data">
                                             <div className="skills__names">
-                                                <span className="skills__name">{language === 'es' ? softSkill.title : softSkill.sub_title}</span>
+                                                <span className="skills__name">{language === 'es' ? softSkill.title : softSkill.sub}</span>
                                             </div>
                                             <div className="skills__bar" style={{ width: `${softSkill.percentage}%` }}></div>
                                             <div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -46,7 +46,7 @@ function UseUpdateSoftSkill(token, userId, id) {
             const response = await axios.put(`https://portfolio-vite.onrender.com/softSkills/protected/updateSoftSkills/${id}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data",
+                    "Content-Type": "application/json",
                 }
             });
 

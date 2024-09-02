@@ -52,7 +52,7 @@ function UseUpdateWork(token, userId) {
             const response = await axios.put(`https://portfolio-vite.onrender.com/works/protected/updateWork/${id}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data",
+                    "Content-Type": "application/json",
                 }
             });
 

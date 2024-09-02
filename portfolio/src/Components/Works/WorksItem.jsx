@@ -14,7 +14,7 @@ function WorkItem({ work, language, token, onUpdate, onDelete }) {
     <div className="work__container">
       <a href={work.link} className="work__img">
         <img src={`https://portfolio-vite.onrender.com/workImg/${work.image}`} width="800" alt={work.title} />
-        <h3>{language === 'es' ? work.title : work.sub_title}</h3>
+        <h3>{language === 'es' ? work.title : work.sub}</h3>
       </a>
       {token && (
         <>
