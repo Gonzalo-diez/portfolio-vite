@@ -53,6 +53,7 @@ function Contact({ language }) {
               className="contact__input"
               value={formData.name}
               onChange={handleChange}
+              autoComplete='name'
               required
             />
             <input
@@ -63,6 +64,7 @@ function Contact({ language }) {
               className="contact__input"
               value={formData.email}
               onChange={handleChange}
+              autoComplete='email'
               required
             />
             <textarea
