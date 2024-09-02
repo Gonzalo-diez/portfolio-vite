@@ -11,7 +11,7 @@ function UpdateHardSkill() {
 
     useEffect(() => {
         fetchHardSkill(id);
-    }, [id, fetchHardSkill]);
+    }, [id]);
 
     if (loading) {
         return <p>Cargando...</p>;

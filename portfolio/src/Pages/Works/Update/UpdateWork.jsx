@@ -9,7 +9,7 @@ function UpdateWork({ token, userId }) {
 
     useEffect(() => {
         fetchWork(id);
-    }, [id, fetchWork]);
+    }, [id]);
 
     const handleSaveWorkImage = (e) => {
         setImage(e.target.files[0]);

@@ -18,7 +18,7 @@ function UpdateEducation({ token, userId }) {
 
     useEffect(() => {
         fetchEducation(id);
-    }, [id, fetchEducation]);
+    }, [id]);
 
     if (loading) {
         return <p>Cargando...</p>;
