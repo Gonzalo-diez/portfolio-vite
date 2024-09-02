@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function UseUpdateSoftSkill(token, userId) {
+function UseUpdateSoftSkill(token, userId, id) {
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [sub, setSub] = useState("");
