@@ -12,6 +12,10 @@ function DeleteWork() {
         fetchWork(id);
     }, [id, fetchWork]);
 
+    if (error) {
+        return <p>{error}</p>;
+    }
+
     return (
         <Container>
             <Row className="justify-content-md-center">

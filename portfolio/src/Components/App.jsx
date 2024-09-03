@@ -25,7 +25,6 @@ function App() {
 
   const [language, setLanguage] = useState('es');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
 
   const changeLanguage = (newLanguage) => {
     setLanguage(newLanguage);
@@ -36,18 +35,18 @@ function App() {
       <Menu changeLanguage={changeLanguage} language={language} token={token} userId={userId} />
       <Layout>
         <Routes>
-          <Route path='/' element={<Portfolio language={language} setUser={setUser} />} />
-          <Route path='/user/login' element={<Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
-          <Route path='/works/protected/addWork' element={<AddWork token={token} isAuthenticated={isAuthenticated} user={user} userId={userId} />} />
+          <Route path='/' element={<Portfolio language={language}  />} />
+          <Route path='/user/login' element={<Login setIsAuthenticated={setIsAuthenticated}  />} />
+          <Route path='/works/protected/addWork' element={<AddWork token={token} isAuthenticated={isAuthenticated}  userId={userId} />} />
           <Route path='/works/protected/updateWork/:id' element={<UpdateWork token={token} userId={userId} />} />
           <Route path='/works/protected/deleteWork/:id' element={<DeleteWork token={token} userId={userId} />} />
-          <Route path='/hardSkills/protected/addHardSkill' element={<AddHardSkill token={token} isAuthenticated={isAuthenticated} user={user} userId={userId} />} />
+          <Route path='/hardSkills/protected/addHardSkill' element={<AddHardSkill token={token} isAuthenticated={isAuthenticated}  userId={userId} />} />
           <Route path='/hardSkills/protected/updateHardSkill/:id' element={<UpdateHardSkill token={token} userId={userId} />} />
           <Route path='/hardSkills/protected/deleteHardSkill/:id' element={<DeleteHardSkill token={token} userId={userId} />} />
-          <Route path='/softSkills/protected/addSoftSkill' element={<AddSoftSkill token={token} isAuthenticated={isAuthenticated} user={user} userId={userId} />} />
+          <Route path='/softSkills/protected/addSoftSkill' element={<AddSoftSkill token={token} isAuthenticated={isAuthenticated}  userId={userId} />} />
           <Route path='/softSkills/protected/updateSoftSkill/:id' element={<UpdateSoftSkill token={token} userId={userId} />} />
           <Route path='/softSkills/protected/deleteSoftSkill/:id' element={<DeleteSoftSkill token={token} userId={userId} />} />
-          <Route path='/educations/protected/addEducation' element={<AddEducation token={token} isAuthenticated={isAuthenticated} user={user} userId={userId} />} />
+          <Route path='/educations/protected/addEducation' element={<AddEducation token={token} isAuthenticated={isAuthenticated}  userId={userId} />} />
           <Route path='/educations/protected/updateEducation/:id' element={<UpdateEducation token={token} userId={userId} />} />
           <Route path='/educations/protected/deleteEducation/:id' element={<DeleteEducation token={token} userId={userId} />} />
         </Routes>

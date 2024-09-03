@@ -2,7 +2,9 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import UseAddEducation from "../../../Hooks/Educations/UseAddEducation";
 
-function AddEducation({ token, userId }) {
+function AddEducation() {
+    const token = localStorage.getItem("jwtToken");
+    const userId = localStorage.getItem("userId");
     const { title, setTitle, image, setImage, error, handleAddEducation } = UseAddEducation(token, userId);
 
     const handleSaveEducationImage = (e) => {
