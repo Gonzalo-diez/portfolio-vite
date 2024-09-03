@@ -52,7 +52,7 @@ const workService = {
         }
     },
 
-    updateWork: async(workId, workUpdateData, files) => {
+    updateWork: async(workId, workUpdateData, file) => {
         const { title, sub, link, userId } = workUpdateData;
 
         try {
@@ -68,7 +68,7 @@ const workService = {
                 throw new Error("Usted no es el admin o no esta logueado");
             }
 
-            const imageName = files ? files.filename : null;
+            const imageName = file ? file.filename : null;
 
             const workDto = new WorkDTO(title, sub, link, imageName, userId)
 

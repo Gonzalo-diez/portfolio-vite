@@ -74,7 +74,7 @@ const educationService = {
                 throw new Error("No se proporciono un archivo o imagen valido");
             }
 
-            const educationDTO = new EducationDTO(title, userId)
+            const educationDTO = new EducationDTO(title, imageName, userId)
 
             const updateEducation = await educationRepository.updateEducation(educationDTO, educationId);
 
