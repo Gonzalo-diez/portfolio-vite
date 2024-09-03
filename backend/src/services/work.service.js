@@ -70,9 +70,13 @@ const workService = {
 
             const imageName = file ? file.filename : null;
 
-            const workDto = new WorkDTO(title, sub, link, imageName, userId)
+            if (!imageName) {
+                throw new Error("No se proporciono un archivo o imagen valido");
+            }
 
-            const updateWork = await workRepository.updateWork(workId, workDto)
+            const workDto = new WorkDTO(title, sub, link, imageName, userId);
+
+            const updateWork = await workRepository.updateWork(workDto, workId)
 
             return updateWork;
         }

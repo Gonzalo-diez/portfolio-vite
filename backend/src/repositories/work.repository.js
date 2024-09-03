@@ -42,9 +42,9 @@ const workRepository = {
         }
     },
 
-    updateWork: async(workId, workDTO) => {
+    updateWork: async(workUpdateData, workId) => {
         try {
-            const updateWork = await Works.findByIdAndUpdate(workId, { $set: workDTO }, { new: true });
+            const updateWork = await Works.findByIdAndUpdate(workId, { $set: workUpdateData }, { new: true });
 
             return updateWork;
         }
