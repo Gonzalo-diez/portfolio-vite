@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function UseDeleteHardSkill(token, id) {
     const [hardSkill, setHardSkill] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -15,8 +14,6 @@ function UseDeleteHardSkill(token, id) {
         } catch (err) {
             setError("Error al obtener los datos de la habilidad dura.");
             console.error("Error al obtener los datos de la habilidad dura:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -28,7 +25,6 @@ function UseDeleteHardSkill(token, id) {
         }
 
         try {
-            setLoading(true);
             const response = await axios.delete(`https://portfolio-vite.onrender.com/hardSkills/protected/deleteHardSkill/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -44,14 +40,11 @@ function UseDeleteHardSkill(token, id) {
         } catch (err) {
             setError("Error al intentar borrar la habilidad dura.");
             console.error("Error al intentar borrar la habilidad dura:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
     return {
         hardSkill,
-        loading,
         error,
         fetchHardSkill,
         handleDelete

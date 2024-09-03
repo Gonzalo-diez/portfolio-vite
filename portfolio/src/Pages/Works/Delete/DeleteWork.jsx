@@ -6,7 +6,7 @@ import UseDeleteWork from "../../../Hooks/Works/UseDeleteWork";
 function DeleteWork() {
     const token = localStorage.getItem("jwtToken");
     const { id } = useParams();
-    const { work, loading, error, handleDelete, fetchWork } = UseDeleteWork(token);
+    const { work, error, handleDelete, fetchWork } = UseDeleteWork(token);
 
     useEffect(() => {
         fetchWork(id);

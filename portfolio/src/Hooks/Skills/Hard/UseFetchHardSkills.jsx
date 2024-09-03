@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 function UseFetchHardSkills(token) {
     const [hardSkills, setHardSkills] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -17,8 +16,6 @@ function UseFetchHardSkills(token) {
             } catch (err) {
                 setError("Error al obtener las habilidades duras.");
                 console.error("Error al obtener las habilidades duras:", err);
-            } finally {
-                setLoading(false);
             }
         };
 
@@ -47,7 +44,6 @@ function UseFetchHardSkills(token) {
 
     return {
         hardSkills,
-        loading,
         error,
         handleDeleteHardSkill,
         handleUpdateHardSkill,

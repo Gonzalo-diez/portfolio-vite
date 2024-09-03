@@ -6,15 +6,11 @@ import UseDeleteEducation from "../../../Hooks/Educations/UseDeleteEducation";
 function DeleteEducation() {
     const token = localStorage.getItem("jwtToken");
     const { id } = useParams();
-    const { education, fetchEducation, handleDelete, loading, error } = UseDeleteEducation(token);
+    const { education, fetchEducation, handleDelete, error } = UseDeleteEducation(token);
 
     useEffect(() => {
         fetchEducation(id);
     }, [id, fetchEducation]);
-
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
 
     if (error) {
         return <p>{error}</p>;

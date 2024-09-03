@@ -7,7 +7,6 @@ function UseUpdateWork(token, userId) {
     const [sub, setSub] = useState("");
     const [link, setLink] = useState("");
     const [image, setImage] = useState("");
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -28,8 +27,6 @@ function UseUpdateWork(token, userId) {
         } catch (err) {
             setError("Error al obtener los datos del trabajo");
             console.error("Error al obtener los datos del trabajo:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -80,7 +77,6 @@ function UseUpdateWork(token, userId) {
         setLink,
         image,
         handleSaveWorkImage,
-        loading,
         error,
         handleUpdate,
         fetchWork

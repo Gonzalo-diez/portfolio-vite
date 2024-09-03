@@ -3,15 +3,11 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import UseAddEducation from "../../../Hooks/Educations/UseAddEducation";
 
 function AddEducation({ token, userId }) {
-    const { title, setTitle, image, setImage, loading, error, handleAddEducation } = UseAddEducation(token, userId);
+    const { title, setTitle, image, setImage, error, handleAddEducation } = UseAddEducation(token, userId);
 
     const handleSaveEducationImage = (e) => {
         setImage(e.target.files[0]);
     };
-
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
 
     if (error) {
         return <p>{error}</p>;

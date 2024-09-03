@@ -15,7 +15,6 @@ function AddWork() {
     setLink,
     handleSaveWorkImage,
     handleAddWork,
-    loading,
     error,
   } = UseAddWork(token, userId);
 
@@ -64,9 +63,7 @@ function AddWork() {
               <Button
                 variant="primary"
                 onClick={() => handleAddWork(token, userId)}
-                disabled={loading}
-              >
-                {loading ? "Agregando..." : "Agregar Trabajo"}
+              > 
               </Button>
               {error && <p>Error al agregar trabajo: {error.message}</p>}
             </Form>

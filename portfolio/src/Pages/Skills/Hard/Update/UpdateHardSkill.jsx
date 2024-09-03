@@ -7,15 +7,11 @@ function UpdateHardSkill() {
     const token = localStorage.getItem("jwtToken");
     const userId = localStorage.getItem("userId");
     const { id } = useParams();
-    const { title, percentage, loading, error, setTitle, setPercentage, fetchHardSkill, handleUpdate } = UseUpdateHardSkill(token, userId);
+    const { title, percentage, error, setTitle, setPercentage, fetchHardSkill, handleUpdate } = UseUpdateHardSkill(token, userId);
 
     useEffect(() => {
         fetchHardSkill(id);
     }, [id]);
-
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
 
     if (error) {
         return <p>{error}</p>;

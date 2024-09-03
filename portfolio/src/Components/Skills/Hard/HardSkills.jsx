@@ -6,11 +6,7 @@ import { FaTrash } from 'react-icons/fa';
 import UseFetchHardSkills from '../../../Hooks/Skills/Hard/UseFetchHardSkills';
 
 function HardSkills({ language, token }) {
-    const { hardSkills, loading, error, handleDeleteHardSkill, handleUpdateHardSkill, handleAddHardSkill } = UseFetchHardSkills(token);
-
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
+    const { hardSkills, error, handleDeleteHardSkill, handleUpdateHardSkill, handleAddHardSkill } = UseFetchHardSkills(token);
 
     if (error) {
         return <p>{error}</p>;

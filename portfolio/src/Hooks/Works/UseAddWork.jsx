@@ -7,7 +7,6 @@ function UseAddWork(token, userId) {
   const [sub, setSub] = useState("");
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -18,7 +17,6 @@ function UseAddWork(token, userId) {
       return;
     }
 
-    setLoading(true);
     setError(null);
 
     try {
@@ -44,8 +42,6 @@ function UseAddWork(token, userId) {
     } catch (err) {
       console.error("Error al agregar trabajo:", err);
       setError(err);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -63,7 +59,6 @@ function UseAddWork(token, userId) {
     image,
     handleSaveWorkImage,
     handleAddWork,
-    loading,
     error,
   };
 }

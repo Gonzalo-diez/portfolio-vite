@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 function UseAddEducation(token, userId) {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -17,7 +16,6 @@ function UseAddEducation(token, userId) {
         }
 
         try {
-            setLoading(true);
             const formData = new FormData();
             formData.append("title", title);
             formData.append("image", image);
@@ -40,8 +38,6 @@ function UseAddEducation(token, userId) {
         } catch (err) {
             setError("Error al agregar la educación.");
             console.error("Error al agregar la educación:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -50,7 +46,6 @@ function UseAddEducation(token, userId) {
         setTitle,
         image,
         setImage,
-        loading,
         error,
         handleAddEducation,
     };

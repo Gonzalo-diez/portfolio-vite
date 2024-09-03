@@ -6,15 +6,11 @@ import UseDeleteHardSkill from "../../../../Hooks/Skills/Hard/UseDeleteHardSkill
 function DeleteHardSkill() {
     const token = localStorage.getItem("jwtToken");
     const { id } = useParams();
-    const { hardSkill, loading, error, fetchHardSkill, handleDelete } = UseDeleteHardSkill(token);
+    const { hardSkill, error, fetchHardSkill, handleDelete } = UseDeleteHardSkill(token);
 
     useEffect(() => {
         fetchHardSkill(id);
     }, [id, fetchHardSkill]);
-
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
 
     if (error) {
         return <p>{error}</p>;

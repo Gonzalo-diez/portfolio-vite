@@ -4,20 +4,16 @@ import { useNavigate } from "react-router-dom";
 
 function UseDeleteEducation(token) {
     const [education, setEducation] = useState(null);
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const fetchEducation = async (id) => {
         try {
-            setLoading(true);
             const response = await axios.get(`https://portfolio-vite.onrender.com/educations/${id}`);
             setEducation(response.data);
         } catch (err) {
             setError("Error al obtener los datos de la educación.");
             console.error("Error al obtener los datos de la educación:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -29,7 +25,6 @@ function UseDeleteEducation(token) {
         }
 
         try {
-            setLoading(true);
             const response = await axios.delete(`https://portfolio-vite.onrender.com/educations/protected/deleteEducation/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -45,8 +40,6 @@ function UseDeleteEducation(token) {
         } catch (err) {
             setError("Error al intentar borrar la educación.");
             console.error("Error al intentar borrar la educación:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -54,7 +47,6 @@ function UseDeleteEducation(token) {
         education,
         fetchEducation,
         handleDelete,
-        loading,
         error,
     };
 }

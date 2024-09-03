@@ -14,17 +14,12 @@ function UpdateEducation() {
         handleSaveEducationImage,
         handleUpdate,
         fetchEducation,
-        loading,
         error
     } = UseUpdateEducation(token, userId);
 
     useEffect(() => {
         fetchEducation(id);
     }, [id]);
-
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
 
     if (error) {
         return <p>{error}</p>;

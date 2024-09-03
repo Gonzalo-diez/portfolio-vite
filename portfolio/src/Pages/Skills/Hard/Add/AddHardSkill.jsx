@@ -12,13 +12,8 @@ function AddHardSkill() {
         percentage,
         setPercentage,
         handleAddHardSkill,
-        loading,
         error
     } = UseAddHardSkill(token, userId);
-
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
 
     if (error) {
         return <p>{error}</p>;

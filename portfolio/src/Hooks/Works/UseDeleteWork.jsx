@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function UseDeleteWork(token) {
     const [work, setWork] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -15,8 +14,6 @@ function UseDeleteWork(token) {
         } catch (err) {
             setError("Error al obtener los datos del trabajo");
             console.error("Error al obtener los datos del trabajo:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -48,7 +45,6 @@ function UseDeleteWork(token) {
 
     return {
         work,
-        loading,
         error,
         handleDelete,
         fetchWork

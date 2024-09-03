@@ -5,13 +5,11 @@ import { useNavigate } from "react-router-dom";
 function UseUpdateEducation(token, userId) {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const fetchEducation = async (id) => {
         try {
-            setLoading(true);
             const response = await axios.get(`https://portfolio-vite.onrender.com/educations/${id}`);
             const education = response.data;
 
@@ -25,8 +23,6 @@ function UseUpdateEducation(token, userId) {
         } catch (err) {
             setError("Error al obtener los datos de la educación.");
             console.error("Error al obtener los datos de la educación:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -38,7 +34,6 @@ function UseUpdateEducation(token, userId) {
         }
 
         try {
-            setLoading(true);
             const formData = new FormData();
             formData.append("title", title);
             formData.append("image", image);
@@ -60,8 +55,6 @@ function UseUpdateEducation(token, userId) {
         } catch (err) {
             setError("Error al actualizar la educación.");
             console.error("Error al actualizar la educación:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -76,7 +69,6 @@ function UseUpdateEducation(token, userId) {
         handleSaveEducationImage,
         handleUpdate,
         fetchEducation,
-        loading,
         error,
     };
 }

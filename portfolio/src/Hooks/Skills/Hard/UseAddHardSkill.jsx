@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 function UseAddHardSkill(token, userId) {
     const [title, setTitle] = useState("");
     const [percentage, setPercentage] = useState("");
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -17,7 +16,6 @@ function UseAddHardSkill(token, userId) {
         }
 
         try {
-            setLoading(true);
             const formData = new FormData();
             formData.append("title", title);
             formData.append("percentage", Number(percentage));
@@ -39,8 +37,6 @@ function UseAddHardSkill(token, userId) {
         } catch (err) {
             setError("Error al agregar habilidad dura.");
             console.error("Error al agregar habilidad dura:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -50,7 +46,6 @@ function UseAddHardSkill(token, userId) {
         percentage,
         setPercentage,
         handleAddHardSkill,
-        loading,
         error,
     };
 }

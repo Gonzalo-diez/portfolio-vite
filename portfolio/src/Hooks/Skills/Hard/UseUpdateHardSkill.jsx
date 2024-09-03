@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 function UseUpdateHardSkill(token, userId) {
     const [title, setTitle] = useState("");
     const [percentage, setPercentage] = useState("");
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -24,8 +23,6 @@ function UseUpdateHardSkill(token, userId) {
         } catch (err) {
             setError("Error al obtener los datos de la habilidad dura.");
             console.error("Error al obtener los datos de la habilidad dura:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -37,7 +34,6 @@ function UseUpdateHardSkill(token, userId) {
         }
 
         try {
-            setLoading(true);
             const formData = new FormData();
             formData.append("title", title);
             formData.append("percentage", percentage);
@@ -59,15 +55,12 @@ function UseUpdateHardSkill(token, userId) {
         } catch (err) {
             setError("Error al actualizar la habilidad dura.");
             console.error("Error al actualizar la habilidad dura:", err);
-        } finally {
-            setLoading(false);
         }
     };
 
     return {
         title,
         percentage,
-        loading,
         error,
         setTitle,
         setPercentage,
