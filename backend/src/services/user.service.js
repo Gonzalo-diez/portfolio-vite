@@ -15,14 +15,12 @@ const userService = {
 
     login: async (email, password) => {
         return new Promise((resolve, reject) => {
-            console.log(`Intentando iniciar sesión con:${email} ${password}`);
             passport.authenticate("local", async (err, user, info) => {
                 if (err) {
                     console.error('Error de autenticación:', err);
                     return reject(err);
                 }
                 if (!user) {
-                    console.log('Usuario no encontrado o contraseña incorrecta:', info.message);
                     return reject(new Error(info.message || "Credenciales inválidas"));
                 }
 
