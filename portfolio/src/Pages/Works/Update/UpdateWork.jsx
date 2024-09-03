@@ -7,15 +7,11 @@ function UpdateWork() {
     const token = localStorage.getItem("jwtToken");
     const userId = localStorage.getItem("userId");
     const { id } = useParams();
-    const { title, setTitle, sub, setSub, link, setLink, image, setImage, loading, error, handleUpdate, fetchWork } = UseUpdateWork(token, userId);
+    const { title, setTitle, sub, setSub, link, setLink, image, handleSaveWorkImage, loading, error, handleUpdate, fetchWork } = UseUpdateWork(token, userId);
 
     useEffect(() => {
         fetchWork(id);
     }, [id]);
-
-    const handleSaveWorkImage = (e) => {
-        setImage(e.target.files[0]);
-    };
 
     if (loading) {
         return <p>Cargando...</p>;

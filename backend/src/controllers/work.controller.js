@@ -45,13 +45,13 @@ const workController = {
         }
     },
 
-    updateWork: async(req, res) => {
+    updateWork: async (req, res) => {
         const workId = req.params.id;
         const workUpdateData = req.body;
         const file = req.file;
 
         try {
-            const updateWork = await workService.updateWork(workId, workUpdateData, file)
+            const updateWork = await workService.updateWork(workId, workUpdateData, file);
 
             res.json({
                 message: "Trabajo actualizado!",

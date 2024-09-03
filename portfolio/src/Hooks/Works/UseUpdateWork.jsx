@@ -33,6 +33,9 @@ function UseUpdateWork(token, userId) {
         }
     };
 
+    const handleSaveWorkImage = (e) => {
+        setImage(e.target.files[0]);
+    };
 
     const handleUpdate = async (id) => {
         if (!token) {
@@ -76,7 +79,7 @@ function UseUpdateWork(token, userId) {
         link,
         setLink,
         image,
-        setImage,
+        handleSaveWorkImage,
         loading,
         error,
         handleUpdate,
