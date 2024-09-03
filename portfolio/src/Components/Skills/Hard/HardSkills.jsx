@@ -21,8 +21,8 @@ function HardSkills({ language, token }) {
                         <h2 className="skills__subtitle">{language === 'es' ? 'Habilidades duras' : 'Hard Skills'}</h2>
                         <p className="skills__text">
                             {language === 'es'
-                                ? 'Me especializo en la maquetación de páginas con HTML, CSS y JavaScript, y en el desarrollo de web apps con React.'
-                                : 'I specialize in building web pages with HTML, CSS, and JavaScript, and in developing web apps with React.'}
+                                ? 'Me especializo en la maquetación de páginas web con HTML, CSS y JavaScript, así como en el desarrollo de aplicaciones web con React.'
+                                : 'I specialize in building web pages with HTML, CSS, and JavaScript, as well as developing web apps with React.'}
                         </p>
 
                         <Container>

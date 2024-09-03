@@ -17,9 +17,8 @@ function SoftSkills({ language, token }) {
                         <h2 className="skills__subtitle">{language === 'es' ? 'Habilidades Blandas' : 'Soft Skills'}</h2>
                         <p className="skills__text">
                             {language === 'es'
-                                ? 'Me gusta resolver problemas, trabajar en conjunto con demás pares y desarrollar los estilos de las páginas.'
-                                : 'I like to solve problems, work together with other peers and develop page styles.'
-                            }
+                                ? 'Disfruto resolver problemas, colaborar con otros colegas y diseñar los estilos de las páginas.'
+                                : 'I enjoy solving problems, collaborating with peers, and designing page styles.'}
                         </p>
                         <Container>
                             {token && (
