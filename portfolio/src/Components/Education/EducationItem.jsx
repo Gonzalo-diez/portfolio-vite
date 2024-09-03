@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { IoPencil } from 'react-icons/io5';
 import { FaTrash } from 'react-icons/fa';
 
-function EducationItem({ education, language, token, onUpdate, onDelete }) {
+function EducationItem({ education, token, onUpdate, onDelete }) {
   return (
     <div className="education__container">
       <div className="education">

@@ -2,11 +2,8 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { IoPencil } from "react-icons/io5";
 import { FaTrash } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
 
 function WorkItem({ work, language, token, onUpdate, onDelete }) {
-  const navigate = useNavigate();
-
   const handleUpdate = () => onUpdate(work._id);
   const handleDelete = () => onDelete(work._id);
 

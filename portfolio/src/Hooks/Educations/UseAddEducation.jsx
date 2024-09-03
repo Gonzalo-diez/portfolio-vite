@@ -29,7 +29,6 @@ function UseAddEducation(token, userId) {
             });
 
             if (response.status === 200) {
-                console.log(response.data);
                 navigate("/");
             } else {
                 setError("Error al intentar subir la educación.");

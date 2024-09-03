@@ -12,7 +12,6 @@ function UseFetchHardSkills(token) {
             try {
                 const hardRes = await axios.get("https://portfolio-vite.onrender.com/hardSkills/");
                 setHardSkills(hardRes.data);
-                console.log("Habilidades duras:", hardRes.data);
             } catch (err) {
                 setError("Error al obtener las habilidades duras.");
                 console.error("Error al obtener las habilidades duras:", err);

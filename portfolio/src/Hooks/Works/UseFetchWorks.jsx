@@ -8,7 +8,6 @@ function UseFetchWorks() {
     const fetchWorks = async () => {
       try {
         const res = await axios.get("https://portfolio-vite.onrender.com/works/");
-        console.log("Trabajos:", res.data);
         setWorks(res.data);
       } catch (err) {
         console.error("Error al obtener productos:", err);

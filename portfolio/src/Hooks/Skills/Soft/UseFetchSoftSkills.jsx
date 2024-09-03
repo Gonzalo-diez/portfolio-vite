@@ -20,7 +20,6 @@ function UseFetchSoftSkills(token) {
     }, []);
 
     const handleDeleteSoftSkill = async (softId) => {
-        console.log(`Borrando soft skill: ${softId}`);
         try {
             navigate(`/softSkills/protected/deleteSoftSkill/${softId}`);
         } catch (err) {
@@ -29,7 +28,6 @@ function UseFetchSoftSkills(token) {
     };
 
     const handleUpdateSoftSkill = (softId) => {
-        console.log(`Editando soft skill: ${softId}`);
         try {
             navigate(`/softSkills/protected/updateSoftSkill/${softId}`);
         } catch (err) {

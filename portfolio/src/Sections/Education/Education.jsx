@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { MdAddCircleOutline } from "react-icons/md";
 import UseFetchEducations from '../../Hooks/Educations/UseFetchEducations';
 import EducationItem from '../../Components/Education/EducationItem';
-import { useNavigate } from 'react-router-dom';
 
 function Education({ language }) {
   const token = localStorage.getItem("jwtToken");
