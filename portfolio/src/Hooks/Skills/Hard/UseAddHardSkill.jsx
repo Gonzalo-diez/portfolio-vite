@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function UseAddHardSkill(token, userId) {
     const [title, setTitle] = useState("");
+    const [sub, setSub] = useState("");
     const [percentage, setPercentage] = useState("");
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ function UseAddHardSkill(token, userId) {
         try {
             const formData = new FormData();
             formData.append("title", title);
+            formData.append("sub", sub);
             formData.append("percentage", Number(percentage));
             formData.append("userId", userId);
 
@@ -43,6 +45,8 @@ function UseAddHardSkill(token, userId) {
     return {
         title,
         setTitle,
+        sub,
+        setSub,
         percentage,
         setPercentage,
         handleAddHardSkill,

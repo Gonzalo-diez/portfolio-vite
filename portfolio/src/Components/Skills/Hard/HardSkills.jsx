@@ -15,46 +15,37 @@ function HardSkills({ language, token }) {
     return (
         <Container>
             <h2 className="section-title">{language === 'es' ? 'Habilidades Duras' : 'Hard Skills'}</h2>
-            <Row className="skills__container bd-grid">
-                <Col>
-                    <div>
-                        <h2 className="skills__subtitle">{language === 'es' ? 'Habilidades duras' : 'Hard Skills'}</h2>
-                        <p className="skills__text">
-                            {language === 'es'
-                                ? 'Me especializo en la maquetación de páginas web con HTML, CSS y JavaScript, así como en el desarrollo de aplicaciones web con React.'
-                                : 'I specialize in building web pages with HTML, CSS, and JavaScript, as well as developing web apps with React.'}
-                        </p>
-
-                        <Container>
+            {token && (
+                <div className="mb-3">
+                    <Button onClick={handleAddHardSkill} variant="primary">
+                        <MdAddCircleOutline />
+                    </Button>
+                </div>
+            )}
+            <Row xs={1} md={3} className="g-4">
+                {hardSkills.map((hardSkill) => (
+                    <Col key={hardSkill._id}>
+                        <div className="skills__data">
+                            <div className="skills__names">
+                                <span className="skills__name">{language === 'es' ? hardSkill.title : hardSkill.sub}</span>
+                            </div>
+                            <div className="skills__bar" style={{ width: `${hardSkill.percentage}%` }}></div>
+                            <div>
+                                <span className="skills__percentage">{hardSkill.percentage}%</span>
+                            </div>
                             {token && (
-                                <div>
-                                    <Button onClick={handleAddHardSkill} variant='primary'><MdAddCircleOutline /></Button>
+                                <div className="skills__actions">
+                                    <Button onClick={() => handleUpdateHardSkill(hardSkill._id)} variant="info" className="me-2">
+                                        <IoPencil />
+                                    </Button>
+                                    <Button onClick={() => handleDeleteHardSkill(hardSkill._id)} variant="danger">
+                                        <FaTrash />
+                                    </Button>
                                 </div>
                             )}
-                            <Row xs={1} md={2} lg={3} className="g-4">
-                                {hardSkills.map((hardSkill) => (
-                                    <Col key={hardSkill._id}>
-                                        <div className="skills__data">
-                                            <div className="skills__names">
-                                                <span className="skills__name">{hardSkill.title}</span>
-                                            </div>
-                                            <div className="skills__bar" style={{ width: `${hardSkill.percentage}%` }}></div>
-                                            <div>
-                                                <span className="skills__percentage">{hardSkill.percentage}%</span>
-                                            </div>
-                                            {token && (
-                                                <>
-                                                    <Button onClick={() => handleUpdateHardSkill(hardSkill._id)} variant='info'><IoPencil /></Button>
-                                                    <Button onClick={() => handleDeleteHardSkill(hardSkill._id)} variant='danger'><FaTrash /></Button>
-                                                </>
-                                            )}
-                                        </div>
-                                    </Col>
-                                ))}
-                            </Row>
-                        </Container>
-                    </div>
-                </Col>
+                        </div>
+                    </Col>
+                ))}
             </Row>
         </Container>
     );

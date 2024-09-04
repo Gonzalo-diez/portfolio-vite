@@ -7,7 +7,7 @@ function UpdateHardSkill() {
     const token = localStorage.getItem("jwtToken");
     const userId = localStorage.getItem("userId");
     const { id } = useParams();
-    const { title, percentage, error, setTitle, setPercentage, fetchHardSkill, handleUpdate } = UseUpdateHardSkill(token, userId);
+    const { title, sub, percentage, error, setTitle, setSub, setPercentage, fetchHardSkill, handleUpdate } = UseUpdateHardSkill(token, userId);
 
     useEffect(() => {
         fetchHardSkill(id);
@@ -30,6 +30,15 @@ function UpdateHardSkill() {
                                 placeholder="Ingrese el título"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formSub">
+                            <Form.Label>Subtitulo</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Ingrese el subtitulo"
+                                value={sub}
+                                onChange={(e) => setSub(e.target.value)}
                             />
                         </Form.Group>
                         <Form.Group controlId="formPercentage">

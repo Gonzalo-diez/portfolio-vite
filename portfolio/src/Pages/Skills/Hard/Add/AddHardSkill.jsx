@@ -9,6 +9,8 @@ function AddHardSkill() {
     const {
         title,
         setTitle,
+        sub,
+        setSub,
         percentage,
         setPercentage,
         handleAddHardSkill,
@@ -32,6 +34,15 @@ function AddHardSkill() {
                                 placeholder="Ingrese el título"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formSub">
+                            <Form.Label>Subtitulo</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Ingrese el subtitulo"
+                                value={sub}
+                                onChange={(e) => setSub(e.target.value)}
                             />
                         </Form.Group>
                         <Form.Group controlId="formPercentage">

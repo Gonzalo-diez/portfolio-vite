@@ -25,12 +25,12 @@ const hardSkillsService = {
     },
 
     createHardSkill: async (hardSkillData) => {
-        const { title, percentage, userId } = hardSkillData;
+        const { title, sub, percentage, userId } = hardSkillData;
 
         try {
             const user = await userRepository.findById(userId);
 
-            if(!title || isNaN(percentage)) {
+            if(!title || !sub || isNaN(percentage)) {
                 throw new Error("Falta completar campos");
             }
 
@@ -38,9 +38,9 @@ const hardSkillsService = {
                 throw new Error("Usted no es admin");
             }
 
-            const hardSkillDTO = new HardSkillDTO(title, percentage, userId);
+            const hardSkillDTO = new HardSkillDTO(title, sub, percentage, userId);
 
-            const newHardSkill = await hardSkillsRepository.createHardSkill(hardSkillDTO)
+            const newHardSkill = await hardSkillsRepository.createHardSkill(hardSkillDTO);
 
             return newHardSkill;
         }
@@ -50,7 +50,7 @@ const hardSkillsService = {
     },
 
     updateHardSkill: async (hardSkillId, hardSkillUpdateData) => {
-        const { title, percentage, userId } = hardSkillUpdateData;
+        const { title, sub, percentage, userId } = hardSkillUpdateData;
 
         try {
             const hardSkill = await hardSkillsRepository.getHardSkillById(hardSkillId);
@@ -65,11 +65,11 @@ const hardSkillsService = {
                 throw new Error("Usted no es el admin o no esta logueado");
             }
 
-            const hardSkillDTO = HardSkillDTO(title, percentage, userId)
+            const hardSkillDTO = HardSkillDTO(title, sub, percentage, userId);
 
             const updateHardSkill = await hardSkillsRepository.updateHardSkill(hardSkillId, hardSkillDTO);
 
-            return updateHardSkill
+            return updateHardSkill;
         }
         catch (error) {
             throw new Error ("Error en la base de datos:" + error.message)
