@@ -62,8 +62,9 @@ function AddWork() {
               </Form.Group>
               <Button
                 variant="primary"
-                onClick={() => handleAddWork(token, userId)}
+                onClick={handleAddWork}
               > 
+              Agregar trabajo
               </Button>
               {error && <p>Error al agregar trabajo: {error.message}</p>}
             </Form>

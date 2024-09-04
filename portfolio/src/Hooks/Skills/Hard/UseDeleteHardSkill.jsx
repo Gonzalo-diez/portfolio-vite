@@ -17,7 +17,7 @@ function UseDeleteHardSkill(token, id) {
         }
     };
 
-    const handleDelete = async () => {
+    const handleDelete = async (id) => {
         if (!token) {
             console.log("Debes estar autenticado para eliminar la habilidad dura.");
             navigate("/");
