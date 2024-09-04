@@ -21,7 +21,7 @@ function DeleteSoftSkill() {
                         {softSkill && (
                             <div>
                                 <p>Título: {softSkill.title}</p>
-                                <p>Subtítulo: {softSkill.sub_title}</p>
+                                <p>Subtítulo: {softSkill.sub}</p>
                                 <p>Porcentaje: {softSkill.percentage}</p>
                                 <Button variant="danger" onClick={() => handleDelete(id)}>Eliminar</Button>
                             </div>
