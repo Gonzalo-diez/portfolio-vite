@@ -5,9 +5,9 @@ import { MdAddCircleOutline } from "react-icons/md";
 import UseFetchEducations from '../../Hooks/Educations/UseFetchEducations';
 import EducationItem from '../../Components/Education/EducationItem';
 
-function Education({ language, setLoading }) {
+function Education({ language }) {
   const token = localStorage.getItem("jwtToken");
-  const [educations] = UseFetchEducations(setLoading);
+  const [educations] = UseFetchEducations();
   const navigate = useNavigate();
 
   const handleAddEducation = () => navigate('/educations/protected/addEducation');

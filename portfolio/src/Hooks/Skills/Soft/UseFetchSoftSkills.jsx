@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function UseFetchSoftSkills(setLoading) {
+function UseFetchSoftSkills() {
     const [softSkills, setSoftSkills] = useState([]);
     const navigate = useNavigate();
 
@@ -13,8 +13,6 @@ function UseFetchSoftSkills(setLoading) {
                 setSoftSkills(response.data);
             } catch (err) {
                 console.error("Error al obtener las habilidades blandas:", err);
-            } finally {
-                setLoading(false);
             }
         };
 

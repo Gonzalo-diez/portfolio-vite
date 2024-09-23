@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function UseFetchEducations(setLoading) {
+function UseFetchEducations() {
   const [educations, setEducations] = useState([]);
 
   useEffect(() => {
@@ -11,8 +11,6 @@ function UseFetchEducations(setLoading) {
         setEducations(res.data);
       } catch (err) {
         console.error("Error al obtener productos:", err);
-      } finally {
-        setLoading(false);
       }
     };
     fetchEducations();

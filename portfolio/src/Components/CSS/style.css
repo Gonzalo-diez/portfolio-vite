@@ -36,6 +36,15 @@
 }
 
 /*===== Loading =====*/
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0f0f0;
+}
+
 .loader {
   width: 48px;
   height: 48px;
@@ -45,7 +54,9 @@
   border-right: 4px solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  position: relative;
 }
+
 .loader::after {
   content: '';  
   box-sizing: border-box;
@@ -58,6 +69,7 @@
   border-bottom: 4px solid #FF3D00;
   border-left: 4px solid transparent;
 }
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -65,7 +77,8 @@
   100% {
     transform: rotate(360deg);
   }
-} 
+}
+
 
 /*===== BASE =====*/
 *, ::before, ::after {
