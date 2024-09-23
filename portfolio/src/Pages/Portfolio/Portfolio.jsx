@@ -7,16 +7,16 @@ import Education from '../../Sections/Education/Education';
 import Skills from '../../Sections/Skills/Skills';
 import Works from "../../Sections/Works/Works";
 
-function Portfolio({ language }) {
+function Portfolio({ language, setLoading }) {
     const token = localStorage.getItem("jwtToken");
 
     return (
         <>
             <Home language={language} token={token} />
             <About language={language} token={token} />
-            <Skills language={language} token={token} />
-            <Education language={language} token={token} />
-            <Works language={language} token={token} />
+            <Skills language={language} token={token} setLoading={setLoading} />
+            <Education language={language} token={token} setLoading={setLoading} />
+            <Works language={language} token={token} setLoading={setLoading} />
             <Contact language={language} token={token} />
             <Curriculum language={language} token={token} />
         </>

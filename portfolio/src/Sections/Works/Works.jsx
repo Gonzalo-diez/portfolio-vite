@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import UseFetchWorks from '../../Hooks/Works/UseFetchWorks';
 import WorkItem from '../../Components/Works/WorksItem';
 
-function Works({ language }) {
+function Works({ language, setLoading }) {
   const token = localStorage.getItem("jwtToken");
-  const [works] = UseFetchWorks();
+  const [works] = UseFetchWorks(setLoading);
   const navigate = useNavigate();
 
   const handleAddWork = () => navigate('/works/protected/addWork');

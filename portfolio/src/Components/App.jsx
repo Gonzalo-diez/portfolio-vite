@@ -25,9 +25,18 @@ function App() {
 
   const [language, setLanguage] = useState('es');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const changeLanguage = (newLanguage) => {
     setLanguage(newLanguage);
+  }
+
+  if(loading) {
+    return (
+      <>
+        <span class="loader"></span>
+      </>
+    )
   }
 
   return (
@@ -35,7 +44,7 @@ function App() {
       <Menu changeLanguage={changeLanguage} language={language} token={token} userId={userId} />
       <Layout>
         <Routes>
-          <Route path='/' element={<Portfolio language={language}  />} />
+          <Route path='/' element={<Portfolio language={language} setLoading={setLoading} />} />
           <Route path='/user/login' element={<Login setIsAuthenticated={setIsAuthenticated}  />} />
           <Route path='/works/protected/addWork' element={<AddWork token={token} isAuthenticated={isAuthenticated}  userId={userId} />} />
           <Route path='/works/protected/updateWork/:id' element={<UpdateWork token={token} userId={userId} />} />

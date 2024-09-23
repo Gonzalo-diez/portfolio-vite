@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function UseFetchHardSkills(token) {
+function UseFetchHardSkills(setLoading) {
     const [hardSkills, setHardSkills] = useState([]);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -15,6 +15,8 @@ function UseFetchHardSkills(token) {
             } catch (err) {
                 setError("Error al obtener las habilidades duras.");
                 console.error("Error al obtener las habilidades duras:", err);
+            } finally {
+                setLoading(false);
             }
         };
 

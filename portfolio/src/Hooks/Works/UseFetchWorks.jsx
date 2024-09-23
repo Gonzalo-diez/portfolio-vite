@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function UseFetchWorks() {
+function UseFetchWorks(setLoading) {
   const [works, setWorks] = useState([]);
 
   useEffect(() => {
@@ -11,6 +11,8 @@ function UseFetchWorks() {
         setWorks(res.data);
       } catch (err) {
         console.error("Error al obtener productos:", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchWorks();

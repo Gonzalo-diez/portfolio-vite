@@ -5,8 +5,8 @@ import { IoPencil } from 'react-icons/io5';
 import { FaTrash } from 'react-icons/fa';
 import UseFetchHardSkills from '../../../Hooks/Skills/Hard/UseFetchHardSkills';
 
-function HardSkills({ language, token }) {
-    const { hardSkills, error, handleDeleteHardSkill, handleUpdateHardSkill, handleAddHardSkill } = UseFetchHardSkills(token);
+function HardSkills({ language, token, setLoading }) {
+    const { hardSkills, error, handleDeleteHardSkill, handleUpdateHardSkill, handleAddHardSkill } = UseFetchHardSkills(setLoading);
 
     if (error) {
         return <p>{error}</p>;

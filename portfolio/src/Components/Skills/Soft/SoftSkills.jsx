@@ -5,8 +5,8 @@ import { FaTrash } from 'react-icons/fa';
 import { IoPencil } from 'react-icons/io5';
 import UseFetchSoftSkills from '../../../Hooks/Skills/Soft/UseFetchSoftSkills';
 
-function SoftSkills({ language, token }) {
-    const { softSkills, handleDeleteSoftSkill, handleUpdateSoftSkill, handleAddSoftSkill } = UseFetchSoftSkills(token);
+function SoftSkills({ language, token, setLoading }) {
+    const { softSkills, handleDeleteSoftSkill, handleUpdateSoftSkill, handleAddSoftSkill } = UseFetchSoftSkills(setLoading);
 
     return (
         <Container>
