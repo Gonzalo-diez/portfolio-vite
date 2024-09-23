@@ -11,36 +11,6 @@ import Works from "../../Sections/Works/Works";
 function Portfolio({ language }) {
     const token = localStorage.getItem("jwtToken");
 
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchAllData = async () => {
-            setLoading(true);
-            try {
-                await Promise.all([
-                    axios.get("https://portfolio-vite.onrender.com/educations/"),
-                    axios.get("https://portfolio-vite.onrender.com/hardSkills/"),
-                    axios.get("https://portfolio-vite.onrender.com/softSkills/"),
-                    axios.get("https://portfolio-vite.onrender.com/works/"),
-                ]);
-            } catch (err) {
-                console.error("Error al obtener los datos:", err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchAllData();
-    }, []);
-
-    if (loading) {
-        return (
-            <div className="loading-screen">
-                <span className="loader"></span>
-            </div>
-        )
-    }
-
     return (
         <>
             <Home language={language} token={token} />
