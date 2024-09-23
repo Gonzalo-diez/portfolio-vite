@@ -34,7 +34,7 @@ function App() {
   if(loading) {
     return (
       <div className="loading-screen">
-        <span class="loader"></span>
+        <span className="loader"></span>
       </div>
     )
   }
