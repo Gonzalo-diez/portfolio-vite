@@ -33,7 +33,7 @@ function Menu({ changeLanguage, language, token, userId }) {
     };
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" sticky="top">
             <Container>
                 <Navbar.Brand href="/">Gonzalo</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarSupportedContent" />
