@@ -6,6 +6,8 @@ import session from "express-session";
 import path from "path";
 import cookieParser from "cookie-parser";
 import MongoStore from "connect-mongo";
+import compression from "compression";
+import expressStaticGzip from "express-static-gzip";
 import __dirname from "./util.js";
 import router from "./routes.js";
 import auth from "./config/auth.js";
@@ -19,6 +21,8 @@ const mongoStore = MongoStore.create({
     mongoUrl: MONGO_URL,
     collectionName: 'sessions'
 });
+
+app.use(compression())
 
 app.use(cookieParser());
 
@@ -58,6 +62,17 @@ app.use(passport.session());
 
 app.use("/", router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+    '/',
+    expressStaticGzip(path.join(__dirname, 'public'), {
+        enableBrotli: true,
+        orderPreference: ['br', 'gz'],
+        setHeaders: (res, path) => {
+            res.setHeader('Cache-Control', 'public, max-age=31536000');
+        },
+    })
+);
+
 
 // Servidor HTTP
 httpServer.listen(PORT || 8080, () => {
