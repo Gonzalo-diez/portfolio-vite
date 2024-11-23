@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { useState, useEffect, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Layout from "./Footer/Layout";
@@ -67,6 +67,14 @@ function App() {
       }
     };
 
+    if (loading) {
+      return (
+        <div className="loading-screen">
+          <span className="loader"></span>
+        </div>
+      );
+    }
+
     fetchAllData();
   }, []);
 
@@ -79,93 +87,85 @@ function App() {
         userId={userId}
       />
       <Layout>
-        <Suspense
-          fallback={
-            <div className="loading-screen">
-              <span className="loader"></span>
-            </div>
-          }
-        >
-          <Routes>
-            <Route path="/" element={<Portfolio language={language} />} />
-            <Route
-              path="/user/login"
-              element={<Login setIsAuthenticated={setIsAuthenticated} />}
-            />
-            <Route
-              path="/works/protected/addWork"
-              element={
-                <AddWork
-                  token={token}
-                  isAuthenticated={isAuthenticated}
-                  userId={userId}
-                />
-              }
-            />
-            <Route
-              path="/works/protected/updateWork/:id"
-              element={<UpdateWork token={token} userId={userId} />}
-            />
-            <Route
-              path="/works/protected/deleteWork/:id"
-              element={<DeleteWork token={token} userId={userId} />}
-            />
-            <Route
-              path="/hardSkills/protected/addHardSkill"
-              element={
-                <AddHardSkill
-                  token={token}
-                  isAuthenticated={isAuthenticated}
-                  userId={userId}
-                />
-              }
-            />
-            <Route
-              path="/hardSkills/protected/updateHardSkill/:id"
-              element={<UpdateHardSkill token={token} userId={userId} />}
-            />
-            <Route
-              path="/hardSkills/protected/deleteHardSkill/:id"
-              element={<DeleteHardSkill token={token} userId={userId} />}
-            />
-            <Route
-              path="/softSkills/protected/addSoftSkill"
-              element={
-                <AddSoftSkill
-                  token={token}
-                  isAuthenticated={isAuthenticated}
-                  userId={userId}
-                />
-              }
-            />
-            <Route
-              path="/softSkills/protected/updateSoftSkill/:id"
-              element={<UpdateSoftSkill token={token} userId={userId} />}
-            />
-            <Route
-              path="/softSkills/protected/deleteSoftSkill/:id"
-              element={<DeleteSoftSkill token={token} userId={userId} />}
-            />
-            <Route
-              path="/educations/protected/addEducation"
-              element={
-                <AddEducation
-                  token={token}
-                  isAuthenticated={isAuthenticated}
-                  userId={userId}
-                />
-              }
-            />
-            <Route
-              path="/educations/protected/updateEducation/:id"
-              element={<UpdateEducation token={token} userId={userId} />}
-            />
-            <Route
-              path="/educations/protected/deleteEducation/:id"
-              element={<DeleteEducation token={token} userId={userId} />}
-            />
-          </Routes>
-        </Suspense>
+        <Routes>
+          <Route path="/" element={<Portfolio language={language} />} />
+          <Route
+            path="/user/login"
+            element={<Login setIsAuthenticated={setIsAuthenticated} />}
+          />
+          <Route
+            path="/works/protected/addWork"
+            element={
+              <AddWork
+                token={token}
+                isAuthenticated={isAuthenticated}
+                userId={userId}
+              />
+            }
+          />
+          <Route
+            path="/works/protected/updateWork/:id"
+            element={<UpdateWork token={token} userId={userId} />}
+          />
+          <Route
+            path="/works/protected/deleteWork/:id"
+            element={<DeleteWork token={token} userId={userId} />}
+          />
+          <Route
+            path="/hardSkills/protected/addHardSkill"
+            element={
+              <AddHardSkill
+                token={token}
+                isAuthenticated={isAuthenticated}
+                userId={userId}
+              />
+            }
+          />
+          <Route
+            path="/hardSkills/protected/updateHardSkill/:id"
+            element={<UpdateHardSkill token={token} userId={userId} />}
+          />
+          <Route
+            path="/hardSkills/protected/deleteHardSkill/:id"
+            element={<DeleteHardSkill token={token} userId={userId} />}
+          />
+          <Route
+            path="/softSkills/protected/addSoftSkill"
+            element={
+              <AddSoftSkill
+                token={token}
+                isAuthenticated={isAuthenticated}
+                userId={userId}
+              />
+            }
+          />
+          <Route
+            path="/softSkills/protected/updateSoftSkill/:id"
+            element={<UpdateSoftSkill token={token} userId={userId} />}
+          />
+          <Route
+            path="/softSkills/protected/deleteSoftSkill/:id"
+            element={<DeleteSoftSkill token={token} userId={userId} />}
+          />
+          <Route
+            path="/educations/protected/addEducation"
+            element={
+              <AddEducation
+                token={token}
+                isAuthenticated={isAuthenticated}
+                userId={userId}
+              />
+            }
+          />
+          <Route
+            path="/educations/protected/updateEducation/:id"
+            element={<UpdateEducation token={token} userId={userId} />}
+          />
+          <Route
+            path="/educations/protected/deleteEducation/:id"
+            element={<DeleteEducation token={token} userId={userId} />}
+          />
+        </Routes>
       </Layout>
     </>
   );
