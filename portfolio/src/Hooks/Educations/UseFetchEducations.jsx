@@ -10,7 +10,7 @@ function UseFetchEducations() {
         const res = await axios.get("https://portfolio-vite.onrender.com/educations/");
         setEducations(res.data);
       } catch (err) {
-        console.error("Error al obtener productos:", err);
+        console.error("Error al obtener las certificaciones:", err);
       }
     };
     fetchEducations();

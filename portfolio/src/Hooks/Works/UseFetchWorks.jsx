@@ -10,7 +10,7 @@ function UseFetchWorks() {
         const res = await axios.get("https://portfolio-vite.onrender.com/works/");
         setWorks(res.data);
       } catch (err) {
-        console.error("Error al obtener productos:", err);
+        console.error("Error al obtener los proyectos:", err);
       }
     };
     fetchWorks();
