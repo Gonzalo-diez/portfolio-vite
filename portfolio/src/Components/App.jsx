@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Footer/Layout";
 import Menu from "./Menu/Menu";
