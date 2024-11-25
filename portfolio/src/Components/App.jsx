@@ -1,6 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
 import Layout from "./Footer/Layout";
 import Menu from "./Menu/Menu";
 import "./CSS/style.css";
