@@ -69,7 +69,7 @@ function App() {
       />
       <Layout>
         <Routes>
-          <Route path="/" element={<Portfolio language={language} />} />
+          <Route path="/" element={<Portfolio loading={loading} language={language} />} />
           <Route
             path="/user/login"
             element={<Login setIsAuthenticated={setIsAuthenticated} />}
