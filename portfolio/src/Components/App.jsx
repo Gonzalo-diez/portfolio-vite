@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Footer/Layout";
 import Menu from "./Menu/Menu";
@@ -23,12 +23,41 @@ function App() {
   const token = localStorage.getItem("jwtToken");
   const userId = localStorage.getItem("userId");
 
+  const [loading, setLoading] = useState(true);
   const [language, setLanguage] = useState("es");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const changeLanguage = (newLanguage) => {
     setLanguage(newLanguage);
   };
+
+  useEffect(() => {
+    const fetchAllData = async () => {
+      setLoading(true);
+      try {
+        await Promise.all([
+          axios.get("https://portfolio-vite.onrender.com/educations/"),
+          axios.get("https://portfolio-vite.onrender.com/hardSkills/"),
+          axios.get("https://portfolio-vite.onrender.com/softSkills/"),
+          axios.get("https://portfolio-vite.onrender.com/works/"),
+        ]);
+      } catch (err) {
+        console.error("Error al obtener los datos:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAllData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <span className="loader"></span>
+      </div>
+    );
+  }
 
   return (
     <>
