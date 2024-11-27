@@ -14,7 +14,7 @@ function Education({ language }) {
             : "My degrees obtained"}
         </p>
         <Row>
-          <Col>
+          <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
                 <a
@@ -38,7 +38,7 @@ function Education({ language }) {
               </div>
             </div>
           </Col>
-          <Col>
+          <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
                 <a
@@ -47,7 +47,7 @@ function Education({ language }) {
                   className="education__img"
                 >
                   <img
-                    src={`https://portfolio-vite.onrender.com/eduImg/desarrollo.png`}
+                    src={`https://portfolio-vite.onrender.com/eduImg/javascript.png`}
                     alt="JavaScript"
                     width="800"
                   />
@@ -56,7 +56,7 @@ function Education({ language }) {
               </div>
             </div>
           </Col>
-          <Col>
+          <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
                 <a
@@ -74,7 +74,7 @@ function Education({ language }) {
               </div>
             </div>
           </Col>
-          <Col>
+          <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
                 <a
@@ -92,7 +92,7 @@ function Education({ language }) {
               </div>
             </div>
           </Col>
-          <Col>
+          <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
                 <a
@@ -110,7 +110,7 @@ function Education({ language }) {
               </div>
             </div>
           </Col>
-          <Col>
+          <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
                 <a
@@ -128,7 +128,7 @@ function Education({ language }) {
               </div>
             </div>
           </Col>
-          <Col>
+          <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
                 <a
@@ -158,7 +158,7 @@ function Education({ language }) {
               </div>
             </div>
           </Col>
-          <Col>
+          <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
                 <a
