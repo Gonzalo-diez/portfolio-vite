@@ -3,8 +3,8 @@ import Home from "../../Sections/Home/Home";
 import About from "../../Sections/About/About";
 import Curriculum from "../../Sections/CV/Curriculum";
 import Contact from "../../Sections/Contact/Contact";
-import Education from "../../Sections/Education";
-import Skills from "../../Sections/Skills";
+import Education from "../../Sections/Education/Education";
+import Skills from "../../Sections/Skills/Skills";
 
 const LazyWorks = React.lazy(() => import("../../Sections/Works/Works"));
 
