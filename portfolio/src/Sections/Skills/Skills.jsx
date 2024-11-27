@@ -3,16 +3,14 @@ import HardSkills from '../../Components/Skills/Hard/HardSkills';
 import SoftSkills from '../../Components/Skills/Soft/SoftSkills';
 
 function Skills({ language }) {
-    const token = localStorage.getItem("jwtToken");
-
     return (
         <section id="skills">
             <div className="skills section" id="hard-skills">
-                <HardSkills language={language} token={token} />
+                <HardSkills language={language} />
             </div>
 
             <div className="skills section" id="soft-skills">
-                <SoftSkills language={language} token={token} />
+                <SoftSkills language={language} />
             </div>
         </section>
     );
