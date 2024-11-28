@@ -25,11 +25,11 @@ function TechStack({ language }) {
             <p>Node.js</p>
           </Col>
           <Col lg={2} md={3} sm={4} xs={6} className="text-center mb-4">
-            <FaPython size={60} className="text-warning" />
+            <FaPython size={60} className="text-primary" />
             <p>Python</p>
           </Col>
           <Col lg={2} md={3} sm={4} xs={6} className="text-center mb-4">
-            <SiDjango size={60} className="text-warning" />
+            <SiDjango size={60} className="text-success" />
             <p>Django</p>
           </Col>
           <Col lg={2} md={3} sm={4} xs={6} className="text-center mb-4">
