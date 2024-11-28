@@ -8,6 +8,7 @@ import AddWork from "../Pages/Works/Add/AddWork";
 import UpdateWork from "../Pages/Works/Update/UpdateWork";
 import DeleteWork from "../Pages/Works/Delete/DeleteWork";
 import "./CSS/style.css";
+import "animate.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {

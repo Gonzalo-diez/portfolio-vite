@@ -13,7 +13,7 @@ function Education({ language }) {
             ? "Mis títulos conseguidos"
             : "My degrees obtained"}
         </p>
-        <Row>
+        <Row className="animate__fadeInLeft animate__delay-2s">
           <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
