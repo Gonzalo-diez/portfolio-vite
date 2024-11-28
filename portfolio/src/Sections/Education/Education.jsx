@@ -21,11 +21,11 @@ function Education({ language }) {
                   download={
                     language === "es" ? "Desarrollo Web" : "Web Development"
                   }
-                  href={`https://portfolio-vite.onrender.com/eduImg/desarrollo.png`}
+                  href="/img/desarrollo.png"
                   className="education__img"
                 >
                   <img
-                    src={`https://portfolio-vite.onrender.com/eduImg/desarrollo.png`}
+                    src="/img/desarrollo.png"
                     alt={
                       language === "es" ? "Desarrollo Web" : "Web Development"
                     }
@@ -43,11 +43,11 @@ function Education({ language }) {
               <div className="education">
                 <a
                   download="JavaScript"
-                  href={`https://portfolio-vite.onrender.com/eduImg/javascript.png`}
+                  href="/img/javascript.png"
                   className="education__img"
                 >
                   <img
-                    src={`https://portfolio-vite.onrender.com/eduImg/javascript.png`}
+                    src="/img/javascript.png"
                     alt="JavaScript"
                     width="800"
                   />
@@ -61,11 +61,11 @@ function Education({ language }) {
               <div className="education">
                 <a
                   download="React"
-                  href={`https://portfolio-vite.onrender.com/eduImg/react.png`}
+                  href="/img/react.png"
                   className="education__img"
                 >
                   <img
-                    src={`https://portfolio-vite.onrender.com/eduImg/react.png`}
+                    src="/img/react.png"
                     alt="React"
                     width="800"
                   />
@@ -79,11 +79,11 @@ function Education({ language }) {
               <div className="education">
                 <a
                   download="WordPress"
-                  href={`https://portfolio-vite.onrender.com/eduImg/wordpress.png`}
+                  href="/img/wordpress.png"
                   className="education__img"
                 >
                   <img
-                    src={`https://portfolio-vite.onrender.com/eduImg/wordpress.png`}
+                    src="/img/wordpress.png"
                     alt="WordPress"
                     width="800"
                   />
@@ -97,11 +97,11 @@ function Education({ language }) {
               <div className="education">
                 <a
                   download="Python/Django"
-                  href={`https://portfolio-vite.onrender.com/eduImg/python.png`}
+                  href="/img/python.png"
                   className="education__img"
                 >
                   <img
-                    src={`https://portfolio-vite.onrender.com/eduImg/python.png`}
+                    src="/img/python.png"
                     alt="Python/Django"
                     width="800"
                   />
@@ -115,11 +115,11 @@ function Education({ language }) {
               <div className="education">
                 <a
                   download="C#"
-                  href={`https://portfolio-vite.onrender.com/eduImg/c-sharp.png`}
+                  href="/img/c-sharp.png"
                   className="education__img"
                 >
                   <img
-                    src={`https://portfolio-vite.onrender.com/eduImg/c-sharp.png`}
+                    src="/img/c-sharp.png"
                     alt="C#"
                     width="800"
                   />
@@ -137,11 +137,11 @@ function Education({ language }) {
                       ? "Desarrollo Back end/Node.js"
                       : "Back end Development/Node.js"
                   }
-                  href={`https://portfolio-vite.onrender.com/eduImg/backend.png`}
+                  href="/img/backend.png"
                   className="education__img"
                 >
                   <img
-                    src={`https://portfolio-vite.onrender.com/eduImg/backend.png`}
+                    src="/img/backend.png"
                     alt={
                       language === "es"
                         ? "Desarrollo Back end/Node.js"
@@ -165,11 +165,11 @@ function Education({ language }) {
                   download={
                     language === "es" ? "Base de Datos/SQL" : "Databases/SQL"
                   }
-                  href={`https://portfolio-vite.onrender.com/eduImg/sql.png`}
+                  href="/img/sql.png"
                   className="education__img"
                 >
                   <img
-                    src={`https://portfolio-vite.onrender.com/eduImg/sql.png`}
+                    src="/img/sql.png"
                     alt={
                       language === "es" ? "Base de Datos/SQL" : "Databases/SQL"
                     }
