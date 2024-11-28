@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { MdAddCircleOutline } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
+import "animate.css";
 import UseFetchWorks from '../../Hooks/Works/UseFetchWorks';
 import WorkItem from '../../Components/Works/WorksItem';
 
