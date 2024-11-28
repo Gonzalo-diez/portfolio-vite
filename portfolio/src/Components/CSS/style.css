@@ -292,6 +292,11 @@ img {
   text-decoration: none;
 }
 
+/* ===== TECH STACK =====*/
+.bootstrap-icon {
+  color: #563D7C;
+}
+
 /* ===== WORK =====*/
 .work__img {
   box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
