@@ -297,6 +297,14 @@ img {
   color: #563D7C;
 }
 
+.python-icon {
+  background: linear-gradient(45deg, #3B77A8, #FFDB51);
+  -webkit-background-clip: text;
+  -moz-background-clip: text; 
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* ===== WORK =====*/
 .work__img {
   box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
