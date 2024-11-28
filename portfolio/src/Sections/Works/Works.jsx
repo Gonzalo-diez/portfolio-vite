@@ -19,7 +19,7 @@ function Works({ language }) {
     <section className="work section" id="work">
       <Container>
         <h2 className="section-title">{language === 'es' ? 'Trabajos' : 'Works'}</h2>
-        <Row className="animate__fadeInLeft animate__delay-2s">
+        <Row className="animate__fadeInLeft">
           {token && (
             <div>
               <Button onClick={handleAddWork} variant='primary'><MdAddCircleOutline /></Button>
