@@ -8,7 +8,7 @@ function TechStack({ language }) {
     <section className="tech-stack section" id="tech-stack">
       <Container>
         <h2 className="section-title">Tech Stack</h2>
-        <p className="text-center">
+        <p className="text-center stack_text">
           {language === "es" ? "Aquí están las tecnologías y lenguajes de programación que manejo:" : "Here are the technologies and programming languages that I use:"}
         </p>
         <Row className="justify-content-center">

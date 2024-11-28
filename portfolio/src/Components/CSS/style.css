@@ -293,6 +293,11 @@ img {
 }
 
 /* ===== TECH STACK =====*/
+.stack_text {
+  font-size: 1.5rem;
+  row-gap: 2rem;
+}
+
 .bootstrap-icon {
   color: #563D7C;
 }
