@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { MdAddCircleOutline } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
-import "animate.css";
 import UseFetchWorks from '../../Hooks/Works/UseFetchWorks';
 import WorkItem from '../../Components/Works/WorksItem';
 
@@ -19,7 +18,7 @@ function Works({ language }) {
     <section className="work section" id="work">
       <Container>
         <h2 className="section-title">{language === 'es' ? 'Trabajos' : 'Works'}</h2>
-        <Row className="animate__fadeInLeft">
+        <Row>
           {token && (
             <div>
               <Button onClick={handleAddWork} variant='primary'><MdAddCircleOutline /></Button>

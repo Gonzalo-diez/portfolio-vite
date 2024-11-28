@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import "animate.css";
 
 function Education({ language }) {
   return (
@@ -14,7 +13,7 @@ function Education({ language }) {
             ? "Mis títulos conseguidos"
             : "My degrees obtained"}
         </p>
-        <Row className="animate__fadeInLeft">
+        <Row>
           <Col lg={4} md={6} sm={12}>
             <div className="education__container">
               <div className="education">
