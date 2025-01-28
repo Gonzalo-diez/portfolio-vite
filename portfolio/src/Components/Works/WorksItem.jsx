@@ -1,25 +1,64 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import { IoPencil } from "react-icons/io5";
-import { FaTrash } from "react-icons/fa";
+import { Container, Row, Col } from 'react-bootstrap';
 
-function WorkItem({ work, language, token, onUpdate, onDelete }) {
-  const handleUpdate = () => onUpdate(work._id);
-  const handleDelete = () => onDelete(work._id);
+function WorkItem({ language }) {
+  const works = [
+    {
+      href: "https://gonzalo-diez.github.io/tateti/",
+      src: "https://portfolio-vite.onrender.com/workImg/tateti.gif",
+      alt: "Ta-Te-Ti",
+      title: language === 'es' ? 'Ta-Te-Ti' : 'Tic-Tac-Toe',
+    },
+    {
+      href: "https://gonzalo-diez.github.io/calculadora/",
+      src: "https://portfolio-vite.onrender.com/workImg/calculadora.gif",
+      alt: "Calculadora JS",
+      title: language === 'es' ? 'Calculadora JS' : 'Calculator JS',
+    },
+    {
+      href: "https://github.com/Gonzalo-diez/proyecto-app-libreria",
+      src: "https://portfolio-vite.onrender.com/workImg/gifApp.gif",
+      alt: "React E-commerce",
+      title: "React E-commerce",
+    },
+    {
+      href: "https://angular18-app-clima.netlify.app/",
+      src: "https://portfolio-vite.onrender.com/workImg/app-clima-angular.gif",
+      alt: "Angular app clima",
+      title: language === 'es' ? 'Angular app clima' : 'Angular weather app',
+    },
+    {
+      href: "https://fakelibre.netlify.app/products",
+      src: "https://portfolio-vite.onrender.com/workImg/angular-ecommerce.gif",
+      alt: "Angular E-commerce",
+      title: "Angular E-commerce",
+    },
+    {
+      href: "https://mindhub-c593b.web.app/",
+      src: "https://portfolio-vite.onrender.com/workImg/mindhub.gif",
+      alt: "Mindhub angular app",
+      title: "Mindhub angular app",
+    },
+  ];
 
   return (
-    <div className="work__container">
-      <a href={work.link} className="work__img">
-        <img src={`https://portfolio-vite.onrender.com/workImg/${work.image}`} width="800" alt={work.title} />
-        <h3>{language === 'es' ? work.title : work.sub}</h3>
-      </a>
-      {token && (
-        <>
-          <Button onClick={handleUpdate} variant='info'><IoPencil /></Button>
-          <Button onClick={handleDelete} variant='danger'><FaTrash /></Button>
-        </>
-      )}
-    </div>
+    <Container className="mt-4">
+      <Row xs={1} sm={2} md={3} className="g-4">
+        {works.map((work, index) => (
+          <Col key={index} className="d-flex justify-content-center">
+            <a href={work.href} className="work__img text-center">
+              <img
+                src={work.src}
+                alt={work.alt}
+                className="img-fluid rounded mb-2"
+                style={{ maxWidth: '100%', height: 'auto' }}
+              />
+              <h3 className="h5">{work.title}</h3>
+            </a>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 

@@ -2,6 +2,56 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 function Education({ language }) {
+  const educationData = [
+    {
+      title: language === "es" ? "Desarrollo Web" : "Web Development",
+      img: "/img/desarrollo.png",
+      downloadName: language === "es" ? "Desarrollo Web" : "Web Development",
+    },
+    {
+      title: "JavaScript",
+      img: "/img/javascript.png",
+      downloadName: "JavaScript",
+    },
+    {
+      title: "React",
+      img: "/img/react.png",
+      downloadName: "React",
+    },
+    {
+      title: "WordPress",
+      img: "/img/wordpress.png",
+      downloadName: "WordPress",
+    },
+    {
+      title: "Python/Django",
+      img: "/img/python.png",
+      downloadName: "Python/Django",
+    },
+    {
+      title: "C#",
+      img: "/img/c-sharp.png",
+      downloadName: "C#",
+    },
+    {
+      title:
+        language === "es"
+          ? "Desarrollo Back end/Node.js"
+          : "Back end Development/Node.js",
+      img: "/img/backend.png",
+      downloadName:
+        language === "es"
+          ? "Desarrollo Back end/Node.js"
+          : "Back end Development/Node.js",
+    },
+    {
+      title: language === "es" ? "Base de Datos/SQL" : "Databases/SQL",
+      img: "/img/sql.png",
+      downloadName:
+        language === "es" ? "Base de Datos/SQL" : "Databases/SQL",
+    },
+  ];
+
   return (
     <section className="education section" id="education">
       <Container>
@@ -14,174 +64,26 @@ function Education({ language }) {
             : "My degrees obtained"}
         </p>
         <Row>
-          <Col lg={4} md={6} sm={12}>
-            <div className="education__container">
-              <div className="education">
-                <a
-                  download={
-                    language === "es" ? "Desarrollo Web" : "Web Development"
-                  }
-                  href="/img/desarrollo.png"
-                  className="education__img"
-                >
-                  <img
-                    src="/img/desarrollo.png"
-                    alt={
-                      language === "es" ? "Desarrollo Web" : "Web Development"
-                    }
-                    width="800"
-                  />
-                  <h3 className="education__title">
-                    {language === "es" ? "Desarrollo Web" : "Web Development"}
-                  </h3>
-                </a>
+          {educationData.map((item, index) => (
+            <Col lg={4} md={6} sm={12} key={index}>
+              <div className="education__container">
+                <div className="education">
+                  <a
+                    download={item.downloadName}
+                    href={item.img}
+                    className="education__img"
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      width="800"
+                    />
+                    <h3 className="education__title">{item.title}</h3>
+                  </a>
+                </div>
               </div>
-            </div>
-          </Col>
-          <Col lg={4} md={6} sm={12}>
-            <div className="education__container">
-              <div className="education">
-                <a
-                  download="JavaScript"
-                  href="/img/javascript.png"
-                  className="education__img"
-                >
-                  <img
-                    src="/img/javascript.png"
-                    alt="JavaScript"
-                    width="800"
-                  />
-                  <h3 className="education__title">JavaScript</h3>
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col lg={4} md={6} sm={12}>
-            <div className="education__container">
-              <div className="education">
-                <a
-                  download="React"
-                  href="/img/react.png"
-                  className="education__img"
-                >
-                  <img
-                    src="/img/react.png"
-                    alt="React"
-                    width="800"
-                  />
-                  <h3 className="education__title">React</h3>
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col lg={4} md={6} sm={12}>
-            <div className="education__container">
-              <div className="education">
-                <a
-                  download="WordPress"
-                  href="/img/wordpress.png"
-                  className="education__img"
-                >
-                  <img
-                    src="/img/wordpress.png"
-                    alt="WordPress"
-                    width="800"
-                  />
-                  <h3 className="education__title">WordPress</h3>
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col lg={4} md={6} sm={12}>
-            <div className="education__container">
-              <div className="education">
-                <a
-                  download="Python/Django"
-                  href="/img/python.png"
-                  className="education__img"
-                >
-                  <img
-                    src="/img/python.png"
-                    alt="Python/Django"
-                    width="800"
-                  />
-                  <h3 className="education__title">Python/Django</h3>
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col lg={4} md={6} sm={12}>
-            <div className="education__container">
-              <div className="education">
-                <a
-                  download="C#"
-                  href="/img/c-sharp.png"
-                  className="education__img"
-                >
-                  <img
-                    src="/img/c-sharp.png"
-                    alt="C#"
-                    width="800"
-                  />
-                  <h3 className="education__title">C#</h3>
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col lg={4} md={6} sm={12}>
-            <div className="education__container">
-              <div className="education">
-                <a
-                  download={
-                    language === "es"
-                      ? "Desarrollo Back end/Node.js"
-                      : "Back end Development/Node.js"
-                  }
-                  href="/img/backend.png"
-                  className="education__img"
-                >
-                  <img
-                    src="/img/backend.png"
-                    alt={
-                      language === "es"
-                        ? "Desarrollo Back end/Node.js"
-                        : "Back end Development/Node.js"
-                    }
-                    width="800"
-                  />
-                  <h3 className="education__title">
-                    {language === "es"
-                      ? "Desarrollo Back end/Node.js"
-                      : "Back end Development/Node.js"}
-                  </h3>
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col lg={4} md={6} sm={12}>
-            <div className="education__container">
-              <div className="education">
-                <a
-                  download={
-                    language === "es" ? "Base de Datos/SQL" : "Databases/SQL"
-                  }
-                  href="/img/sql.png"
-                  className="education__img"
-                >
-                  <img
-                    src="/img/sql.png"
-                    alt={
-                      language === "es" ? "Base de Datos/SQL" : "Databases/SQL"
-                    }
-                    width="800"
-                  />
-                  <h3 className="education__title">
-                    {language === "es" ? "Base de Datos/SQL" : "Databases/SQL"}
-                  </h3>
-                </a>
-              </div>
-            </div>
-          </Col>
+            </Col>
+          ))}
         </Row>
       </Container>
     </section>

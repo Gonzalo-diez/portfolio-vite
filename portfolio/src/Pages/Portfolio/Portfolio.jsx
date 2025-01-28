@@ -6,12 +6,9 @@ import Contact from "../../Sections/Contact/Contact";
 import Education from "../../Sections/Education/Education";
 import Skills from "../../Sections/Skills/Skills";
 import TechStack from "../../Sections/Tech Stack/TechStack";
-
-const LazyWorks = React.lazy(() => import("../../Sections/Works/Works"));
+import Works from "../../Sections/Works/Works";
 
 function Portfolio({ language }) {
-  const token = localStorage.getItem("jwtToken");
-
   return (
     <>
       <Home language={language} />
@@ -19,7 +16,7 @@ function Portfolio({ language }) {
       <Skills language={language} />
       <TechStack language={language} />
       <Education language={language} />
-      <LazyWorks language={language} token={token} />
+      <Works language={language} />
       <Contact language={language} />
       <Curriculum language={language} />
     </>
