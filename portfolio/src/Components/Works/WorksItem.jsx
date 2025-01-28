@@ -5,37 +5,37 @@ function WorkItem({ language }) {
   const works = [
     {
       href: "https://gonzalo-diez.github.io/tateti/",
-      src: "https://portfolio-vite.onrender.com/workImg/tateti.gif",
+      src: "/img/tateti.gif",
       alt: "Ta-Te-Ti",
       title: language === 'es' ? 'Ta-Te-Ti' : 'Tic-Tac-Toe',
     },
     {
       href: "https://gonzalo-diez.github.io/calculadora/",
-      src: "https://portfolio-vite.onrender.com/workImg/calculadora.gif",
+      src: "/img/calculadora.gif",
       alt: "Calculadora JS",
       title: language === 'es' ? 'Calculadora JS' : 'Calculator JS',
     },
     {
       href: "https://github.com/Gonzalo-diez/proyecto-app-libreria",
-      src: "https://portfolio-vite.onrender.com/workImg/gifApp.gif",
+      src: "/img/gifApp.gif",
       alt: "React E-commerce",
       title: "React E-commerce",
     },
     {
       href: "https://angular18-app-clima.netlify.app/",
-      src: "https://portfolio-vite.onrender.com/workImg/app-clima-angular.gif",
+      src: "/img/app-clima-angular.gif",
       alt: "Angular app clima",
       title: language === 'es' ? 'Angular app clima' : 'Angular weather app',
     },
     {
       href: "https://fakelibre.netlify.app/products",
-      src: "https://portfolio-vite.onrender.com/workImg/angular-ecommerce.gif",
+      src: "/img/angular-ecommerce.gif",
       alt: "Angular E-commerce",
       title: "Angular E-commerce",
     },
     {
       href: "https://mindhub-c593b.web.app/",
-      src: "https://portfolio-vite.onrender.com/workImg/mindhub.gif",
+      src: "/img/mindhub.gif",
       alt: "Mindhub angular app",
       title: "Mindhub angular app",
     },
