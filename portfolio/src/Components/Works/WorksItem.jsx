@@ -1,8 +1,8 @@
 import { ExternalLink, TrendingUp } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/Components/ui/card";
+import { Badge } from "@/Components/ui/badge";
+import { Button } from "@/Components/ui/button";
 
 function getTitle(title, language) {
   if (typeof title === "string") return title;

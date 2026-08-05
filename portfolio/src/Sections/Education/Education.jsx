@@ -4,8 +4,8 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
+} from "@/Components/ui/accordion";
+import { Badge } from "@/Components/ui/badge";
 
 const COURSES = [
   {

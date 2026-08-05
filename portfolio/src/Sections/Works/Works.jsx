@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/Components/ui/tabs";
 import WorksItem from "../../Components/Works/WorksItem";
 import { PROJECTS } from "../../Components/Works/projectsData";
 

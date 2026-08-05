@@ -1,5 +1,5 @@
 import { Layout, Server, Database } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/Components/ui/card";
 
 const SKILLS = {
   es: [

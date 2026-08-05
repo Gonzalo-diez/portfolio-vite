@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 
 const ROLES = {
   es: [

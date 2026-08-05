@@ -14,7 +14,7 @@ import {
   SiTypescript,
   SiGit,
 } from "react-icons/si";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/Components/ui/card";
 
 const STACK = [
   { name: "React", Icon: SiReact, color: "#61DAFB" },

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Menu as MenuIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetClose,
-} from "@/components/ui/sheet";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+} from "@/Components/ui/sheet";
+import { ToggleGroup, ToggleGroupItem } from "@/Components/ui/toggle-group";
 
 const NAV_LINKS = [
   { href: "/", es: "Inicio", en: "Home" },
