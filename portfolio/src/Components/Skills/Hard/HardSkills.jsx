@@ -1,46 +1,35 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Layout, Server, Database } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+
+const SKILLS = {
+  es: [
+    { name: "Desarrollo Front-End", Icon: Layout },
+    { name: "Desarrollo Back-End", Icon: Server },
+    { name: "Bases de Datos", Icon: Database },
+  ],
+  en: [
+    { name: "Front-End Development", Icon: Layout },
+    { name: "Back-End Development", Icon: Server },
+    { name: "Databases", Icon: Database },
+  ],
+};
 
 function HardSkills({ language }) {
-  const skills = [
-    {
-      name: language === "es" ? "Desarrollo Front End" : "Front End Development",
-      percentage: "80%",
-      barWidth: "80%",
-    },
-    {
-      name: language === "es" ? "Desarrollo Back End" : "Back End Development",
-      percentage: "70%",
-      barWidth: "70%",
-    },
-    {
-      name: language === "es" ? "Base de Datos" : "Databases",
-      percentage: "75%",
-      barWidth: "75%",
-    },
-  ];
+  const skills = SKILLS[language] ?? SKILLS.es;
 
   return (
-    <Container>
-      <h2 className="section-title">
-        {language === "es" ? "Habilidades Duras" : "Hard Skills"}
-      </h2>
-      <Row xs={1} md={3} className="g-4">
-        {skills.map((skill, index) => (
-          <Col key={index}>
-            <div className="skills__data">
-              <div className="skills__names">
-                <span className="skills__name">{skill.name}</span>
-              </div>
-              <div className="skills__bar" style={{ width: skill.barWidth }}></div>
-              <div>
-                <span className="skills__percentage">{skill.percentage}</span>
-              </div>
-            </div>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      {skills.map(({ name, Icon }) => {
+        return (
+          <Card key={name} className="text-center">
+            <CardContent className="flex flex-col items-center gap-3 py-8">
+              <Icon className="h-8 w-8 text-primary" strokeWidth={1.5} />
+              <p className="font-medium">{name}</p>
+            </CardContent>
+          </Card>
+        );
+      })}
+    </div>
   );
 }
 

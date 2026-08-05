@@ -1,44 +1,144 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { useEffect, useState } from "react";
+import { SiGithub } from "react-icons/si";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { Button } from "@/components/ui/button";
+
+const ROLES = {
+  es: [
+    "Desarrollador Full-Stack",
+    "React & JavaScript",
+    "Interfaces con lógica de datos",
+  ],
+  en: [
+    "Full-Stack Developer",
+    "React & JavaScript",
+    "Data-driven interfaces",
+  ],
+};
+
+const STACK_TICKER = [
+  "REACT",
+  "JAVASCRIPT",
+  "TYPESCRIPT",
+  "PYTHON",
+  "MACHINE LEARNING",
+  "NODE.JS",
+];
+
+function useTypewriter(phrases) {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = phrases[phraseIndex % phrases.length];
+    const speed = deleting ? 35 : 70;
+    const pauseAtEnd = 1400;
+    const pauseAtEmpty = 300;
+
+    let timeout;
+
+    if (!deleting && text === current) {
+      timeout = setTimeout(() => setDeleting(true), pauseAtEnd);
+    } else if (deleting && text === "") {
+      timeout = setTimeout(() => {
+        setDeleting(false);
+        setPhraseIndex((prev) => (prev + 1) % phrases.length);
+      }, pauseAtEmpty);
+    } else {
+      timeout = setTimeout(() => {
+        setText((prev) =>
+          deleting ? current.slice(0, prev.length - 1) : current.slice(0, prev.length + 1)
+        );
+      }, speed);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [text, deleting, phraseIndex, phrases]);
+
+  return text;
+}
 
 function Home({ language }) {
-    return (
-        <section className="home bd-grid" id="home">
-            {language === 'es' && (
-                <div className="home__data">
-                    <h1 className="home__title">Hola,<br />Yo soy<span className="home__title-color"> Gonzalo </span></h1>
-                    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=30&pause=1000&color=3E6FF4&width=435&lines=Desarrollador+Front+End;HTML+y+CSS;JavaScript;React;Python;Node.js" alt="esp" />
-                    <Button variant='primary' href="#contact">Contacto</Button>
-                </div>
-            )}
-            {language === 'en' && (
-                <div className="home__data">
-                    <h1 className="home__title">Hello,<br />I'm<span className="home__title-color"> Gonzalo </span></h1>
-                    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=30&pause=1000&color=3E6FF4&width=435&lines=Front+End+Developer;HTML+y+CSS;JavaScript;React;Python;Node.js" alt="eng" />
-                    <Button variant='primary' href="#contact">Contact</Button>
-                </div>
-            )}
+  const typed = useTypewriter(ROLES[language] ?? ROLES.es);
 
-            <div className="home__social">
-                <a href="https://www.linkedin.com/in/gonzalo-juan-diez-7188851a5/" className="home__social-icon"><FaLinkedin /></a>
-                <a href="https://github.com/Gonzalo-diez" className="home__social-icon"><FaGithub /></a>
-            </div>
+  const copy = {
+    es: { greeting: "Hola, soy", cta: "Contacto" },
+    en: { greeting: "Hi, I'm", cta: "Contact" },
+  }[language] ?? { greeting: "Hola, soy", cta: "Contacto" };
 
-            <div className="home__img">
-                <svg className="home__blob" viewBox="0 0 479 467">
-                    <mask id="mask0" mask-type="alpha">
-                        <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
-                    </mask>
-                    <g mask="url(#mask0)">
-                        <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
-                        <image className="home__blob-img" x="65" y="55" href="../img/perfil-removebg-preview.png" />
-                        <image className="home__blob-img" x="65" y="55" href="./img/perfil-removebg-preview.png" />
-                    </g>
-                </svg>
+  return (
+    <section id="home" className="relative">
+      <div className="mx-auto grid max-w-5xl items-center gap-10 px-4 py-16 md:min-h-[calc(100vh-4rem)] md:grid-cols-2 md:py-0">
+        {/* Texto */}
+        <div className="order-2 text-center md:order-1 md:text-left">
+          <p className="font-mono text-sm text-muted-foreground">
+            {copy.greeting}
+          </p>
+          <h1 className="mt-2 font-heading text-4xl font-bold tracking-tight sm:text-5xl">
+            Gonzalo<span className="text-primary">.</span>
+          </h1>
+
+          <p className="mt-4 h-8 font-mono text-lg text-primary sm:text-xl">
+            {typed}
+            <span className="animate-pulse">|</span>
+          </p>
+
+          <div className="mt-8 flex items-center justify-center gap-4 md:justify-start">
+            <Button asChild size="lg">
+              <a href="#contact">{copy.cta}</a>
+            </Button>
+
+            <div className="flex items-center gap-4">
+              <a
+                href="https://www.linkedin.com/in/gonzalo-juan-diez-7188851a5/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-muted-foreground transition-colors hover:text-primary"
+              >
+                <FaLinkedinIn className="h-5 w-5" />
+              </a>
+              <a
+                href="https://github.com/Gonzalo-diez"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="text-muted-foreground transition-colors hover:text-primary"
+              >
+                <SiGithub className="h-5 w-5" />
+              </a>
             </div>
-        </section>
-    );
+          </div>
+        </div>
+
+        {/* Imagen */}
+        <div className="order-1 flex justify-center md:order-2 md:justify-end">
+          <div className="aspect-square w-56 overflow-hidden rounded-[60%_40%_30%_70%/60%_30%_70%_40%] bg-secondary sm:w-72 md:w-80">
+            <img
+              src="/img/perfil-removebg-preview.png"
+              alt="Gonzalo Diez Buchanan"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Ticker de stack */}
+      <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden border-y border-border bg-secondary/40 py-3">
+        <div className="flex w-max animate-marquee gap-8 font-mono text-xs tracking-widest text-muted-foreground">
+          {[...STACK_TICKER, ...STACK_TICKER].map((item, index) => {
+            return (
+              <span key={`${item}-${index}`} className="flex items-center gap-8">
+                {item}
+                <span className="text-primary">—</span>
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Home;

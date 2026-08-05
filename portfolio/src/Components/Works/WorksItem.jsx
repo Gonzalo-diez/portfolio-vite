@@ -1,65 +1,83 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { ExternalLink, TrendingUp } from "lucide-react";
+import { FaGithub } from "react-icons/fa6";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
-function WorkItem({ language }) {
-  const works = [
-    {
-      href: "https://gonzalo-diez.github.io/tateti/",
-      src: "/img/tateti.gif",
-      alt: "Ta-Te-Ti",
-      title: language === 'es' ? 'Ta-Te-Ti' : 'Tic-Tac-Toe',
-    },
-    {
-      href: "https://gonzalo-diez.github.io/calculadora/",
-      src: "/img/calculadora.gif",
-      alt: "Calculadora JS",
-      title: language === 'es' ? 'Calculadora JS' : 'Calculator JS',
-    },
-    {
-      href: "https://github.com/Gonzalo-diez/proyecto-app-libreria",
-      src: "/img/gifApp.gif",
-      alt: "React E-commerce",
-      title: "React E-commerce",
-    },
-    {
-      href: "https://angular18-app-clima.netlify.app/",
-      src: "/img/app-clima-angular.gif",
-      alt: "Angular app clima",
-      title: language === 'es' ? 'Angular app clima' : 'Angular weather app',
-    },
-    {
-      href: "https://fakelibre.netlify.app/products",
-      src: "/img/angular-ecommerce.gif",
-      alt: "Angular E-commerce",
-      title: "Angular E-commerce",
-    },
-    {
-      href: "https://mindhub-c593b.web.app/",
-      src: "/img/mindhub.gif",
-      alt: "Mindhub angular app",
-      title: "Mindhub angular app",
-    },
-  ];
+function getTitle(title, language) {
+  if (typeof title === "string") return title;
+  return title[language] ?? title.es;
+}
 
+function WorksItem({ projects, language }) {
   return (
-    <Container className="mt-4">
-      <Row xs={1} sm={2} md={3} className="g-4">
-        {works.map((work, index) => (
-          <Col key={index} className="d-flex justify-content-center">
-            <a href={work.href} className="work__img text-center">
-              <img
-                src={work.src}
-                alt={work.alt}
-                className="img-fluid rounded mb-2"
-                style={{ maxWidth: '100%', height: 'auto' }}
-              />
-              <h3 className="h5">{work.title}</h3>
-            </a>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project) => {
+        const title = getTitle(project.title, language);
+        const description = project.description[language] ?? project.description.es;
+
+        return (
+          <Card key={project.id} className="flex flex-col overflow-hidden">
+            <div className="aspect-video w-full overflow-hidden bg-secondary">
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={title}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-foreground text-background">
+                  <TrendingUp className="h-6 w-6 text-primary" />
+                  <span className="font-mono text-xs uppercase tracking-widest">
+                    {title}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            <CardContent className="flex-1 space-y-3 pt-6">
+              <h3 className="font-heading text-lg font-semibold">{title}</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {description}
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {project.stack.map((tech) => {
+                  return (
+                    <Badge
+                      key={tech}
+                      variant="secondary"
+                      className="font-mono text-[10px]"
+                    >
+                      {tech}
+                    </Badge>
+                  );
+                })}
+              </div>
+            </CardContent>
+
+            <CardFooter className="gap-2">
+              {project.demoHref && (
+                <Button asChild size="sm" variant="default">
+                  <a href={project.demoHref} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    Demo
+                  </a>
+                </Button>
+              )}
+              {project.githubHref && (
+                <Button asChild size="sm" variant="outline">
+                  <a href={project.githubHref} target="_blank" rel="noopener noreferrer">
+                    <FaGithub className="h-3.5 w-3.5" />
+                    GitHub
+                  </a>
+                </Button>
+              )}
+            </CardFooter>
+          </Card>
+        );
+      })}
+    </div>
   );
 }
 
-export default WorkItem;
+export default WorksItem;

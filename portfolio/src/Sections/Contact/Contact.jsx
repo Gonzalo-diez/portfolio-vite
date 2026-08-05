@@ -1,93 +1,133 @@
-import React, { useState } from 'react';
-import { Container, Toast } from 'react-bootstrap';
+import { useState } from "react";
+import { toast } from "sonner";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+
+const COPY = {
+  es: {
+    title: "Contacto",
+    subtitle: "¿Tenés una propuesta o querés charlar? Escribime.",
+    name: "Nombre",
+    email: "Email",
+    message: "Mensaje",
+    send: "Enviar",
+    sending: "Enviando...",
+    successTitle: "¡Mensaje enviado!",
+    successBody: "Te voy a responder a la brevedad.",
+    errorTitle: "Hubo un error al enviar el mensaje. Probá de nuevo.",
+  },
+  en: {
+    title: "Contact",
+    subtitle: "Have a proposal or want to chat? Write to me.",
+    name: "Name",
+    email: "Email",
+    message: "Message",
+    send: "Send",
+    sending: "Sending...",
+    successTitle: "Message sent!",
+    successBody: "I'll get back to you shortly.",
+    errorTitle: "There was an error sending the message. Try again.",
+  },
+};
+
+const initialState = { name: "", email: "", message: "" };
+
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
 
 function Contact({ language }) {
-  const initialState = {
-    name: '',
-    email: '',
-    msgContent: ''
-  };
-
+  const copy = COPY[language] ?? COPY.es;
   const [formData, setFormData] = useState(initialState);
-  const [enviado, setEnviado] = useState(false);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch('https://formspree.io/f/mqknrzdb', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setFormData(initialState);
-        setEnviado(true);
-      } else {
-        console.error('Hubo un error al enviar el mensaje');
-      }
-    } catch (error) {
-      console.error('Hubo un error al enviar el mensaje:', error);
-    }
-  };
+  const [sending, setSending] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setSending(true);
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", ...formData }),
+      });
+
+      toast.success(copy.successTitle, { description: copy.successBody });
+      setFormData(initialState);
+    } catch (error) {
+      toast.error(copy.errorTitle);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
-    <section className="contact section" id="contact">
-      <Container>
-        <h2 className="section-title">{language === 'es' ? 'Contacto' : 'Contact'}</h2>
-        <div className="contact__container bd-grid">
-          <form className="contact__form" onSubmit={handleSubmit}>
-            <input
-              id="nombre"
-              name="name"
-              type="text"
-              placeholder={language === 'es' ? 'Nombre' : 'Name'}
-              className="contact__input"
-              value={formData.name}
-              onChange={handleChange}
-              autoComplete='name'
-              required
-            />
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder={language === 'es' ? 'Email' : 'Email'}
-              className="contact__input"
-              value={formData.email}
-              onChange={handleChange}
-              autoComplete='email'
-              required
-            />
-            <textarea
-              name="msgContent"
-              id="msgContent"
-              cols="0"
-              rows="10"
-              placeholder={language === 'es' ? 'Mensaje' : 'Message'}
-              className="contact__input"
-              value={formData.msgContent}
-              onChange={handleChange}
-              required
-            ></textarea>
-            <input type="submit" value={language === 'es' ? 'Enviar' : 'Send'} className="contact__button button" />
-          </form>
-          <Toast show={enviado} bg='success' onClose={() => setEnviado(false)} delay={4000} autohide>
-            <Toast.Header closeButton={false}>
-              <strong className="mr-auto">{language === 'es' ? '¡Éxito!' : 'Success!'}</strong>
-            </Toast.Header>
-            <Toast.Body className="text-white">{language === 'es' ? 'Mensaje enviado con éxito' : 'Message sent successfully'}</Toast.Body>
-          </Toast>
-        </div>
-      </Container>
+    <section id="contact" className="py-20 sm:py-24">
+      <div className="mx-auto max-w-lg px-4">
+        <h2 className="text-center font-heading text-3xl font-bold tracking-tight">
+          {copy.title}
+        </h2>
+        <p className="mt-3 text-center text-muted-foreground">
+          {copy.subtitle}
+        </p>
+
+        <Card className="mt-10">
+          <CardContent className="p-6">
+            <form
+              name="contact"
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
+              {/* Honeypot anti-spam, invisible para personas */}
+              <p className="hidden">
+                <label>
+                  No completar: <input name="bot-field" tabIndex="-1" autoComplete="off" />
+                </label>
+              </p>
+
+              <Input
+                name="name"
+                type="text"
+                placeholder={copy.name}
+                value={formData.name}
+                onChange={handleChange}
+                autoComplete="name"
+                required
+              />
+              <Input
+                name="email"
+                type="email"
+                placeholder={copy.email}
+                value={formData.email}
+                onChange={handleChange}
+                autoComplete="email"
+                required
+              />
+              <Textarea
+                name="message"
+                placeholder={copy.message}
+                rows={6}
+                value={formData.message}
+                onChange={handleChange}
+                required
+              />
+
+              <Button type="submit" className="w-full" disabled={sending}>
+                {sending ? copy.sending : copy.send}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
     </section>
   );
 }

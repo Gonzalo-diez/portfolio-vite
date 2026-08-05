@@ -4,7 +4,6 @@ import Layout from "./Footer/Layout";
 import Menu from "./Menu/Menu";
 import Portfolio from "../Pages/Portfolio/Portfolio";
 import "./CSS/style.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [language, setLanguage] = useState("es");
