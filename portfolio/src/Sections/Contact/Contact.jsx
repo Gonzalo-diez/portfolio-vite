@@ -86,6 +86,7 @@ function Contact({ language }) {
               name="contact"
               onSubmit={handleSubmit}
               className="space-y-4"
+              netlify
             >
               {/* Honeypot anti-spam, invisible para personas */}
               <p className="hidden">
