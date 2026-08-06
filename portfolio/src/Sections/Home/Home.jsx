@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
-import { SiGithub } from "react-icons/si";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { Button } from "@/Components/ui/button";
+import { useEffect, useRef, useState } from "react";
+import {  SiGithub } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa6";
+import { Button } from "@/components/ui/button";
+
+// Velocidad del ticker en píxeles por segundo. Subí el número para que
+// vaya más rápido, bajalo para que vaya más lento. La duración se calcula
+// sola en base al ancho real del contenido, así la velocidad es siempre
+// la misma sin importar cuántas veces repitamos la lista.
+const TICKER_SPEED = 90;
 
 const ROLES = {
   es: [
@@ -61,6 +67,23 @@ function useTypewriter(phrases) {
 
 function Home({ language }) {
   const typed = useTypewriter(ROLES[language] ?? ROLES.es);
+  const groupRef = useRef(null);
+  const [duration, setDuration] = useState(30);
+
+  useEffect(() => {
+    const updateDuration = () => {
+      if (groupRef.current) {
+        const width = groupRef.current.getBoundingClientRect().width;
+        setDuration(width / TICKER_SPEED);
+      }
+    };
+
+    updateDuration();
+    window.addEventListener("resize", updateDuration);
+    return () => window.removeEventListener("resize", updateDuration);
+  }, []);
+
+  const tickerItems = Array(4).fill(STACK_TICKER).flat();
 
   const copy = {
     es: { greeting: "Hola, soy", cta: "Contacto" },
@@ -97,7 +120,7 @@ function Home({ language }) {
                 aria-label="LinkedIn"
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
-                <FaLinkedinIn className="h-5 w-5" />
+                <FaLinkedin className="h-5 w-5" />
               </a>
               <a
                 href="https://github.com/Gonzalo-diez"
@@ -126,13 +149,26 @@ function Home({ language }) {
 
       {/* Ticker de stack */}
       <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden border-y border-border bg-secondary/40 py-3">
-        <div className="flex w-max animate-marquee gap-8 font-mono text-xs tracking-widest text-muted-foreground">
-          {[...STACK_TICKER, ...STACK_TICKER].map((item, index) => {
+        <div
+          className="flex w-max animate-marquee"
+          style={{ animationDuration: `${duration}s` }}
+        >
+          {[0, 1].map((groupIndex) => {
             return (
-              <span key={`${item}-${index}`} className="flex items-center gap-8">
-                {item}
-                <span className="text-primary">—</span>
-              </span>
+              <div
+                key={groupIndex}
+                ref={groupIndex === 0 ? groupRef : null}
+                className="flex shrink-0 items-center gap-8 pr-8 font-mono text-xs tracking-widest text-muted-foreground"
+              >
+                {tickerItems.map((item, index) => {
+                  return (
+                    <span key={`${groupIndex}-${item}-${index}`} className="flex items-center gap-8">
+                      {item}
+                      <span className="text-primary">—</span>
+                    </span>
+                  );
+                })}
+              </div>
             );
           })}
         </div>
