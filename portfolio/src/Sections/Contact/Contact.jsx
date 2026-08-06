@@ -34,12 +34,6 @@ const COPY = {
 
 const initialState = { name: "", email: "", message: "" };
 
-function encode(data) {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-}
-
 function Contact({ language }) {
   const copy = COPY[language] ?? COPY.es;
   const [formData, setFormData] = useState(initialState);
@@ -54,11 +48,16 @@ function Contact({ language }) {
     event.preventDefault();
     setSending(true);
 
+    // Leemos directo del form real (incluye form-name y el honeypot bot-field
+    // automáticamente, tal como recomienda la documentación de Netlify).
+    const form = event.target;
+    const data = new FormData(form);
+
     try {
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...formData }),
+        body: new URLSearchParams(data).toString(),
       });
 
       toast.success(copy.successTitle, { description: copy.successBody });
