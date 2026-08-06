@@ -84,10 +84,15 @@ function Contact({ language }) {
           <CardContent className="p-6">
             <form
               name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
               onSubmit={handleSubmit}
               className="space-y-4"
-              netlify
             >
+              {/* Campo requerido por Netlify para vincular el form estático con este */}
+              <input type="hidden" name="form-name" value="contact" />
+
               {/* Honeypot anti-spam, invisible para personas */}
               <p className="hidden">
                 <label>
