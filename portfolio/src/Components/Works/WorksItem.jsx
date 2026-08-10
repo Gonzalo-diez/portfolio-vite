@@ -57,7 +57,7 @@ function WorksItem({ projects, language }) {
 
             <CardFooter className="gap-2">
               {project.demoHref && (
-                <Button asChild size="sm" variant="default">
+                <Button asChild size="lg" variant="default">
                   <a href={project.demoHref} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="h-3.5 w-3.5" />
                     Demo
@@ -65,7 +65,7 @@ function WorksItem({ projects, language }) {
                 </Button>
               )}
               {project.githubHref && (
-                <Button asChild size="sm" variant="outline">
+                <Button asChild size="lg" variant="outline">
                   <a href={project.githubHref} target="_blank" rel="noopener noreferrer">
                     <FaGithub className="h-3.5 w-3.5" />
                     GitHub

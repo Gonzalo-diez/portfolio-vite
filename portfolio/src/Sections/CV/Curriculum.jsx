@@ -43,13 +43,13 @@ function Curriculum({ language }) {
             />
           </a>
           <CardContent className="flex gap-3 p-4">
-            <Button asChild className="flex-1">
+            <Button asChild size="lg" className="flex-1">
               <a href={copy.pdf} download="cv">
                 <Download className="h-4 w-4" />
                 {copy.download}
               </a>
             </Button>
-            <Button asChild variant="outline" className="flex-1">
+            <Button asChild size="lg" variant="outline" className="flex-1">
               <a href={copy.pdf} target="_blank" rel="noopener noreferrer">
                 <Eye className="h-4 w-4" />
                 {copy.view}
