@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import {  SiGithub } from "react-icons/si";
+import { SiGithub, SiWhatsapp } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
-// Velocidad del ticker en píxeles por segundo. Subí el número para que
-// vaya más rápido, bajalo para que vaya más lento. La duración se calcula
-// sola en base al ancho real del contenido, así la velocidad es siempre
-// la misma sin importar cuántas veces repitamos la lista.
 const TICKER_SPEED = 90;
 
 const ROLES = {
@@ -121,6 +117,15 @@ function Home({ language }) {
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
                 <FaLinkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://wa.me/5493756513101"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="text-muted-foreground transition-colors hover:text-primary"
+              >
+                <SiWhatsapp className="h-5 w-5" />
               </a>
               <a
                 href="https://github.com/Gonzalo-diez"

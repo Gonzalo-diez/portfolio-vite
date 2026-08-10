@@ -48,8 +48,6 @@ function Contact({ language }) {
     event.preventDefault();
     setSending(true);
 
-    // Leemos directo del form real (incluye form-name y el honeypot bot-field
-    // automáticamente, tal como recomienda la documentación de Netlify).
     const form = event.target;
     const data = new FormData(form);
 
@@ -62,7 +60,7 @@ function Contact({ language }) {
 
       toast.success(copy.successTitle, { description: copy.successBody });
       setFormData(initialState);
-    } catch (error) {
+    } catch {
       toast.error(copy.errorTitle);
     } finally {
       setSending(false);
