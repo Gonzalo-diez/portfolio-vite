@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { SiGithub, SiWhatsapp } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa6";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 
 const TICKER_SPEED = 90;
 
