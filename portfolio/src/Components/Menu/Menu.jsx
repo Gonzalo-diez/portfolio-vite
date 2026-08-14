@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { href: "/", es: "Inicio", en: "Home" },
   { href: "/#about", es: "Sobre", en: "About" },
   { href: "/#skills", es: "Habilidades", en: "Skills" },
+  { href: "/#tech-stack", es: "Stack", en: "Stack" },
   { href: "/#education", es: "Educación", en: "Education" },
   { href: "/#works", es: "Proyectos", en: "Projects" },
   { href: "/#contact", es: "Contacto", en: "Contact" },
